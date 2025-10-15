@@ -11,10 +11,12 @@ You will review a GitLab Merge Request in the context of a JIRA issue, performin
 ## Token Optimization Strategy
 
 **IMPORTANT:** This command is optimized to minimize token usage:
-- **Only unresolved discussions** are fetched and verified (resolved discussions are skipped)
-- Discussions are processed **one by one** or in small batches (max 5 at a time)
-- This approach prevents token limit issues on MRs with extensive discussion history
+- **Multi-strategy discussion fetching**: Attempts to fetch only unresolved discussions first, then falls back to pagination
+- If discussion history exceeds token limits (>25K tokens), **gracefully skips** discussion verification
+- When skipped, performs a **fresh code review only** without verifying existing discussions
+- Discussions are processed **in small batches** (5-10 at a time) when successfully fetched
 - Progress is displayed incrementally to keep you informed
+- This adaptive approach ensures the review completes even on MRs with 100+ discussions
 
 ## Arguments Provided
 - **Merge Request**: $1 (URL or MR ID)
@@ -216,35 +218,64 @@ Before reviewing the code, check ALL existing discussions to:
 - Check if previously resolved issues have regressed and unresolve them
 - Update existing discussions instead of ignoring them
 
-**Step 4b.1: List ALL Discussions**
+**Step 4b.1: List Discussions with Pagination/Filtering**
 
-Use the GitLab MCP server tool to fetch ALL discussions:
+**IMPORTANT:** MRs with extensive discussion history can exceed token limits. Use a multi-strategy approach:
+
+**Strategy 1: Try to fetch only UNRESOLVED discussions first (most efficient)**
 
 ```
 Use MCP tool: mcp__gitlab__discussion_list
 Parameters:
 - Merge request identifier (same as used in Steps 3-4)
-- No filter (fetch both resolved and unresolved)
+- Filter: resolved=false (or similar parameter to get only unresolved)
+- Pagination: If supported, use page_size/limit to fetch in batches
 ```
 
-Display initial count:
+If this succeeds, display:
 ```
-Found {total_count} existing discussions on this MR:
-- Unresolved: {unresolved_count}
-- Resolved: {resolved_count}
-
-Processing discussions to check their current status...
+Found {unresolved_count} unresolved discussions on this MR.
+Note: Focusing on unresolved discussions to manage token usage.
+Will verify these and find new issues in the code.
 ```
 
-**Step 4b.2: Process Discussions One by One**
+**Strategy 2: If Strategy 1 fails or doesn't support filtering, fetch with pagination**
+
+```
+Use MCP tool: mcp__gitlab__discussion_list
+Parameters:
+- Merge request identifier (same as used in Steps 3-4)
+- Pagination: page=1, per_page=20 (or similar pagination parameters)
+```
+
+Process in batches, fetching 20 discussions at a time until you have processed all unresolved ones.
+
+**Strategy 3: If response still exceeds token limits, gracefully skip**
+
+If the tool returns an error like "response exceeds maximum allowed tokens":
+- Log a warning: "MR has extensive discussion history ({token_count} tokens). Skipping existing discussion verification to avoid token limits."
+- Continue with the review focusing ONLY on finding new issues (skip OBJECTIVE 1 in Step 5)
+- Set a flag: `skip_discussion_verification = true`
+
+Display to user:
+```
+⚠️ This MR has extensive discussion history that exceeds token limits.
+Proceeding with fresh code review without verifying existing discussions.
+All new issues will be posted as new discussions.
+
+If you need to verify specific existing discussions, please review them manually.
+```
+
+**Step 4b.2: Process Discussions (If Successfully Fetched)**
+
+**ONLY if Step 4b.1 successfully fetched discussions**, proceed with processing:
 
 **CRITICAL:** Do NOT load all discussion details at once. Process incrementally:
 
-For each discussion (both resolved and unresolved):
-1. Fetch individual discussion details if needed
-2. Extract the discussion ID and current resolved status
-3. Check if it's a bot-generated discussion (contains "🤖 Automated review by Claude Code")
-4. Parse the discussion body to extract:
+For each discussion fetched:
+1. Extract the discussion ID and current resolved status
+2. Check if it's a bot-generated discussion (contains "🤖 Automated review by Claude Code")
+3. Parse the discussion body to extract:
    - File path (from inline position or from body text)
    - Line number (from inline position or from body text)
    - Severity (🔴/🟡/🟢)
@@ -254,13 +285,21 @@ For each discussion (both resolved and unresolved):
    - Suggested fix
 
 **Token Management:**
-- Process discussions in batches of 5 if there are many
+- Process discussions in batches of 5-10 if there are many
 - Display progress: "Processing discussion {n} of {total}..."
-- Store both resolved and unresolved discussions for verification
+- If focusing on unresolved only, store those for verification
+- If processing all discussions, store both resolved and unresolved
 
-**Step 4b.3: Store ALL Discussion Context**
+**If Step 4b.1 was skipped due to token limits:**
+- Skip this step entirely
+- Set `discussions_list = []` (empty array)
+- Set `skip_discussion_verification = true`
 
-Create a structured list of ALL discussions:
+**Step 4b.3: Store Discussion Context**
+
+**If discussions were successfully fetched:**
+
+Create a structured list of discussions:
 ```json
 [
   {
@@ -288,11 +327,22 @@ Create a structured list of ALL discussions:
 
 Display summary to user:
 ```
-Processed {count} discussions:
-- Unresolved discussions: {unresolved_count}
-- Resolved discussions: {resolved_count}
+✅ Successfully fetched discussions:
+- Total discussions: {count}
+- Unresolved: {unresolved_count}
+- Resolved: {resolved_count} (if fetched)
 - Inline comments: {inline_count}
 - General threads: {general_count}
+
+These discussions will be verified against current code.
+```
+
+**If discussions were skipped (token limit exceeded):**
+
+Set `discussions_list = []` and display:
+```
+⚠️ Skipped fetching existing discussions due to token limits.
+Proceeding with fresh code review only.
 ```
 
 ## Step 4c: Detect Project Type
@@ -330,6 +380,10 @@ Based on the project type detected in Step 4c, launch the appropriate code revie
 
 Use the Task tool to launch the selected agent with the following comprehensive prompt:
 
+**IMPORTANT: Conditional Prompt Based on Discussion Availability**
+
+**If discussions were successfully fetched (skip_discussion_verification = false):**
+
 ```
 You are reviewing a GitLab Merge Request in the context of a JIRA issue.
 
@@ -345,26 +399,51 @@ You are reviewing a GitLab Merge Request in the context of a JIRA issue.
 {Insert MR details from Step 3}
 
 **Existing Discussions (From Step 4b):**
-{Insert list of ALL discussions (both resolved and unresolved) with their details}
+{Insert list of discussions (may be only unresolved or both resolved/unresolved) with their details}
 
-**IMPORTANT:** Both resolved and unresolved discussions are provided to check their current status and update them accordingly.
+**IMPORTANT:** Existing discussions are provided to check their current status and update them accordingly.
 
 **Your Task:**
 You have TWO primary objectives:
 
-**OBJECTIVE 1: Verify ALL Existing Discussions**
-For each discussion provided above (both resolved and unresolved), check if the issue is still present in the current code:
+**OBJECTIVE 1: Verify Existing Discussions**
+For each discussion provided above, check if the issue is still present in the current code:
 1. Locate the file and line mentioned in the discussion
 2. Analyze if the issue described is still present
 3. Determine the verification status:
    - "FIXED" - The issue has been resolved (should be marked as resolved)
    - "STILL_PRESENT" - The issue remains in the code (should remain/become unresolved)
-   - "REGRESSED" - Previously resolved issue has returned (should be unresolve)
+   - "REGRESSED" - Previously resolved issue has returned (should be unresolved)
    - "CANNOT_VERIFY" - Cannot determine (file removed, line changed significantly, etc.)
 4. Provide evidence (code snippet showing it's fixed or still problematic)
 5. Note if the current resolved status matches the verification status
 
 **OBJECTIVE 2: Find New Issues**
+```
+
+**If discussions were skipped (skip_discussion_verification = true):**
+
+```
+You are reviewing a GitLab Merge Request in the context of a JIRA issue.
+
+**JIRA Issue Context:**
+{Insert JIRA issue details from Step 2, including:
+- Issue key, summary, description
+- Status, priority, issue type
+- Acceptance criteria
+- All custom fields (story points, labels, components)
+- All comments with authors and timestamps}
+
+**Merge Request Details:**
+{Insert MR details from Step 3}
+
+**IMPORTANT:** This MR has extensive discussion history that exceeded token limits.
+You will perform a fresh code review focusing ONLY on finding new issues.
+
+**Your Task:**
+Perform a comprehensive code review to identify new issues:
+
+**OBJECTIVE: Find New Issues**
 Review the following code changes line by line. For each file, analyze:
 1. Security vulnerabilities
 2. Performance issues (especially N+1 queries, missing indexes)
@@ -397,6 +476,9 @@ Review the following code changes line by line. For each file, analyze:
 - If code aligns well with JIRA requirements, mention this positively
 
 **Output Format:**
+
+**If discussions were fetched (TWO objectives):**
+
 Structure your response as a JSON object with two arrays:
 
 ```json
@@ -434,20 +516,45 @@ Structure your response as a JSON object with two arrays:
 - REGRESSED: Issue was previously fixed but has returned → should be unresolved with a note about regression
 - CANNOT_VERIFY: Cannot determine status → manual review needed, keep current status
 
+**If discussions were skipped (ONE objective - only finding new issues):**
+
+Structure your response as a JSON object with one array:
+
+```json
+{
+  "new_issues": [
+    {
+      "file_path": "path/to/file.rb",
+      "line_number": 42,
+      "severity": "critical|warning|info",
+      "category": "Security|Performance|Best Practice|Testing|Bug|JIRA Alignment",
+      "title": "Brief issue title",
+      "description": "Detailed explanation",
+      "original_code": "problematic code snippet",
+      "suggested_code": "improved code snippet",
+      "recommendation": "Specific action to take"
+    }
+  ]
+}
+```
+
 Ensure the JSON is valid and can be parsed programmatically.
 ```
 
 ## Step 6: Process Review Results
 
-After the fullstack-code-reviewer agent completes:
+After the code review agent completes:
 
 **Step 6a: Parse and Validate JSON Response**
-1. Parse the JSON response containing both `existing_discussions_verification` and `new_issues` arrays
-2. Validate that all required fields are present
+1. Parse the JSON response
+2. If discussions were fetched: Validate both `existing_discussions_verification` and `new_issues` arrays
+3. If discussions were skipped: Validate only `new_issues` array
 
-**Step 6b: Process Existing Discussions Verification**
+**Step 6b: Process Existing Discussions Verification (If Available)**
 
-Count and categorize the verification results for ALL discussions:
+**ONLY if discussions were fetched** (skip_discussion_verification = false):
+
+Count and categorize the verification results for discussions:
 - Fixed: {count} - Issues that have been resolved
 - Still Present: {count} - Issues that remain in the code
 - Regressed: {count} - Previously resolved issues that have returned
@@ -470,6 +577,16 @@ Display summary:
    - Manual verification needed, status unchanged
 ```
 
+**If discussions were skipped** (skip_discussion_verification = true):
+
+Display:
+```
+## Existing Discussions
+
+⚠️ Skipped verification due to extensive discussion history (token limit exceeded).
+All new issues will be posted as fresh discussions.
+```
+
 **Step 6c: Process New Issues**
 
 Count new issues by severity:
@@ -489,6 +606,8 @@ Display summary:
 
 **Step 6d: Ask for User Confirmation**
 
+**If discussions were fetched** (skip_discussion_verification = false):
+
 Ask the user with options:
 ```
 What would you like to do?
@@ -500,9 +619,20 @@ What would you like to do?
 Enter your choice (1-4):
 ```
 
-## Step 6e: Update Existing Discussions
+**If discussions were skipped** (skip_discussion_verification = true):
 
-If user chooses option 1 or 2, proceed with updating discussions:
+Ask the user with options:
+```
+What would you like to do?
+1. Post new comments (recommended)
+2. Do nothing (review only)
+
+Enter your choice (1-2):
+```
+
+## Step 6e: Update Existing Discussions (If Available)
+
+**ONLY if discussions were fetched** (skip_discussion_verification = false) **AND** user chooses option 1 or 2, proceed with updating discussions:
 
 **Step 6e.1: Categorize Discussions by Action Needed**
 
@@ -619,14 +749,21 @@ Successfully updated: {success_count} / {total_count}
 
 ## Step 7: Post New Review Comments to GitLab
 
-If user chooses option 1 or 3 (post new comments), proceed with posting.
+Proceed with posting if:
+- **Discussions were fetched**: User chooses option 1 or 3
+- **Discussions were skipped**: User chooses option 1
 
-**IMPORTANT:** Only post comments from the `new_issues` array that don't already have existing discussions.
+**Duplicate Prevention Logic:**
 
-**Logic:**
-- If an issue from `new_issues` matches a file/line that already has a discussion in `existing_discussions_verification`, SKIP posting it (the existing discussion will be updated in Step 6e)
+**If discussions were fetched** (skip_discussion_verification = false):
+- Check each issue from `new_issues` against `existing_discussions_verification`
+- If an issue matches a file/line that already has a discussion, SKIP posting it (the existing discussion will be updated in Step 6e)
 - Only post issues that are genuinely new and not already tracked in existing discussions
 - This prevents duplicate discussions for the same issue
+
+**If discussions were skipped** (skip_discussion_verification = true):
+- Post ALL issues from `new_issues` (no duplicate checking needed since we don't have existing discussion data)
+- All issues will be posted as fresh discussions
 
 **PRIORITY ORDER FOR POSTING COMMENTS:**
 1. **First Priority**: Post as inline discussion thread on specific line (with position)
@@ -766,6 +903,8 @@ Provide a comprehensive final summary:
 
 ### 📊 Existing Discussions Status
 
+**If discussions were fetched and verified:**
+
 **Total Discussions Checked:** {total_discussions}
 - ✅ Fixed (resolved): {fixed_count}
 - ❌ Still Present (kept/became unresolved): {still_present_count}
@@ -778,7 +917,14 @@ Provide a comprehensive final summary:
 - No change needed (already correct): {no_change_count}
 - Failed to update: {failed_updates}
 
-**Note:** All discussions (both resolved and unresolved) were checked and updated according to their current status in the code.
+**Note:** Discussions were checked and updated according to their current status in the code.
+
+**If discussions were skipped:**
+
+⚠️ **Discussion verification skipped** due to extensive discussion history (>25K tokens).
+- Fresh code review performed without verifying existing discussions
+- All identified issues posted as new discussions
+- Manual review of existing discussions recommended
 
 ### 🆕 New Issues Identified
 
@@ -834,10 +980,11 @@ Provide a comprehensive final summary:
    - Link resolved discussions to JIRA comments if needed
 
 5. **Follow-up:**
-   - Manually verify {cannot_verify_count} discussion(s) that couldn't be auto-verified
+   - If discussions were verified: Manually verify {cannot_verify_count} discussion(s) that couldn't be auto-verified
+   - If discussions were skipped: Manually review all existing discussions in the MR
    - Review inline comments on specific lines: {MR URL}#notes
-   - Address {regressed_count} regressed issue(s) with high priority
-   - Investigate why previously fixed issues have returned
+   - If discussions were verified: Address {regressed_count} regressed issue(s) with high priority
+   - If discussions were verified: Investigate why previously fixed issues have returned
 
 ### 🔗 Links
 
