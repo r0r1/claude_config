@@ -1,0 +1,3301 @@
+# ISB-2994: Create E-Sign FAB on Sales Page - Comprehensive Specification
+
+## 📋 Executive Summary
+
+**Issue:** ISB-2994
+**Title:** Create Esign FAB on Sales page
+**Type:** Task
+**Priority:** Medium
+**Status:** To Do
+**Sprint:** ISB Sprint 55
+**Assignee:** Hanif Widiyanto
+
+**Business Context:**
+Currently, sales personnel must download the FAB (Formulir Aktivasi Bisnis / Business Activation Form), sign it manually, and re-upload it to the Platinum Business Hub. This manual process is time-consuming, error-prone, and creates friction in the order fulfillment workflow. Implementing an electronic signature (e-sign) feature will streamline this process, reduce processing time, and improve overall operational efficiency.
+
+---
+
+## 1️⃣ ACCEPTANCE CRITERIA (Product Owner Perspective)
+
+### 1.1 User Story
+
+**As a** Sales person
+**I want to** electronically sign the FAB document directly in the system
+**So that** I don't have to download, manually sign, and re-upload the FAB document
+
+### 1.2 Given-When-Then Scenarios
+
+#### Scenario 1: Sales Initiates E-Sign FAB Process (Happy Path)
+
+**Given** a sales user is logged into the system
+**And** the sales user has an order in the Delivery stage
+**And** the order has all required documents uploaded and approved
+**And** the FAB document has been generated for the order
+**When** the sales user navigates to the Delivery stage page for the order
+**And** clicks the "E-Sign FAB" button
+**Then** the system displays the FAB document in a preview/view mode
+**And** displays a Terms and Conditions checkbox
+**And** displays a "Submit" button (disabled until T&C is checked)
+**And** displays a "Cancel" button
+
+#### Scenario 2: Sales Views FAB Before Signing
+
+**Given** the sales user has clicked "E-Sign FAB"
+**When** the FAB preview page loads
+**Then** the system displays the complete FAB document with:
+- Order reference number
+- Customer information (name, contact, address)
+- Product details and quantities
+- MSISDN and ICCID assignments
+- Pricing breakdown (subtotal, tax, delivery, total)
+- Order metadata (created date, sales person)
+**And** the document is read-only and cannot be edited
+
+#### Scenario 3: Sales Agrees to Terms and Submits for OTP
+
+**Given** the sales user is viewing the FAB document
+**When** the sales user checks the "I agree to Terms and Conditions" checkbox
+**And** clicks the "Submit" button
+**Then** the system validates the checkbox is checked
+**And** generates a 6-digit OTP code
+**And** sends the OTP to the sales user's registered email address
+**And** redirects to the OTP verification page
+**And** displays a countdown timer (5 minutes validity)
+**And** displays an input field for the 6-digit OTP
+**And** displays "Submit" and "Cancel" buttons
+
+#### Scenario 4: Sales Enters Valid OTP
+
+**Given** the sales user is on the OTP verification page
+**And** has received the OTP via email
+**When** the sales user enters the correct 6-digit OTP
+**And** clicks the "Submit" button
+**Then** the system validates the OTP
+**And** applies an electronic signature to the FAB document (with timestamp and user details)
+**And** saves the e-signed FAB to the database
+**And** marks the FAB as "E-Signed by Sales"
+**And** makes the signed FAB accessible in the admin orders document section
+**And** redirects to the Delivery stage page
+**And** displays a success message: "FAB has been successfully e-signed"
+**And** updates the order workflow to indicate sales signature is complete
+
+#### Scenario 5: Sales Enters Invalid OTP
+
+**Given** the sales user is on the OTP verification page
+**When** the sales user enters an incorrect 6-digit OTP
+**And** clicks the "Submit" button
+**Then** the system validates the OTP
+**And** displays an error message: "Invalid OTP. Please check your email and try again."
+**And** increments the failed attempt counter
+**And** remains on the OTP verification page
+**And** allows the user to retry (maximum 3 attempts)
+
+#### Scenario 6: OTP Expires
+
+**Given** the sales user is on the OTP verification page
+**When** the 5-minute timer expires before OTP submission
+**Then** the system invalidates the OTP
+**And** displays an error message: "OTP has expired. Please request a new one."
+**And** provides a "Resend OTP" button
+**And** disables the Submit button
+
+#### Scenario 7: Sales Exceeds Maximum OTP Attempts
+
+**Given** the sales user has entered an incorrect OTP 2 times
+**When** the sales user enters an incorrect OTP for the 3rd time
+**Then** the system locks the OTP verification for 15 minutes
+**And** displays an error message: "Maximum OTP attempts exceeded. Please try again in 15 minutes."
+**And** redirects back to the Delivery stage page after 5 seconds
+**And** disables the "E-Sign FAB" button for 15 minutes
+
+#### Scenario 8: Sales Cancels During FAB Preview
+
+**Given** the sales user is viewing the FAB preview
+**When** the sales user clicks the "Cancel" button
+**Then** the system redirects back to the Delivery stage page
+**And** does not generate or send an OTP
+**And** does not modify the order or FAB document
+
+#### Scenario 9: Sales Cancels During OTP Verification
+
+**Given** the sales user is on the OTP verification page
+**When** the sales user clicks the "Cancel" button
+**Then** the system invalidates the current OTP
+**And** redirects back to the Delivery stage page
+**And** displays an info message: "E-signature process cancelled"
+
+#### Scenario 10: Sales Resends OTP
+
+**Given** the sales user is on the OTP verification page
+**And** the OTP has expired or not been received
+**When** the sales user clicks the "Resend OTP" button
+**Then** the system invalidates any existing OTPs for this session
+**And** generates a new 6-digit OTP
+**And** sends the new OTP to the sales user's registered email
+**And** resets the countdown timer to 5 minutes
+**And** displays a success message: "A new OTP has been sent to your email"
+**And** limits resend attempts to 3 per hour
+
+#### Scenario 11: Admin Views E-Signed FAB Document
+
+**Given** an admin user is logged into the system
+**When** the admin navigates to an order that has an e-signed FAB
+**And** views the order documents section
+**Then** the system displays the e-signed FAB with:
+- "E-Signed" badge/indicator
+- Signature timestamp
+- Signer name (sales person)
+- Download link for the signed document
+**And** the document shows a digital signature watermark/certificate
+
+#### Scenario 12: Sales Proceeds to Activation After Customer E-Sign
+
+**Given** the sales user has successfully e-signed the FAB
+**And** has delivered the SIM card to the customer
+**When** the customer receives the SIM card
+**And** the customer signs their e-FAB (separate customer flow)
+**Then** the order becomes eligible for the Activation stage
+**And** the sales user can proceed to the activation page
+
+#### Scenario 13: Concurrent E-Sign Attempts (Edge Case)
+
+**Given** a sales user has initiated an e-sign process for an order
+**When** the same sales user or another user attempts to initiate e-sign for the same order
+**Then** the system displays a message: "An e-signature process is already in progress for this order"
+**And** prevents duplicate OTP generation
+**And** redirects to the existing OTP verification page if still valid
+
+#### Scenario 14: E-Sign Status Persistence
+
+**Given** a sales user has successfully e-signed a FAB
+**When** the sales user navigates away and returns to the Delivery stage page
+**Then** the "E-Sign FAB" button is replaced with:
+- "View Signed FAB" button (opens the signed document)
+- E-signature status indicator showing "Signed by [Name] on [Date]"
+**And** the button cannot be clicked to re-sign
+
+### 1.3 Functional Requirements
+
+**FR1: E-Sign Button Integration**
+- Add "E-Sign FAB" button on the Delivery stage page
+- Button should be prominently displayed and clearly labeled
+- Button should be enabled only when order status = delivery
+- Button should be disabled if FAB is already e-signed
+
+**FR2: FAB Document Preview**
+- Display full FAB content in read-only format
+- Include all order details, customer information, and product details
+- Support responsive design for different screen sizes
+- Provide print-friendly view option
+
+**FR3: Terms and Conditions Agreement**
+- Display clear and concise T&C specific to e-signature
+- Require explicit checkbox confirmation before proceeding
+- Submit button should be disabled until T&C is accepted
+- T&C should include legal disclaimers about electronic signatures
+
+**FR4: OTP Generation and Delivery**
+- Generate secure 6-digit numeric OTP
+- Set OTP validity to 5 minutes from generation time
+- Send OTP via email to sales user's registered email address
+- Email should include:
+  - OTP code prominently displayed
+  - Order reference number
+  - Expiration time
+  - Security warning about not sharing OTP
+
+**FR5: OTP Verification**
+- Accept 6-digit numeric input
+- Validate OTP against stored hash
+- Check OTP expiration timestamp
+- Implement rate limiting (3 attempts, 15-minute lockout)
+- Provide clear error messages for invalid/expired OTPs
+
+**FR6: Digital Signature Application**
+- Apply electronic signature to FAB document upon successful OTP verification
+- Include signature metadata:
+  - Signer name and email
+  - Signature timestamp (ISO 8601 format)
+  - IP address of signer (for audit trail)
+  - OTP verification confirmation
+- Generate a signature certificate/hash for document integrity
+
+**FR7: Document Storage**
+- Save e-signed FAB to database (Active Storage)
+- Maintain original unsigned FAB separately
+- Store signature metadata in order table
+- Create audit log entry for e-signature action
+
+**FR8: Admin Access to Signed Documents**
+- Display e-signed FAB in admin order document view
+- Show signature status and metadata
+- Provide download capability for signed document
+- Support PDF export with signature watermark
+
+**FR9: Email Notifications**
+- Send OTP email immediately upon request
+- Send confirmation email after successful e-signature
+- Support email retry mechanism for failed deliveries
+- Include order details and next steps in confirmation email
+
+**FR10: Workflow Integration**
+- Update order workflow to track e-signature status
+- Enable progression to activation stage only after both sales and customer e-signatures
+- Maintain backward compatibility with existing manual FAB upload process
+
+### 1.4 Non-Functional Requirements
+
+**NFR1: Performance**
+- OTP generation should complete within 1 second
+- OTP email delivery should be asynchronous (background job)
+- FAB preview page should load within 2 seconds
+- PDF generation for signed FAB should complete within 5 seconds
+
+**NFR2: Security**
+- OTP must be cryptographically secure (using SecureRandom)
+- Store OTP as salted hash in database, never plain text
+- Implement CSRF protection on all e-sign forms
+- Use HTTPS for all e-sign transactions
+- Sanitize all user inputs to prevent XSS attacks
+- Implement audit logging for all e-signature actions
+
+**NFR3: Scalability**
+- Support concurrent e-signature processes for multiple orders
+- Handle peak load of 100 concurrent OTP requests
+- Ensure database transactions for signature operations are atomic
+
+**NFR4: Reliability**
+- Email delivery should have retry mechanism (3 attempts)
+- System should gracefully handle email service failures
+- Implement transaction rollback for failed signature operations
+- Maintain data consistency across order, signature, and document tables
+
+**NFR5: Usability**
+- E-sign workflow should complete in maximum 5 user interactions
+- Error messages should be clear and actionable
+- Countdown timer should be visually prominent
+- Mobile-responsive design for all e-sign pages
+
+**NFR6: Accessibility**
+- WCAG 2.1 Level AA compliance
+- Keyboard navigation support for all interactive elements
+- Screen reader compatibility for visually impaired users
+- High contrast mode support
+
+### 1.5 Business Rules and Constraints
+
+**BR1:** Only sales users with assigned orders can e-sign FABs
+**BR2:** An order must be in "delivery" status to enable e-sign
+**BR3:** FAB can only be e-signed once by sales (no re-signing)
+**BR4:** OTP is valid for exactly 5 minutes from generation
+**BR5:** Maximum 3 OTP verification attempts per session
+**BR6:** Resend OTP limited to 3 times per hour per user
+**BR7:** OTP lockout period is 15 minutes after 3 failed attempts
+**BR8:** E-signed FAB must be stored for minimum 7 years (compliance)
+**BR9:** Only admin and sales (owner) can view signed FAB documents
+**BR10:** Customer e-sign is required before proceeding to activation stage
+
+### 1.6 Error Handling and Edge Cases
+
+**Edge Case 1: Email Service Failure**
+- System should queue OTP email for retry (max 3 attempts over 15 minutes)
+- Display user-friendly message: "OTP email is being sent. This may take a few moments."
+- Provide alternative contact mechanism (e.g., "Contact support if OTP not received")
+
+**Edge Case 2: User Session Expiry During E-Sign**
+- Preserve e-sign state in session storage
+- Redirect to login with return_to parameter
+- Resume e-sign process after re-authentication
+
+**Edge Case 3: Database Connection Failure During Signature**
+- Implement transaction rollback
+- Display error: "Unable to complete signature due to technical issue. Please try again."
+- Log error for admin investigation
+- Do not consume OTP attempt counter
+
+**Edge Case 4: Browser Refresh During OTP Entry**
+- Preserve OTP session (do not invalidate)
+- Restore OTP verification page with remaining countdown time
+- Maintain attempt counter
+
+**Edge Case 5: Multiple Tabs/Windows**
+- Detect concurrent e-sign sessions
+- Allow only one active e-sign session per order
+- Display warning: "E-signature is already in progress in another window"
+
+**Edge Case 6: Network Interruption During Signature**
+- Implement optimistic locking
+- Retry signature operation on reconnection
+- Prevent duplicate signatures
+
+### 1.7 UX/UI Considerations
+
+**UI Elements:**
+1. **E-Sign FAB Button**
+   - Primary button style (blue/green)
+   - Icon: Pen/signature icon
+   - Position: Top-right of delivery stage page
+   - Disabled state: Gray with tooltip explaining why
+
+2. **FAB Preview Page**
+   - Clean, document-focused layout
+   - Fixed footer with T&C checkbox and action buttons
+   - Print button in header
+   - Responsive design for mobile/tablet
+
+3. **OTP Verification Page**
+   - Centered card layout
+   - Large OTP input field (6 boxes for each digit)
+   - Prominent countdown timer (red when < 1 minute)
+   - Clear success/error feedback
+   - Resend OTP link below input
+
+4. **Signature Status Indicator**
+   - Green checkmark icon for completed signature
+   - "Signed by [Name]" text with timestamp
+   - View/Download signed document button
+
+**User Feedback:**
+- Loading spinners during asynchronous operations
+- Toast notifications for success/error messages
+- Progress indicator for multi-step process
+- Confirmation dialogs for critical actions (cancel)
+
+### 1.8 Dependencies and Risks
+
+**Dependencies:**
+- Email service (Action Mailer configured and operational)
+- Active Storage for document management
+- PDF generation library (WickedPDF or similar)
+- Background job processor (Sidekiq) for async operations
+
+**Risks:**
+1. **Email Deliverability:** OTP emails may be marked as spam or delayed
+   - Mitigation: Use reputable email service (SendGrid/AWS SES), implement SPF/DKIM
+2. **OTP Security:** OTP interception or brute force attacks
+   - Mitigation: Short validity window, rate limiting, HTTPS enforcement
+3. **Legal Compliance:** E-signature may not meet legal requirements in some jurisdictions
+   - Mitigation: Consult legal team, implement audit trail, add disclaimer
+4. **User Adoption:** Sales may prefer manual process
+   - Mitigation: Training, clear benefits communication, gradual rollout
+
+### 1.9 Definition of Done
+
+- [ ] E-Sign FAB button implemented on Delivery stage page
+- [ ] FAB preview page displays complete order information
+- [ ] Terms and Conditions checkbox functionality works correctly
+- [ ] OTP generation and email delivery functional
+- [ ] OTP verification with countdown timer implemented
+- [ ] Invalid OTP error handling works as expected
+- [ ] OTP expiration logic functional
+- [ ] Maximum OTP attempts enforcement works
+- [ ] Digital signature applied to FAB upon successful verification
+- [ ] E-signed FAB saved to database and accessible to admin
+- [ ] Signature status displayed on Delivery stage page
+- [ ] All edge cases handled gracefully
+- [ ] Unit tests written for all service objects and models
+- [ ] Integration tests cover complete e-sign workflow
+- [ ] RSpec tests achieve >80% code coverage
+- [ ] Code reviewed and approved by senior developer
+- [ ] QA testing completed and bugs fixed
+- [ ] User acceptance testing (UAT) passed
+- [ ] Documentation updated (README, API docs, user guide)
+- [ ] Performance testing confirms sub-2-second page loads
+- [ ] Security audit passed (no XSS, CSRF, SQL injection vulnerabilities)
+- [ ] Deployment script and rollback plan prepared
+- [ ] Feature flag implemented for gradual rollout
+- [ ] Production deployment successful
+- [ ] Post-deployment monitoring shows no errors
+- [ ] Stakeholder sign-off obtained
+
+---
+
+## 2️⃣ TEST CASES (QA Engineer Perspective)
+
+### 2.1 Test Case Overview
+
+**Total Test Cases:** 45
+**Automated:** 35
+**Manual:** 10
+**Estimated Testing Time:** 16 hours
+
+### 2.2 Positive Test Scenarios (Happy Path)
+
+#### TC-001: Navigate to E-Sign FAB Page
+
+**Test ID:** TC-001
+**Priority:** High
+**Preconditions:**
+- Sales user logged in
+- Order in delivery stage exists
+- FAB document generated
+
+**Test Steps:**
+1. Navigate to Delivery stage page
+2. Locate "E-Sign FAB" button
+3. Click "E-Sign FAB" button
+
+**Expected Results:**
+- FAB preview page loads successfully
+- Complete order information displayed
+- T&C checkbox visible and unchecked
+- Submit button disabled
+- Cancel button enabled
+
+**Automation:** YES
+**Test Data:** Order ID with delivery status
+
+---
+
+#### TC-002: Accept Terms and Conditions
+
+**Test ID:** TC-002
+**Priority:** High
+**Preconditions:** On FAB preview page
+
+**Test Steps:**
+1. Review FAB document content
+2. Check "I agree to Terms and Conditions" checkbox
+
+**Expected Results:**
+- Checkbox changes to checked state
+- Submit button becomes enabled
+- No page reload occurs
+
+**Automation:** YES
+
+---
+
+#### TC-003: Submit for OTP Generation
+
+**Test ID:** TC-003
+**Priority:** High
+**Preconditions:** T&C checkbox checked
+
+**Test Steps:**
+1. Click "Submit" button
+2. Wait for page transition
+
+**Expected Results:**
+- System generates 6-digit OTP
+- OTP email sent to sales user's email
+- Redirect to OTP verification page within 2 seconds
+- Countdown timer starts at 5:00 minutes
+- OTP input field displayed
+
+**Automation:** YES
+**Note:** Mock email service in automated tests
+
+---
+
+#### TC-004: Receive OTP Email
+
+**Test ID:** TC-004
+**Priority:** High
+**Preconditions:** OTP generation triggered
+
+**Test Steps:**
+1. Check sales user's email inbox
+2. Open OTP email
+
+**Expected Results:**
+- Email received within 30 seconds
+- Subject line: "Your OTP for FAB E-Signature - Order [Reference]"
+- Email contains 6-digit OTP prominently
+- Order reference number included
+- Expiration time mentioned (5 minutes)
+- Security warning included
+- Email formatted professionally
+
+**Automation:** PARTIAL (email queue verification only)
+
+---
+
+#### TC-005: Enter Valid OTP
+
+**Test ID:** TC-005
+**Priority:** High
+**Preconditions:**
+- On OTP verification page
+- Valid OTP received via email
+
+**Test Steps:**
+1. Enter the 6-digit OTP from email
+2. Click "Submit" button
+3. Wait for processing
+
+**Expected Results:**
+- OTP validated successfully
+- Digital signature applied to FAB
+- E-signed FAB saved to database
+- Redirect to Delivery stage page
+- Success message: "FAB has been successfully e-signed"
+- "E-Sign FAB" button replaced with "View Signed FAB"
+- Signature status displayed: "Signed by [Name] on [Date/Time]"
+
+**Automation:** YES
+
+---
+
+#### TC-006: Admin Views Signed FAB
+
+**Test ID:** TC-006
+**Priority:** Medium
+**Preconditions:**
+- Admin user logged in
+- Order has e-signed FAB
+
+**Test Steps:**
+1. Navigate to admin orders section
+2. Search for order with e-signed FAB
+3. Click on order to view details
+4. Navigate to Documents tab
+
+**Expected Results:**
+- E-signed FAB document listed with "E-Signed" badge
+- Signature metadata displayed (signer name, timestamp)
+- "Download" button available
+- Click download generates PDF with signature watermark
+
+**Automation:** YES
+
+---
+
+### 2.3 Negative Test Scenarios (Error Handling)
+
+#### TC-007: Submit Without Accepting T&C
+
+**Test ID:** TC-007
+**Priority:** High
+**Preconditions:** On FAB preview page
+
+**Test Steps:**
+1. Leave T&C checkbox unchecked
+2. Attempt to click Submit button
+
+**Expected Results:**
+- Submit button remains disabled
+- No action occurs
+- User cannot proceed
+
+**Automation:** YES
+
+---
+
+#### TC-008: Enter Invalid OTP (Wrong Code)
+
+**Test ID:** TC-008
+**Priority:** High
+**Preconditions:** On OTP verification page with valid OTP generated
+
+**Test Steps:**
+1. Enter incorrect 6-digit code (e.g., 999999)
+2. Click "Submit" button
+
+**Expected Results:**
+- Error message: "Invalid OTP. Please check your email and try again."
+- Failed attempt counter incremented
+- Page remains on OTP verification
+- OTP input field cleared
+- User can retry
+- Countdown timer continues
+
+**Automation:** YES
+
+---
+
+#### TC-009: Enter Expired OTP
+
+**Test ID:** TC-009
+**Priority:** High
+**Preconditions:**
+- OTP generated
+- Wait for 5 minutes + 1 second
+
+**Test Steps:**
+1. Wait until countdown timer reaches 0:00
+2. Enter the expired OTP
+3. Click "Submit" button
+
+**Expected Results:**
+- Error message: "OTP has expired. Please request a new one."
+- "Resend OTP" button displayed
+- Submit button disabled
+- Timer shows "Expired"
+
+**Automation:** YES (using time manipulation)
+
+---
+
+#### TC-010: Exceed Maximum OTP Attempts
+
+**Test ID:** TC-010
+**Priority:** High
+**Preconditions:** On OTP verification page
+
+**Test Steps:**
+1. Enter incorrect OTP (1st attempt)
+2. Enter incorrect OTP (2nd attempt)
+3. Enter incorrect OTP (3rd attempt)
+
+**Expected Results:**
+- After 3rd failed attempt:
+  - Error message: "Maximum OTP attempts exceeded. Please try again in 15 minutes."
+  - Redirect to Delivery stage page after 5 seconds
+  - "E-Sign FAB" button disabled for 15 minutes
+  - Tooltip on disabled button explains lockout
+
+**Automation:** YES
+
+---
+
+#### TC-011: Cancel During FAB Preview
+
+**Test ID:** TC-011
+**Priority:** Medium
+**Preconditions:** On FAB preview page
+
+**Test Steps:**
+1. Review FAB document
+2. Click "Cancel" button
+
+**Expected Results:**
+- Confirmation dialog: "Are you sure you want to cancel?"
+- On confirm: redirect to Delivery stage page
+- No OTP generated
+- No email sent
+- Info message: "E-signature process cancelled"
+
+**Automation:** YES
+
+---
+
+#### TC-012: Cancel During OTP Verification
+
+**Test ID:** TC-012
+**Priority:** Medium
+**Preconditions:** On OTP verification page
+
+**Test Steps:**
+1. Enter partial OTP or wait
+2. Click "Cancel" button
+
+**Expected Results:**
+- Confirmation dialog: "Are you sure you want to cancel?"
+- On confirm: redirect to Delivery stage page
+- Current OTP invalidated
+- Info message: "E-signature process cancelled"
+- Can restart e-sign process immediately
+
+**Automation:** YES
+
+---
+
+#### TC-013: Resend OTP - Normal Flow
+
+**Test ID:** TC-013
+**Priority:** High
+**Preconditions:** On OTP verification page
+
+**Test Steps:**
+1. Wait for 1 minute
+2. Click "Resend OTP" button
+
+**Expected Results:**
+- Previous OTP invalidated
+- New 6-digit OTP generated
+- New OTP email sent
+- Timer resets to 5:00
+- Success message: "A new OTP has been sent to your email"
+- Failed attempt counter does NOT increment
+
+**Automation:** YES
+
+---
+
+#### TC-014: Resend OTP - Rate Limiting
+
+**Test ID:** TC-014
+**Priority:** Medium
+**Preconditions:** On OTP verification page
+
+**Test Steps:**
+1. Click "Resend OTP" button (1st time)
+2. Immediately click "Resend OTP" button (2nd time)
+3. Immediately click "Resend OTP" button (3rd time)
+4. Attempt to click "Resend OTP" button (4th time)
+
+**Expected Results:**
+- First 3 resends succeed
+- 4th attempt shows error: "You have exceeded the maximum OTP resend limit. Please try again in 60 minutes."
+- "Resend OTP" button disabled
+- User must wait or contact support
+
+**Automation:** YES
+
+---
+
+#### TC-015: Email Service Failure
+
+**Test ID:** TC-015
+**Priority:** High
+**Preconditions:** Email service configured to fail/timeout
+
+**Test Steps:**
+1. Complete T&C acceptance
+2. Click Submit for OTP
+3. Simulate email service failure
+
+**Expected Results:**
+- Loading indicator shown
+- After 10 seconds: "OTP email is being sent. This may take a few moments."
+- Email queued for retry (background job)
+- User can proceed to OTP page
+- Manual option: "Didn't receive OTP? Contact support"
+
+**Automation:** PARTIAL (mock email failure)
+
+---
+
+### 2.4 Boundary Value Tests
+
+#### TC-016: OTP Exactly at Expiry Boundary
+
+**Test ID:** TC-016
+**Priority:** Medium
+**Preconditions:** OTP generated
+
+**Test Steps:**
+1. Wait until countdown timer shows 0:00
+2. Enter OTP at exactly 5:00 minutes mark
+
+**Expected Results:**
+- OTP marked as expired
+- Error message displayed
+- Cannot submit expired OTP
+
+**Automation:** YES
+
+---
+
+#### TC-017: OTP Just Before Expiry
+
+**Test ID:** TC-017
+**Priority:** Medium
+**Preconditions:** OTP generated
+
+**Test Steps:**
+1. Wait until countdown timer shows 0:01
+2. Enter correct OTP
+3. Submit immediately
+
+**Expected Results:**
+- OTP accepted if submitted before expiry
+- Signature process completes successfully
+
+**Automation:** YES
+
+---
+
+#### TC-018: Maximum Document Size
+
+**Test ID:** TC-018
+**Priority:** Low
+**Preconditions:** Order with maximum items (e.g., 100+ MSISDNs)
+
+**Test Steps:**
+1. Generate FAB for large order
+2. Initiate e-sign process
+3. Complete OTP verification
+
+**Expected Results:**
+- Large FAB loads within 3 seconds
+- PDF generation completes within 10 seconds
+- Signed document saved successfully
+- No performance degradation
+
+**Automation:** YES
+
+---
+
+### 2.5 Edge Cases and Security Tests
+
+#### TC-019: Concurrent E-Sign Attempts
+
+**Test ID:** TC-019
+**Priority:** High
+**Preconditions:** Single order in delivery stage
+
+**Test Steps:**
+1. Open order in two browser tabs/windows
+2. Initiate e-sign in both tabs simultaneously
+3. Attempt to proceed in both
+
+**Expected Results:**
+- Only one e-sign session allowed
+- Second tab shows: "An e-signature process is already in progress for this order"
+- Redirect to existing OTP verification page if still valid
+- No duplicate OTPs generated
+
+**Automation:** NO (requires manual multi-tab testing)
+
+---
+
+#### TC-020: Session Expiry During E-Sign
+
+**Test ID:** TC-020
+**Priority:** Medium
+**Preconditions:** On OTP verification page
+
+**Test Steps:**
+1. Wait for user session to expire (30 minutes)
+2. Attempt to submit OTP
+
+**Expected Results:**
+- Redirect to login page with return_to parameter
+- After re-login, return to e-sign flow
+- OTP still valid if within 5-minute window
+- User can complete signature without restarting
+
+**Automation:** YES
+
+---
+
+#### TC-021: Browser Refresh During OTP Entry
+
+**Test ID:** TC-021
+**Priority:** Medium
+**Preconditions:** On OTP verification page with timer at 2:30
+
+**Test Steps:**
+1. Refresh browser (F5)
+2. Observe page state
+
+**Expected Results:**
+- OTP verification page reloads
+- Countdown timer shows remaining time (approximately 2:30)
+- OTP input field empty but functional
+- Failed attempt counter preserved
+- User can continue without restarting
+
+**Automation:** NO (manual browser action required)
+
+---
+
+#### TC-022: SQL Injection Attempt in OTP Input
+
+**Test ID:** TC-022
+**Priority:** High (Security)
+**Preconditions:** On OTP verification page
+
+**Test Steps:**
+1. Enter malicious SQL string: `' OR '1'='1`
+2. Click Submit
+
+**Expected Results:**
+- Input sanitized automatically
+- No database query manipulation
+- Error: "Invalid OTP format. Please enter 6 digits."
+- System logs security event
+
+**Automation:** YES
+
+---
+
+#### TC-023: XSS Attempt in Signature Metadata
+
+**Test ID:** TC-023
+**Priority:** High (Security)
+**Preconditions:** Attempting to inject script during e-sign
+
+**Test Steps:**
+1. Intercept signature request
+2. Modify payload to include: `<script>alert('XSS')</script>`
+3. Submit modified request
+
+**Expected Results:**
+- Input sanitized before storage
+- No script execution
+- Signature metadata stored safely
+- Security event logged
+
+**Automation:** YES
+
+---
+
+#### TC-024: CSRF Token Validation
+
+**Test ID:** TC-024
+**Priority:** High (Security)
+**Preconditions:** E-sign pages loaded
+
+**Test Steps:**
+1. Inspect form HTML for CSRF token
+2. Submit form with invalid/missing CSRF token
+3. Observe response
+
+**Expected Results:**
+- Valid CSRF token present in all forms
+- Invalid token request rejected with 422 status
+- Error message: "Security token validation failed"
+- No OTP generated for invalid requests
+
+**Automation:** YES
+
+---
+
+### 2.6 Non-Functional Tests
+
+#### TC-025: Performance - OTP Generation Time
+
+**Test ID:** TC-025
+**Priority:** High
+**Test Type:** Performance
+
+**Test Steps:**
+1. Initiate OTP generation
+2. Measure time from button click to OTP email queued
+
+**Expected Results:**
+- OTP generation completes in < 1 second
+- 95th percentile: < 1.5 seconds
+- 99th percentile: < 2 seconds
+
+**Automation:** YES (using performance benchmarking)
+
+---
+
+#### TC-026: Performance - Page Load Times
+
+**Test ID:** TC-026
+**Priority:** Medium
+**Test Type:** Performance
+
+**Test Steps:**
+1. Measure FAB preview page load time
+2. Measure OTP verification page load time
+3. Test with 10, 50, 100 concurrent users
+
+**Expected Results:**
+- FAB preview: < 2 seconds (single user)
+- OTP verification: < 1 second (single user)
+- No significant degradation with 50 concurrent users
+- Graceful handling of 100 concurrent users
+
+**Automation:** YES (using load testing tools like Artillery)
+
+---
+
+#### TC-027: Concurrent Load Test
+
+**Test ID:** TC-027
+**Priority:** Medium
+**Test Type:** Performance
+
+**Test Steps:**
+1. Simulate 100 concurrent e-sign processes
+2. Monitor system resources
+3. Measure success rate
+
+**Expected Results:**
+- 100% success rate for OTP generation
+- Email queue processes without overflow
+- Database connections managed efficiently
+- No deadlocks or race conditions
+- Response time degradation < 20%
+
+**Automation:** YES (load testing)
+
+---
+
+#### TC-028: Accessibility - Keyboard Navigation
+
+**Test ID:** TC-028
+**Priority:** Medium
+**Test Type:** Accessibility
+
+**Test Steps:**
+1. Navigate FAB preview page using only Tab key
+2. Use Space/Enter to check T&C checkbox
+3. Use Tab to reach Submit button
+4. Use Enter to submit
+
+**Expected Results:**
+- All interactive elements accessible via keyboard
+- Focus indicators clearly visible
+- Logical tab order maintained
+- Submit/Cancel buttons accessible
+
+**Automation:** PARTIAL (axe-core automated testing)
+
+---
+
+#### TC-029: Accessibility - Screen Reader Compatibility
+
+**Test ID:** TC-029
+**Priority:** Medium
+**Test Type:** Accessibility
+
+**Test Steps:**
+1. Enable screen reader (NVDA/JAWS)
+2. Navigate through e-sign workflow
+3. Listen to announcements
+
+**Expected Results:**
+- All text content announced correctly
+- Form labels associated with inputs
+- Button purposes clearly stated
+- Error messages announced immediately
+- Timer countdown announced periodically
+
+**Automation:** NO (manual testing required)
+
+---
+
+#### TC-030: Mobile Responsiveness
+
+**Test ID:** TC-030
+**Priority:** Medium
+**Test Type:** Usability
+
+**Test Steps:**
+1. Access e-sign pages on mobile device (iOS/Android)
+2. Test portrait and landscape orientations
+3. Verify all interactions work with touch
+
+**Expected Results:**
+- All pages render correctly on mobile
+- Buttons/inputs sized appropriately for touch
+- Text readable without zooming
+- No horizontal scrolling required
+- OTP input works with mobile keyboard
+
+**Automation:** PARTIAL (responsive design testing)
+
+---
+
+### 2.7 Integration Tests
+
+#### TC-031: Email Service Integration
+
+**Test ID:** TC-031
+**Priority:** High
+**Test Type:** Integration
+
+**Test Steps:**
+1. Configure email service (SendGrid/AWS SES)
+2. Generate OTP
+3. Verify email delivery
+
+**Expected Results:**
+- Email successfully delivered via configured service
+- Email headers include SPF/DKIM signatures
+- Bounce/complaint handling configured
+- Email logs available for debugging
+
+**Automation:** YES
+
+---
+
+#### TC-032: Background Job Processing (Sidekiq)
+
+**Test ID:** TC-032
+**Priority:** High
+**Test Type:** Integration
+
+**Test Steps:**
+1. Generate OTP (triggers async email job)
+2. Check Sidekiq queue status
+3. Verify job execution
+
+**Expected Results:**
+- Email job enqueued successfully
+- Job executes within 5 seconds
+- Failed jobs retry automatically (max 3 retries)
+- Job status visible in Sidekiq dashboard
+
+**Automation:** YES
+
+---
+
+#### TC-033: Active Storage Integration
+
+**Test ID:** TC-033
+**Priority:** High
+**Test Type:** Integration
+
+**Test Steps:**
+1. Complete e-signature process
+2. Verify signed FAB stored in Active Storage
+3. Check file accessibility
+
+**Expected Results:**
+- Signed FAB attached to order model
+- File stored in configured storage (local/S3/GCS)
+- File retrievable via Active Storage API
+- Proper content type set (application/pdf)
+
+**Automation:** YES
+
+---
+
+#### TC-034: Audit Trail Integration (Audited Gem)
+
+**Test ID:** TC-034
+**Priority:** Medium
+**Test Type:** Integration
+
+**Test Steps:**
+1. Complete e-signature process
+2. Query audits table for order
+3. Verify audit records
+
+**Expected Results:**
+- Audit record created with action: "e_sign_fab"
+- Audited changes include signature metadata
+- User association correct
+- Timestamp accurate
+
+**Automation:** YES
+
+---
+
+### 2.8 Regression Tests
+
+#### TC-035: Existing Manual FAB Upload Still Works
+
+**Test ID:** TC-035
+**Priority:** High
+**Test Type:** Regression
+
+**Test Steps:**
+1. Navigate to Delivery stage
+2. Use existing FAB file upload functionality
+3. Upload FAB file manually
+
+**Expected Results:**
+- Manual upload button still present
+- File upload processes correctly
+- No conflicts with e-sign feature
+- Both methods can coexist
+
+**Automation:** YES
+
+---
+
+#### TC-036: Order Workflow Not Disrupted
+
+**Test ID:** TC-036
+**Priority:** High
+**Test Type:** Regression
+
+**Test Steps:**
+1. Create order from draft to delivery stage
+2. Complete e-signature
+3. Proceed to activation stage
+
+**Expected Results:**
+- Order status transitions correctly
+- All existing validations still apply
+- No unexpected errors in workflow
+- Activation stage accessible after signature
+
+**Automation:** YES
+
+---
+
+#### TC-037: Admin Order Management Unaffected
+
+**Test ID:** TC-037
+**Priority:** Medium
+**Test Type:** Regression
+
+**Test Steps:**
+1. Login as admin
+2. View orders list
+3. Filter, sort, search orders
+4. View order details
+
+**Expected Results:**
+- All admin functionalities work as before
+- New signature column/field displayed correctly
+- No performance degradation
+- Existing reports unaffected
+
+**Automation:** YES
+
+---
+
+### 2.9 User Acceptance Tests (UAT)
+
+#### TC-038: End-to-End E-Sign Workflow (Sales Perspective)
+
+**Test ID:** TC-038
+**Priority:** Critical
+**Test Type:** UAT
+
+**Test Steps:**
+1. Sales user logs in
+2. Navigates to order in delivery stage
+3. Clicks "E-Sign FAB"
+4. Reviews FAB document
+5. Accepts T&C
+6. Submits for OTP
+7. Receives email
+8. Enters OTP correctly
+9. Verifies signature success
+10. Views signed FAB
+
+**Expected Results:**
+- Complete workflow executes smoothly
+- No confusing error messages
+- Process intuitive and user-friendly
+- Sales user satisfied with experience
+- Time saving compared to manual process
+
+**Automation:** NO (user acceptance testing)
+
+---
+
+#### TC-039: Admin Reviews Signed Documents
+
+**Test ID:** TC-039
+**Priority:** High
+**Test Type:** UAT
+
+**Test Steps:**
+1. Admin user logs in
+2. Reviews orders with e-signed FABs
+3. Downloads signed documents
+4. Verifies signature metadata
+
+**Expected Results:**
+- Admin can easily identify e-signed documents
+- Signature details clearly presented
+- Download process straightforward
+- Document quality satisfactory
+
+**Automation:** NO (user acceptance testing)
+
+---
+
+### 2.10 Test Coverage Summary
+
+**By Category:**
+- Positive Tests: 6 cases
+- Negative Tests: 9 cases
+- Boundary Tests: 3 cases
+- Security Tests: 5 cases
+- Performance Tests: 3 cases
+- Accessibility Tests: 2 cases
+- Integration Tests: 4 cases
+- Regression Tests: 3 cases
+- UAT: 2 cases
+
+**By Priority:**
+- Critical: 1
+- High: 22
+- Medium: 17
+- Low: 1
+
+**By Automation:**
+- Fully Automated: 35 cases (78%)
+- Partially Automated: 4 cases (9%)
+- Manual Only: 6 cases (13%)
+
+### 2.11 Test Data Requirements
+
+**Users:**
+- Sales User 1: `sales1@example.com` (valid email for OTP testing)
+- Sales User 2: `sales2@example.com` (concurrent testing)
+- Admin User: `admin@example.com`
+
+**Orders:**
+- Order in Draft stage (ID: 1001)
+- Order in Delivery stage without FAB (ID: 1002)
+- Order in Delivery stage with manual FAB (ID: 1003)
+- Order with e-signed FAB (ID: 1004)
+- Large order (100+ items) (ID: 1005)
+
+**OTP Scenarios:**
+- Valid OTP: Generated dynamically
+- Expired OTP: Set timestamp to 6 minutes ago
+- Invalid OTP: 000000 (never valid)
+
+### 2.12 Playwright Test Examples
+
+#### Example 1: Complete E-Sign Workflow
+
+```javascript
+// tests/e-sign-fab.spec.ts
+import { test, expect } from '@playwright/test';
+
+test.describe('E-Sign FAB Workflow', () => {
+  test('should complete e-signature successfully', async ({ page }) => {
+    // Login as sales user
+    await page.goto('/portal/login');
+    await page.fill('input[name="email"]', 'sales1@example.com');
+    await page.fill('input[name="password"]', 'password123');
+    await page.click('button[type="submit"]');
+
+    // Navigate to delivery stage
+    await page.goto('/portal/sales/orders/1002/delivery_stage');
+    await expect(page.locator('h1')).toContainText('Delivery Stage');
+
+    // Click E-Sign FAB button
+    await page.click('button:has-text("E-Sign FAB")');
+    await expect(page).toHaveURL(/.*e_fab$/);
+
+    // Accept terms and conditions
+    await page.check('input[type="checkbox"]#terms');
+    await expect(page.locator('button:has-text("Submit")')).toBeEnabled();
+
+    // Submit for OTP
+    await page.click('button:has-text("Submit")');
+    await expect(page).toHaveURL(/.*otp_verification$/);
+
+    // Verify OTP page elements
+    await expect(page.locator('h2')).toContainText('Enter OTP');
+    await expect(page.locator('.countdown-timer')).toBeVisible();
+
+    // Get OTP from test email service (mocked)
+    const otp = await page.evaluate(() => window.testHelpers.getLastOTP());
+
+    // Enter OTP
+    await page.fill('input[name="otp"]', otp);
+    await page.click('button:has-text("Verify")');
+
+    // Verify success
+    await expect(page).toHaveURL(/.*delivery_stage$/);
+    await expect(page.locator('.alert-success')).toContainText('successfully e-signed');
+    await expect(page.locator('button:has-text("View Signed FAB")')).toBeVisible();
+  });
+});
+```
+
+#### Example 2: Invalid OTP Handling
+
+```javascript
+test('should handle invalid OTP attempts', async ({ page }) => {
+  // Setup: Navigate to OTP verification page
+  await loginAndNavigateToOTP(page);
+
+  // Attempt 1: Invalid OTP
+  await page.fill('input[name="otp"]', '999999');
+  await page.click('button:has-text("Verify")');
+  await expect(page.locator('.alert-error')).toContainText('Invalid OTP');
+
+  // Attempt 2: Invalid OTP
+  await page.fill('input[name="otp"]', '888888');
+  await page.click('button:has-text("Verify")');
+  await expect(page.locator('.alert-error')).toBeVisible();
+
+  // Attempt 3: Invalid OTP (final)
+  await page.fill('input[name="otp"]', '777777');
+  await page.click('button:has-text("Verify")');
+
+  // Verify lockout
+  await expect(page.locator('.alert-error')).toContainText('Maximum OTP attempts exceeded');
+  await expect(page).toHaveURL(/.*delivery_stage$/, { timeout: 6000 });
+
+  // Verify button disabled
+  await page.goto('/portal/sales/orders/1002/delivery_stage');
+  await expect(page.locator('button:has-text("E-Sign FAB")')).toBeDisabled();
+});
+```
+
+#### Example 3: OTP Expiration
+
+```javascript
+test('should handle OTP expiration correctly', async ({ page, context }) => {
+  await loginAndNavigateToOTP(page);
+
+  // Get initial OTP
+  const otp = await page.evaluate(() => window.testHelpers.getLastOTP());
+
+  // Manipulate time to expire OTP
+  await context.addInitScript(() => {
+    const originalDate = Date;
+    Date = class extends originalDate {
+      constructor(...args) {
+        if (args.length === 0) {
+          super();
+          return new originalDate(originalDate.now() + 6 * 60 * 1000); // +6 minutes
+        }
+        return new originalDate(...args);
+      }
+      static now() {
+        return originalDate.now() + 6 * 60 * 1000;
+      }
+    };
+  });
+
+  // Attempt to submit expired OTP
+  await page.fill('input[name="otp"]', otp);
+  await page.click('button:has-text("Verify")');
+
+  // Verify expiration error
+  await expect(page.locator('.alert-error')).toContainText('OTP has expired');
+  await expect(page.locator('button:has-text("Resend OTP")')).toBeVisible();
+});
+```
+
+---
+
+## 3️⃣ TECHNICAL REQUIREMENTS (Senior Rails Developer Perspective)
+
+### 3.1 Architecture and Design Patterns
+
+**Overall Architecture:**
+- **MVC Pattern**: Maintain Rails conventions with clear separation of concerns
+- **Service Object Pattern**: Extract e-signature business logic into dedicated service classes
+- **Concern Pattern**: Create reusable modules for OTP and signature functionality
+- **Repository Pattern**: Abstract data access for signatures and OTP records
+
+**Recommended Design Patterns:**
+
+1. **Service Object Pattern**
+   - `ESignature::FabSignatureService` - Orchestrates entire e-sign workflow
+   - `ESignature::OtpGeneratorService` - Handles OTP generation and validation
+   - `ESignature::SignatureApplicatorService` - Applies digital signature to FAB
+
+2. **Form Object Pattern**
+   - `ESignature::FabConsentForm` - Validates T&C acceptance
+   - `ESignature::OtpVerificationForm` - Validates OTP input
+
+3. **Policy Object Pattern (Pundit)**
+   - `ESignature::FabSignaturePolicy` - Authorization for e-signature actions
+
+4. **Decorator Pattern (Draper)**
+   - `SignedFabDecorator` - Presentation logic for signed documents
+
+### 3.2 Database Schema Changes
+
+#### New Tables
+
+**Table: `e_signature_otps`**
+```ruby
+create_table :e_signature_otps do |t|
+  t.references :order, null: false, foreign_key: true, index: true
+  t.references :portal_user, null: false, foreign_key: true
+  t.string :otp_hash, null: false # Salted hash of OTP
+  t.datetime :expires_at, null: false, index: true
+  t.integer :attempts, default: 0, null: false
+  t.string :status, default: 'pending', null: false # pending, verified, expired, locked
+  t.string :ip_address # For audit trail
+  t.datetime :verified_at
+  t.timestamps
+end
+
+add_index :e_signature_otps, [:order_id, :status], name: 'idx_otps_on_order_status'
+add_index :e_signature_otps, :expires_at
+```
+
+**Table: `e_signatures`**
+```ruby
+create_table :e_signatures do |t|
+  t.references :order, null: false, foreign_key: true, index: true
+  t.references :portal_user, null: false, foreign_key: true # Signer
+  t.references :e_signature_otp, foreign_key: true # Link to OTP used
+  t.string :signature_type, null: false # 'sales' or 'customer'
+  t.string :status, default: 'pending', null: false # pending, signed, failed
+  t.text :signature_metadata, null: false # JSON: timestamp, IP, user agent, etc.
+  t.string :signature_hash # Cryptographic hash for verification
+  t.string :document_url # Link to signed document in Active Storage
+  t.datetime :signed_at
+  t.timestamps
+end
+
+add_index :e_signatures, [:order_id, :signature_type], unique: true, name: 'idx_signatures_order_type'
+add_index :e_signatures, :status
+add_index :e_signatures, :signed_at
+```
+
+**Table: `e_signature_audit_logs`**
+```ruby
+create_table :e_signature_audit_logs do |t|
+  t.references :e_signature, foreign_key: true
+  t.references :order, null: false, foreign_key: true
+  t.references :portal_user, foreign_key: true
+  t.string :action, null: false # 'initiated', 'otp_sent', 'otp_verified', 'otp_failed', 'signed', 'failed'
+  t.text :details # JSON with additional context
+  t.string :ip_address
+  t.string :user_agent
+  t.timestamps
+end
+
+add_index :e_signature_audit_logs, :order_id
+add_index :e_signature_audit_logs, :action
+add_index :e_signature_audit_logs, :created_at
+```
+
+#### Migration Strategy (Zero-Downtime)
+
+**Migration File: `db/migrate/YYYYMMDDHHMMSS_add_e_signature_tables.rb`**
+```ruby
+class AddESignatureTables < ActiveRecord::Migration[8.0]
+  def up
+    # Step 1: Create tables
+    create_table :e_signature_otps do |t|
+      t.references :order, null: false, foreign_key: true, index: true
+      t.references :portal_user, null: false, foreign_key: true
+      t.string :otp_hash, null: false
+      t.datetime :expires_at, null: false, index: true
+      t.integer :attempts, default: 0, null: false
+      t.string :status, default: 'pending', null: false
+      t.string :ip_address
+      t.datetime :verified_at
+      t.timestamps
+    end
+
+    create_table :e_signatures do |t|
+      t.references :order, null: false, foreign_key: true, index: true
+      t.references :portal_user, null: false, foreign_key: true
+      t.references :e_signature_otp, foreign_key: true
+      t.string :signature_type, null: false
+      t.string :status, default: 'pending', null: false
+      t.text :signature_metadata, null: false
+      t.string :signature_hash
+      t.string :document_url
+      t.datetime :signed_at
+      t.timestamps
+    end
+
+    create_table :e_signature_audit_logs do |t|
+      t.references :e_signature, foreign_key: true
+      t.references :order, null: false, foreign_key: true
+      t.references :portal_user, foreign_key: true
+      t.string :action, null: false
+      t.text :details
+      t.string :ip_address
+      t.string :user_agent
+      t.timestamps
+    end
+
+    # Step 2: Add indexes
+    add_index :e_signature_otps, [:order_id, :status], name: 'idx_otps_on_order_status'
+    add_index :e_signatures, [:order_id, :signature_type], unique: true, name: 'idx_signatures_order_type'
+    add_index :e_signatures, :status
+    add_index :e_signatures, :signed_at
+    add_index :e_signature_audit_logs, :order_id
+    add_index :e_signature_audit_logs, :action
+    add_index :e_signature_audit_logs, :created_at
+  end
+
+  def down
+    drop_table :e_signature_audit_logs
+    drop_table :e_signatures
+    drop_table :e_signature_otps
+  end
+end
+```
+
+**Add columns to existing `orders` table:**
+```ruby
+class AddESignatureFieldsToOrders < ActiveRecord::Migration[8.0]
+  def change
+    add_column :orders, :fab_esigned_at, :datetime
+    add_column :orders, :fab_esigned_by_id, :bigint
+    add_column :orders, :customer_efab_signed_at, :datetime
+    add_column :orders, :customer_efab_signed_by_id, :bigint
+
+    add_index :orders, :fab_esigned_at
+    add_index :orders, :fab_esigned_by_id
+    add_index :orders, :customer_efab_signed_at
+
+    add_foreign_key :orders, :portal_users, column: :fab_esigned_by_id
+    add_foreign_key :orders, :portal_users, column: :customer_efab_signed_by_id
+  end
+end
+```
+
+### 3.3 Models
+
+#### Model: `ESignature::Otp`
+
+**File: `app/models/e_signature/otp.rb`**
+```ruby
+module ESignature
+  class Otp < ApplicationRecord
+    self.table_name = 'e_signature_otps'
+
+    # Associations
+    belongs_to :order
+    belongs_to :portal_user
+    has_many :audit_logs, class_name: 'ESignature::AuditLog', foreign_key: :e_signature_otp_id
+
+    # Enums
+    enum status: { pending: 'pending', verified: 'verified', expired: 'expired', locked: 'locked' }
+
+    # Validations
+    validates :otp_hash, presence: true
+    validates :expires_at, presence: true
+    validates :attempts, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+    validate :expiry_in_future, on: :create
+
+    # Scopes
+    scope :active, -> { where(status: :pending).where('expires_at > ?', Time.current) }
+    scope :for_order, ->(order_id) { where(order_id: order_id) }
+    scope :recent, -> { where('created_at > ?', 1.hour.ago) }
+
+    # Constants
+    OTP_LENGTH = 6
+    OTP_VALIDITY_MINUTES = 5
+    MAX_ATTEMPTS = 3
+    LOCKOUT_MINUTES = 15
+    MAX_RESENDS_PER_HOUR = 3
+
+    # Class Methods
+    def self.generate_for(order:, user:, ip_address: nil)
+      transaction do
+        # Invalidate any existing pending OTPs for this order
+        where(order: order, status: :pending).update_all(status: :expired)
+
+        # Generate new OTP
+        otp_code = SecureRandom.random_number(10**OTP_LENGTH).to_s.rjust(OTP_LENGTH, '0')
+        otp_hash = BCrypt::Password.create(otp_code)
+
+        # Create OTP record
+        otp_record = create!(
+          order: order,
+          portal_user: user,
+          otp_hash: otp_hash,
+          expires_at: OTP_VALIDITY_MINUTES.minutes.from_now,
+          ip_address: ip_address,
+          status: :pending
+        )
+
+        # Return OTP code (only time it's available in plain text)
+        { otp_record: otp_record, otp_code: otp_code }
+      end
+    end
+
+    # Instance Methods
+    def verify(input_code)
+      return { success: false, error: :expired } if expired?
+      return { success: false, error: :locked } if locked?
+      return { success: false, error: :already_verified } if verified?
+
+      if BCrypt::Password.new(otp_hash) == input_code
+        update!(status: :verified, verified_at: Time.current)
+        { success: true }
+      else
+        increment_attempts!
+        { success: false, error: :invalid_code }
+      end
+    end
+
+    def increment_attempts!
+      self.attempts += 1
+      if attempts >= MAX_ATTEMPTS
+        self.status = :locked
+      end
+      save!
+    end
+
+    def expired?
+      Time.current > expires_at || status == 'expired'
+    end
+
+    def can_resend?
+      recent_otps = self.class.where(
+        order_id: order_id,
+        portal_user_id: portal_user_id
+      ).where('created_at > ?', 1.hour.ago)
+
+      recent_otps.count < MAX_RESENDS_PER_HOUR
+    end
+
+    def lockout_until
+      return nil unless locked?
+      created_at + LOCKOUT_MINUTES.minutes
+    end
+
+    def remaining_time
+      return 0 if expired?
+      [(expires_at - Time.current).to_i, 0].max
+    end
+
+    private
+
+    def expiry_in_future
+      if expires_at.present? && expires_at <= Time.current
+        errors.add(:expires_at, 'must be in the future')
+      end
+    end
+  end
+end
+```
+
+#### Model: `ESignature::Signature`
+
+**File: `app/models/e_signature/signature.rb`**
+```ruby
+module ESignature
+  class Signature < ApplicationRecord
+    self.table_name = 'e_signatures'
+
+    # Associations
+    belongs_to :order
+    belongs_to :portal_user # The signer
+    belongs_to :e_signature_otp, class_name: 'ESignature::Otp', optional: true
+    has_many :audit_logs, class_name: 'ESignature::AuditLog'
+    has_one_attached :signed_document
+
+    # Enums
+    enum signature_type: { sales: 'sales', customer: 'customer' }
+    enum status: { pending: 'pending', signed: 'signed', failed: 'failed' }
+
+    # Validations
+    validates :signature_type, presence: true
+    validates :signature_metadata, presence: true
+    validates :signature_type, uniqueness: { scope: :order_id, message: 'already exists for this order' }
+
+    # Serialization
+    serialize :signature_metadata, coder: JSON
+
+    # Callbacks
+    before_create :generate_signature_hash
+    after_create :log_creation
+
+    # Scopes
+    scope :completed, -> { where(status: :signed) }
+    scope :for_order, ->(order_id) { where(order_id: order_id) }
+    scope :sales_signatures, -> { where(signature_type: :sales) }
+    scope :customer_signatures, -> { where(signature_type: :customer) }
+
+    # Class Methods
+    def self.create_for_sales(order:, user:, otp:, ip_address:, user_agent:)
+      transaction do
+        metadata = {
+          signed_at: Time.current.iso8601,
+          signer_name: user.name,
+          signer_email: user.email,
+          ip_address: ip_address,
+          user_agent: user_agent,
+          otp_id: otp.id,
+          verification_method: 'email_otp'
+        }
+
+        signature = create!(
+          order: order,
+          portal_user: user,
+          e_signature_otp: otp,
+          signature_type: :sales,
+          status: :signed,
+          signature_metadata: metadata,
+          signed_at: Time.current
+        )
+
+        # Update order
+        order.update!(
+          fab_esigned_at: Time.current,
+          fab_esigned_by_id: user.id
+        )
+
+        signature
+      end
+    end
+
+    # Instance Methods
+    def apply_to_document(document_blob)
+      # Generate signed PDF with signature metadata
+      signed_pdf = PdfSignatureService.new(
+        document_blob: document_blob,
+        signature: self
+      ).apply_signature
+
+      # Attach signed document
+      signed_document.attach(
+        io: StringIO.new(signed_pdf),
+        filename: "signed_fab_#{order.order_reference_number}.pdf",
+        content_type: 'application/pdf'
+      )
+
+      update!(document_url: signed_document.url)
+    end
+
+    def signature_certificate
+      {
+        order_reference: order.order_reference_number,
+        signer_name: signature_metadata['signer_name'],
+        signed_at: signature_metadata['signed_at'],
+        signature_hash: signature_hash,
+        verification_method: signature_metadata['verification_method']
+      }
+    end
+
+    def verified?
+      signed? && signature_hash.present? && signed_document.attached?
+    end
+
+    private
+
+    def generate_signature_hash
+      data = "#{order_id}|#{portal_user_id}|#{signature_type}|#{Time.current.to_i}"
+      self.signature_hash = Digest::SHA256.hexdigest(data)
+    end
+
+    def log_creation
+      ESignature::AuditLog.create!(
+        e_signature: self,
+        order: order,
+        portal_user: portal_user,
+        action: 'signature_created',
+        details: { signature_type: signature_type, status: status }
+      )
+    end
+  end
+end
+```
+
+#### Model: `ESignature::AuditLog`
+
+**File: `app/models/e_signature/audit_log.rb`**
+```ruby
+module ESignature
+  class AuditLog < ApplicationRecord
+    self.table_name = 'e_signature_audit_logs'
+
+    # Associations
+    belongs_to :e_signature, optional: true
+    belongs_to :order
+    belongs_to :portal_user, optional: true
+
+    # Validations
+    validates :action, presence: true
+
+    # Serialization
+    serialize :details, coder: JSON
+
+    # Scopes
+    scope :for_order, ->(order_id) { where(order_id: order_id).order(created_at: :desc) }
+    scope :recent, -> { where('created_at > ?', 24.hours.ago).order(created_at: :desc) }
+    scope :by_action, ->(action) { where(action: action) }
+
+    # Class Methods
+    def self.log_action(action:, order:, user: nil, signature: nil, details: {}, request: nil)
+      create!(
+        action: action,
+        order: order,
+        portal_user: user,
+        e_signature: signature,
+        details: details,
+        ip_address: request&.remote_ip,
+        user_agent: request&.user_agent
+      )
+    end
+  end
+end
+```
+
+#### Update Existing `Order` Model
+
+**File: `app/models/order.rb`** (additions)
+```ruby
+class Order < ApplicationRecord
+  # ... existing code ...
+
+  # E-Signature associations
+  has_many :e_signature_otps, class_name: 'ESignature::Otp', dependent: :destroy
+  has_many :e_signatures, class_name: 'ESignature::Signature', dependent: :destroy
+  has_one :sales_signature, -> { sales }, class_name: 'ESignature::Signature'
+  has_one :customer_signature, -> { customer }, class_name: 'ESignature::Signature'
+
+  belongs_to :fab_esigned_by, class_name: 'PortalUser', optional: true
+  belongs_to :customer_efab_signed_by, class_name: 'PortalUser', optional: true
+
+  # E-Signature Methods
+  def can_esign_fab?(user)
+    delivery? &&
+      sales_id == user.id &&
+      !fab_esigned? &&
+      !active_otp_session?
+  end
+
+  def fab_esigned?
+    fab_esigned_at.present? || sales_signature&.signed?
+  end
+
+  def customer_efab_signed?
+    customer_efab_signed_at.present? || customer_signature&.signed?
+  end
+
+  def active_otp_session?
+    e_signature_otps.active.exists?
+  end
+
+  def can_proceed_to_activation?
+    fab_esigned? && customer_efab_signed? && fab.attached? && delivery_proof.attached?
+  end
+
+  def esignature_status
+    return :not_started unless fab_esigned?
+    return :sales_signed unless customer_efab_signed?
+    :both_signed
+  end
+end
+```
+
+### 3.4 Service Objects
+
+#### Service: `ESignature::FabSignatureService`
+
+**File: `app/services/e_signature/fab_signature_service.rb`**
+```ruby
+module ESignature
+  class FabSignatureService
+    attr_reader :order, :user, :errors
+
+    def initialize(order:, user:)
+      @order = order
+      @user = user
+      @errors = []
+    end
+
+    def initiate_esignature(request:)
+      return failure('Unauthorized') unless authorized?
+      return failure('Order not in delivery stage') unless order.delivery?
+      return failure('FAB already signed') if order.fab_esigned?
+
+      # Generate and send OTP
+      otp_result = OtpGeneratorService.new(
+        order: order,
+        user: user,
+        ip_address: request.remote_ip
+      ).generate_and_send
+
+      if otp_result[:success]
+        log_audit('otp_sent', otp_result[:otp_record], request)
+        success(otp_result)
+      else
+        failure(otp_result[:error])
+      end
+    end
+
+    def verify_and_sign(otp_code:, request:)
+      otp_record = order.e_signature_otps.active.last
+
+      return failure('No active OTP session') unless otp_record
+      return failure('OTP expired') if otp_record.expired?
+
+      verification_result = otp_record.verify(otp_code)
+
+      if verification_result[:success]
+        # Apply signature
+        signature = SignatureApplicatorService.new(
+          order: order,
+          user: user,
+          otp: otp_record,
+          request: request
+        ).apply_signature
+
+        if signature.persisted?
+          log_audit('signed', signature, request)
+          success({ signature: signature, message: 'FAB successfully e-signed' })
+        else
+          log_audit('signature_failed', nil, request, { errors: signature.errors.full_messages })
+          failure('Failed to apply signature')
+        end
+      else
+        log_audit('otp_verification_failed', otp_record, request, { error: verification_result[:error] })
+        failure(error_message(verification_result[:error]))
+      end
+    end
+
+    private
+
+    def authorized?
+      order.sales_id == user.id && user.has_role?(:sales)
+    end
+
+    def success(data)
+      { success: true, data: data }
+    end
+
+    def failure(message)
+      @errors << message
+      { success: false, error: message, errors: @errors }
+    end
+
+    def error_message(error_code)
+      case error_code
+      when :expired then 'OTP has expired. Please request a new one.'
+      when :locked then 'Too many failed attempts. Please try again in 15 minutes.'
+      when :invalid_code then 'Invalid OTP. Please check and try again.'
+      when :already_verified then 'OTP already used.'
+      else 'Verification failed. Please try again.'
+      end
+    end
+
+    def log_audit(action, signature_or_otp, request, extra_details = {})
+      ESignature::AuditLog.log_action(
+        action: action,
+        order: order,
+        user: user,
+        signature: signature_or_otp.is_a?(ESignature::Signature) ? signature_or_otp : nil,
+        details: extra_details,
+        request: request
+      )
+    end
+  end
+end
+```
+
+#### Service: `ESignature::OtpGeneratorService`
+
+**File: `app/services/e_signature/otp_generator_service.rb`**
+```ruby
+module ESignature
+  class OtpGeneratorService
+    attr_reader :order, :user, :ip_address
+
+    def initialize(order:, user:, ip_address: nil)
+      @order = order
+      @user = user
+      @ip_address = ip_address
+    end
+
+    def generate_and_send
+      # Check rate limiting
+      return { success: false, error: 'Rate limit exceeded' } unless can_generate?
+
+      # Generate OTP
+      result = ESignature::Otp.generate_for(
+        order: order,
+        user: user,
+        ip_address: ip_address
+      )
+
+      otp_record = result[:otp_record]
+      otp_code = result[:otp_code]
+
+      # Send OTP email asynchronously
+      ESignature::OtpMailer.send_otp(
+        user: user,
+        order: order,
+        otp_code: otp_code,
+        expires_in: ESignature::Otp::OTP_VALIDITY_MINUTES
+      ).deliver_later
+
+      {
+        success: true,
+        otp_record: otp_record,
+        message: 'OTP sent to your email'
+      }
+    rescue StandardError => e
+      Rails.logger.error("OTP Generation Failed: #{e.message}")
+      Rails.logger.error(e.backtrace.join("\n"))
+      { success: false, error: 'Failed to generate OTP' }
+    end
+
+    private
+
+    def can_generate?
+      recent_otps = ESignature::Otp.where(
+        order_id: order.id,
+        portal_user_id: user.id
+      ).where('created_at > ?', 1.hour.ago)
+
+      recent_otps.count < ESignature::Otp::MAX_RESENDS_PER_HOUR
+    end
+  end
+end
+```
+
+#### Service: `ESignature::SignatureApplicatorService`
+
+**File: `app/services/e_signature/signature_applicator_service.rb`**
+```ruby
+module ESignature
+  class SignatureApplicatorService
+    attr_reader :order, :user, :otp, :request
+
+    def initialize(order:, user:, otp:, request:)
+      @order = order
+      @user = user
+      @otp = otp
+      @request = request
+    end
+
+    def apply_signature
+      ActiveRecord::Base.transaction do
+        # Create signature record
+        signature = ESignature::Signature.create_for_sales(
+          order: order,
+          user: user,
+          otp: otp,
+          ip_address: request.remote_ip,
+          user_agent: request.user_agent
+        )
+
+        # Generate signed FAB document
+        generate_signed_document(signature)
+
+        signature
+      end
+    rescue StandardError => e
+      Rails.logger.error("Signature Application Failed: #{e.message}")
+      Rails.logger.error(e.backtrace.join("\n"))
+      ESignature::Signature.new(errors: { base: [e.message] })
+    end
+
+    private
+
+    def generate_signed_document(signature)
+      # Generate FAB PDF
+      fab_html = render_fab_html
+      pdf_blob = generate_pdf_from_html(fab_html)
+
+      # Apply signature watermark
+      signed_pdf = apply_signature_watermark(pdf_blob, signature)
+
+      # Attach to signature
+      signature.signed_document.attach(
+        io: StringIO.new(signed_pdf),
+        filename: "esigned_fab_#{order.order_reference_number}.pdf",
+        content_type: 'application/pdf'
+      )
+
+      # Also attach to order's fab attachment (maintain compatibility)
+      order.fab.attach(
+        io: StringIO.new(signed_pdf),
+        filename: "fab_#{order.order_reference_number}.pdf",
+        content_type: 'application/pdf'
+      )
+    end
+
+    def render_fab_html
+      ApplicationController.render(
+        template: 'sales/deliveries/e-fab',
+        layout: 'pdf',
+        assigns: { order: order }
+      )
+    end
+
+    def generate_pdf_from_html(html)
+      # Using WickedPDF or similar
+      WickedPdf.new.pdf_from_string(
+        html,
+        encoding: 'UTF-8',
+        page_size: 'A4',
+        margin: { top: 20, bottom: 20, left: 20, right: 20 }
+      )
+    end
+
+    def apply_signature_watermark(pdf_blob, signature)
+      # Add signature certificate/watermark to PDF
+      # This could use Prawn, HexaPDF, or similar library
+      certificate_text = [
+        "ELECTRONICALLY SIGNED",
+        "Signer: #{user.name}",
+        "Email: #{user.email}",
+        "Date: #{Time.current.strftime('%Y-%m-%d %H:%M:%S %Z')}",
+        "Order: #{order.order_reference_number}",
+        "Signature Hash: #{signature.signature_hash[0..15]}..."
+      ].join("\n")
+
+      # Add watermark/footer to PDF
+      PdfWatermarkService.new(
+        pdf_blob: pdf_blob,
+        watermark_text: certificate_text,
+        position: :footer
+      ).apply
+
+      # Return modified PDF
+      pdf_blob
+    end
+  end
+end
+```
+
+### 3.5 Controllers
+
+#### Controller: `Sales::ESignaturesController`
+
+**File: `app/controllers/sales/e_signatures_controller.rb`**
+```ruby
+module Sales
+  class ESignaturesController < ApplicationController
+    include ExceptionHandler
+    include GaTrackable
+
+    before_action :authenticate_portal_user!
+    before_action :authorize_sales
+    before_action :set_order
+    before_action :verify_delivery_stage, only: [:new, :create]
+
+    # GET /portal/sales/orders/:order_id/e_signatures/new
+    # Shows FAB preview with T&C acceptance
+    def new
+      unless @order.can_esign_fab?(current_portal_user)
+        redirect_to delivery_stage_portal_sales_order_path(@order),
+                    alert: 'E-signature not available for this order.'
+        return
+      end
+
+      @consent_form = ESignature::FabConsentForm.new
+      session[:esignature_initiated] = true
+
+      track_ga_event('view_fab_for_esignature',
+                     category: 'E-Signature',
+                     label: @order.order_reference_number)
+    end
+
+    # POST /portal/sales/orders/:order_id/e_signatures
+    # Generates OTP and sends email
+    def create
+      @consent_form = ESignature::FabConsentForm.new(consent_params)
+
+      unless @consent_form.valid?
+        render :new, status: :unprocessable_entity
+        return
+      end
+
+      service = ESignature::FabSignatureService.new(
+        order: @order,
+        user: current_portal_user
+      )
+
+      result = service.initiate_esignature(request: request)
+
+      if result[:success]
+        session[:otp_record_id] = result[:data][:otp_record].id
+        track_ga_event('otp_requested',
+                       category: 'E-Signature',
+                       label: @order.order_reference_number)
+        redirect_to verify_portal_sales_order_e_signature_path(@order),
+                    notice: 'OTP has been sent to your email.'
+      else
+        flash.now[:alert] = result[:error]
+        render :new, status: :unprocessable_entity
+      end
+    end
+
+    # GET /portal/sales/orders/:order_id/e_signatures/verify
+    # Shows OTP verification page
+    def verify
+      @otp_record = @order.e_signature_otps.find_by(id: session[:otp_record_id])
+
+      unless @otp_record&.pending?
+        redirect_to delivery_stage_portal_sales_order_path(@order),
+                    alert: 'No active OTP session found.'
+        return
+      end
+
+      @verification_form = ESignature::OtpVerificationForm.new
+      @countdown_seconds = @otp_record.remaining_time
+
+      track_ga_event('view_otp_verification',
+                     category: 'E-Signature',
+                     label: @order.order_reference_number)
+    end
+
+    # POST /portal/sales/orders/:order_id/e_signatures/verify_otp
+    # Verifies OTP and applies signature
+    def verify_otp
+      @verification_form = ESignature::OtpVerificationForm.new(verification_params)
+
+      unless @verification_form.valid?
+        render :verify, status: :unprocessable_entity
+        return
+      end
+
+      service = ESignature::FabSignatureService.new(
+        order: @order,
+        user: current_portal_user
+      )
+
+      result = service.verify_and_sign(
+        otp_code: @verification_form.otp_code,
+        request: request
+      )
+
+      if result[:success]
+        session.delete(:otp_record_id)
+        session.delete(:esignature_initiated)
+        track_ga_event('esignature_completed',
+                       category: 'E-Signature',
+                       label: @order.order_reference_number,
+                       value: 1)
+        redirect_to delivery_stage_portal_sales_order_path(@order),
+                    notice: 'FAB has been successfully e-signed.'
+      else
+        flash.now[:alert] = result[:error]
+
+        # Check if locked
+        @otp_record = @order.e_signature_otps.find_by(id: session[:otp_record_id])
+        if @otp_record&.locked?
+          session.delete(:otp_record_id)
+          redirect_to delivery_stage_portal_sales_order_path(@order),
+                      alert: 'Maximum OTP attempts exceeded. Please try again in 15 minutes.'
+        else
+          @countdown_seconds = @otp_record&.remaining_time || 0
+          render :verify, status: :unprocessable_entity
+        end
+      end
+    end
+
+    # POST /portal/sales/orders/:order_id/e_signatures/resend_otp
+    # Resends OTP
+    def resend_otp
+      @otp_record = @order.e_signature_otps.find_by(id: session[:otp_record_id])
+
+      unless @otp_record&.can_resend?
+        redirect_to verify_portal_sales_order_e_signature_path(@order),
+                    alert: 'You have exceeded the maximum OTP resend limit. Please try again later.'
+        return
+      end
+
+      service = ESignature::OtpGeneratorService.new(
+        order: @order,
+        user: current_portal_user,
+        ip_address: request.remote_ip
+      )
+
+      result = service.generate_and_send
+
+      if result[:success]
+        session[:otp_record_id] = result[:otp_record].id
+        track_ga_event('otp_resent',
+                       category: 'E-Signature',
+                       label: @order.order_reference_number)
+        redirect_to verify_portal_sales_order_e_signature_path(@order),
+                    notice: 'A new OTP has been sent to your email.'
+      else
+        redirect_to verify_portal_sales_order_e_signature_path(@order),
+                    alert: result[:error]
+      end
+    end
+
+    # DELETE /portal/sales/orders/:order_id/e_signatures
+    # Cancels e-signature process
+    def destroy
+      session.delete(:otp_record_id)
+      session.delete(:esignature_initiated)
+
+      # Invalidate active OTPs
+      @order.e_signature_otps.pending.update_all(status: :expired)
+
+      track_ga_event('esignature_cancelled',
+                     category: 'E-Signature',
+                     label: @order.order_reference_number)
+
+      redirect_to delivery_stage_portal_sales_order_path(@order),
+                  notice: 'E-signature process cancelled.'
+    end
+
+    private
+
+    def set_order
+      @order = current_portal_user.sales_orders.find(params[:order_id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to portal_sales_orders_path, alert: 'Order not found.'
+    end
+
+    def verify_delivery_stage
+      unless @order.delivery?
+        redirect_to portal_sales_order_path(@order),
+                    alert: 'Order must be in delivery stage for e-signature.'
+      end
+    end
+
+    def consent_params
+      params.require(:e_signature_fab_consent_form).permit(:terms_accepted)
+    end
+
+    def verification_params
+      params.require(:e_signature_otp_verification_form).permit(:otp_code)
+    end
+  end
+end
+```
+
+### 3.6 Form Objects
+
+#### Form: `ESignature::FabConsentForm`
+
+**File: `app/forms/e_signature/fab_consent_form.rb`**
+```ruby
+module ESignature
+  class FabConsentForm
+    include ActiveModel::Model
+    include ActiveModel::Attributes
+
+    attribute :terms_accepted, :boolean
+
+    validates :terms_accepted, acceptance: { message: 'You must accept the Terms and Conditions to proceed.' }
+  end
+end
+```
+
+#### Form: `ESignature::OtpVerificationForm`
+
+**File: `app/forms/e_signature/otp_verification_form.rb`**
+```ruby
+module ESignature
+  class OtpVerificationForm
+    include ActiveModel::Model
+    include ActiveModel::Attributes
+
+    attribute :otp_code, :string
+
+    validates :otp_code, presence: { message: 'OTP code is required.' }
+    validates :otp_code, format: {
+      with: /\A\d{6}\z/,
+      message: 'OTP must be exactly 6 digits.'
+    }
+
+    def otp_code=(value)
+      super(value.to_s.strip)
+    end
+  end
+end
+```
+
+### 3.7 Mailers
+
+#### Mailer: `ESignature::OtpMailer`
+
+**File: `app/mailers/e_signature/otp_mailer.rb`**
+```ruby
+module ESignature
+  class OtpMailer < ApplicationMailer
+    default from: 'noreply@platinumbusinesshub.com'
+
+    # Send OTP email
+    def send_otp(user:, order:, otp_code:, expires_in:)
+      @user = user
+      @order = order
+      @otp_code = otp_code
+      @expires_in = expires_in
+
+      mail(
+        to: @user.email,
+        subject: "Your OTP for FAB E-Signature - Order #{@order.order_reference_number}"
+      )
+    end
+
+    # Send signature confirmation email
+    def signature_confirmation(user:, order:, signature:)
+      @user = user
+      @order = order
+      @signature = signature
+
+      mail(
+        to: @user.email,
+        subject: "FAB E-Signature Confirmation - Order #{@order.order_reference_number}"
+      )
+    end
+  end
+end
+```
+
+**Email Template: `app/views/e_signature/otp_mailer/send_otp.html.erb`**
+```erb
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #0066cc; color: white; padding: 20px; text-align: center; }
+    .content { background: #f9f9f9; padding: 30px; border-radius: 5px; margin: 20px 0; }
+    .otp-code { font-size: 32px; font-weight: bold; text-align: center; padding: 20px; background: white; border: 2px dashed #0066cc; border-radius: 5px; letter-spacing: 5px; }
+    .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
+    .footer { text-align: center; font-size: 12px; color: #666; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>E-Signature OTP Verification</h1>
+    </div>
+
+    <div class="content">
+      <p>Dear <%= @user.name %>,</p>
+
+      <p>You have requested to electronically sign the FAB document for Order <strong><%= @order.order_reference_number %></strong>.</p>
+
+      <p>Your One-Time Password (OTP) is:</p>
+
+      <div class="otp-code">
+        <%= @otp_code %>
+      </div>
+
+      <p style="text-align: center; color: #666;">This OTP will expire in <strong><%= @expires_in %> minutes</strong>.</p>
+
+      <div class="warning">
+        <strong>⚠️ Security Notice:</strong>
+        <ul>
+          <li>Do not share this OTP with anyone</li>
+          <li>Our team will never ask for your OTP</li>
+          <li>This OTP is valid for one-time use only</li>
+        </ul>
+      </div>
+
+      <p>If you did not request this OTP, please ignore this email or contact our support team immediately.</p>
+
+      <p>Best regards,<br>Platinum Business Hub Team</p>
+    </div>
+
+    <div class="footer">
+      <p>&copy; <%= Time.current.year %> Platinum Business Hub. All rights reserved.</p>
+      <p>This is an automated email. Please do not reply.</p>
+    </div>
+  </div>
+</body>
+</html>
+```
+
+### 3.8 Views
+
+#### View: E-Sign FAB Preview (New)
+
+**File: `app/views/sales/e_signatures/new.html.erb`**
+```erb
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <!-- Header -->
+      <div class="bg-blue-600 text-white px-6 py-4">
+        <h1 class="text-2xl font-bold">E-Sign FAB Document</h1>
+        <p class="text-blue-100">Order: <%= @order.order_reference_number %></p>
+      </div>
+
+      <!-- FAB Document Preview -->
+      <div class="px-6 py-4 bg-gray-50">
+        <div class="bg-white p-6 border border-gray-300 rounded-lg max-h-[600px] overflow-y-auto">
+          <%= render 'sales/deliveries/fab_content', order: @order %>
+        </div>
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="px-6 py-4">
+        <%= form_with model: @consent_form, url: portal_sales_order_e_signatures_path(@order), method: :post, local: true, data: { turbo: false } do |f| %>
+          <div class="flex items-start mb-4">
+            <%= f.check_box :terms_accepted, class: 'mt-1 h-5 w-5 text-blue-600', id: 'terms-checkbox' %>
+            <%= f.label :terms_accepted, class: 'ml-3 text-sm text-gray-700' do %>
+              I have reviewed the FAB document and agree to electronically sign it. I understand that my electronic signature has the same legal effect as a handwritten signature.
+            <% end %>
+          </div>
+
+          <%= f.error_messages %>
+
+          <!-- Action Buttons -->
+          <div class="flex justify-end space-x-4 mt-6">
+            <%= link_to 'Cancel', delivery_stage_portal_sales_order_path(@order),
+                class: 'px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50',
+                data: { turbo_confirm: 'Are you sure you want to cancel the e-signature process?' } %>
+
+            <%= f.submit 'Submit & Get OTP',
+                class: 'px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed',
+                id: 'submit-button',
+                disabled: true %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const checkbox = document.getElementById('terms-checkbox');
+    const submitButton = document.getElementById('submit-button');
+
+    checkbox.addEventListener('change', function() {
+      submitButton.disabled = !this.checked;
+    });
+  });
+</script>
+```
+
+#### View: OTP Verification
+
+**File: `app/views/sales/e_signatures/verify.html.erb`**
+```erb
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-md mx-auto">
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <!-- Header -->
+      <div class="bg-blue-600 text-white px-6 py-4">
+        <h1 class="text-2xl font-bold">Verify OTP</h1>
+        <p class="text-blue-100">Order: <%= @order.order_reference_number %></p>
+      </div>
+
+      <!-- OTP Form -->
+      <div class="px-6 py-8">
+        <p class="text-gray-700 mb-6 text-center">
+          We've sent a 6-digit OTP to <strong><%= current_portal_user.email %></strong>
+        </p>
+
+        <%= form_with model: @verification_form, url: verify_otp_portal_sales_order_e_signature_path(@order), method: :post, local: true, data: { turbo: false } do |f| %>
+          <div class="mb-6">
+            <%= f.label :otp_code, 'Enter OTP', class: 'block text-sm font-medium text-gray-700 mb-2' %>
+            <%= f.text_field :otp_code,
+                class: 'w-full px-4 py-3 text-2xl text-center tracking-widest border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500',
+                placeholder: '000000',
+                maxlength: 6,
+                autocomplete: 'off',
+                inputmode: 'numeric',
+                pattern: '[0-9]*' %>
+            <%= f.error_messages %>
+          </div>
+
+          <!-- Countdown Timer -->
+          <div class="mb-6 text-center">
+            <p class="text-sm text-gray-600">OTP expires in:</p>
+            <p class="text-3xl font-bold" id="countdown-timer" data-seconds="<%= @countdown_seconds %>">
+              <span id="minutes">00</span>:<span id="seconds">00</span>
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="space-y-3">
+            <%= f.submit 'Verify & Sign',
+                class: 'w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold',
+                id: 'verify-button' %>
+
+            <%= link_to 'Resend OTP', resend_otp_portal_sales_order_e_signature_path(@order),
+                method: :post,
+                class: 'block w-full px-6 py-3 border border-gray-300 text-center rounded-lg text-gray-700 hover:bg-gray-50',
+                id: 'resend-button',
+                data: { turbo: false } %>
+
+            <%= link_to 'Cancel', destroy_portal_sales_order_e_signature_path(@order),
+                method: :delete,
+                class: 'block w-full px-6 py-3 text-center text-gray-600 hover:text-gray-800',
+                data: { turbo_confirm: 'Are you sure you want to cancel?' } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const timerElement = document.getElementById('countdown-timer');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    const verifyButton = document.getElementById('verify-button');
+    const resendButton = document.getElementById('resend-button');
+
+    let totalSeconds = parseInt(timerElement.dataset.seconds);
+
+    function updateTimer() {
+      if (totalSeconds <= 0) {
+        clearInterval(timerInterval);
+        timerElement.classList.add('text-red-600');
+        verifyButton.disabled = true;
+        resendButton.classList.remove('hidden');
+        minutesElement.textContent = '00';
+        secondsElement.textContent = '00';
+        return;
+      }
+
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+
+      minutesElement.textContent = mins.toString().padStart(2, '0');
+      secondsElement.textContent = secs.toString().padStart(2, '0');
+
+      if (totalSeconds < 60) {
+        timerElement.classList.add('text-red-600');
+      }
+
+      totalSeconds--;
+    }
+
+    updateTimer();
+    const timerInterval = setInterval(updateTimer, 1000);
+  });
+</script>
+```
+
+### 3.9 Routes
+
+**File: `config/routes.rb`** (additions)
+```ruby
+Rails.application.routes.draw do
+  # ... existing routes ...
+
+  namespace :portal do
+    namespace :sales do
+      resources :orders do
+        # E-Signature routes
+        resource :e_signature, only: [:new, :create, :destroy], controller: 'e_signatures' do
+          get :verify, on: :collection
+          post :verify_otp, on: :collection
+          post :resend_otp, on: :collection
+        end
+
+        # ... existing delivery routes ...
+      end
+    end
+  end
+end
+```
+
+### 3.10 Background Jobs
+
+#### Job: `ESignature::OtpCleanupJob`
+
+**File: `app/jobs/e_signature/otp_cleanup_job.rb`**
+```ruby
+module ESignature
+  class OtpCleanupJob < ApplicationJob
+    queue_as :low_priority
+
+    def perform
+      # Delete expired OTPs older than 24 hours
+      deleted_count = Otp.where('expires_at < ?', 24.hours.ago).delete_all
+
+      Rails.logger.info("Cleaned up #{deleted_count} expired OTP records")
+    end
+  end
+end
+```
+
+**Schedule with Sidekiq-Cron:**
+```ruby
+# config/initializers/sidekiq_cron.rb
+Sidekiq::Cron::Job.create(
+  name: 'OTP Cleanup - Every 6 hours',
+  cron: '0 */6 * * *', # Every 6 hours
+  class: 'ESignature::OtpCleanupJob'
+)
+```
+
+### 3.11 Performance Optimization
+
+**Caching Strategy:**
+```ruby
+# Cache FAB HTML for faster preview
+def render_fab_html
+  Rails.cache.fetch("fab_html_#{order.id}_#{order.updated_at.to_i}", expires_in: 1.hour) do
+    ApplicationController.render(
+      template: 'sales/deliveries/e-fab',
+      layout: 'pdf',
+      assigns: { order: order }
+    )
+  end
+end
+```
+
+**Database Indexing:**
+```ruby
+# Already included in migration, but critical indexes are:
+add_index :e_signature_otps, [:order_id, :status]
+add_index :e_signature_otps, :expires_at
+add_index :e_signatures, [:order_id, :signature_type], unique: true
+add_index :orders, :fab_esigned_at
+```
+
+**Query Optimization:**
+```ruby
+# Eager load associations to avoid N+1
+@order = Order.includes(
+  :sales,
+  :customer,
+  :order_items,
+  :sales_signature,
+  order_items: [:product, postpaid_activations: [:msisdn, :iccid]]
+).find(params[:id])
+```
+
+### 3.12 Security Considerations
+
+**Input Sanitization:**
+```ruby
+# In OtpVerificationForm
+def otp_code=(value)
+  # Strip and sanitize input
+  super(value.to_s.strip.gsub(/[^0-9]/, ''))
+end
+```
+
+**CSRF Protection:**
+```ruby
+# Already handled by Rails, but ensure it's not skipped
+class Sales::ESignaturesController < ApplicationController
+  protect_from_forgery with: :exception
+  # ... rest of controller
+end
+```
+
+**Rate Limiting (using Rack::Attack):**
+```ruby
+# config/initializers/rack_attack.rb
+Rack::Attack.throttle('otp_requests/ip', limit: 5, period: 1.hour) do |req|
+  if req.path == '/portal/sales/orders/*/e_signatures' && req.post?
+    req.ip
+  end
+end
+
+Rack::Attack.throttle('otp_verification/ip', limit: 10, period: 15.minutes) do |req|
+  if req.path.include?('verify_otp') && req.post?
+    req.ip
+  end
+end
+```
+
+### 3.13 Comprehensive Testing Strategy
+
+#### RSpec Model Tests
+
+**File: `spec/models/e_signature/otp_spec.rb`**
+```ruby
+require 'rails_helper'
+
+RSpec.describe ESignature::Otp, type: :model do
+  let(:order) { create(:order, form_stage: :delivery_stage) }
+  let(:user) { create(:portal_user, :sales) }
+
+  describe 'validations' do
+    it { should validate_presence_of(:otp_hash) }
+    it { should validate_presence_of(:expires_at) }
+  end
+
+  describe 'associations' do
+    it { should belong_to(:order) }
+    it { should belong_to(:portal_user) }
+  end
+
+  describe '.generate_for' do
+    it 'generates a 6-digit OTP' do
+      result = described_class.generate_for(order: order, user: user)
+      expect(result[:otp_code]).to match(/^\d{6}$/)
+    end
+
+    it 'creates an OTP record' do
+      expect {
+        described_class.generate_for(order: order, user: user)
+      }.to change(described_class, :count).by(1)
+    end
+
+    it 'sets expiry time to 5 minutes from now' do
+      result = described_class.generate_for(order: order, user: user)
+      otp_record = result[:otp_record]
+      expect(otp_record.expires_at).to be_within(5.seconds).of(5.minutes.from_now)
+    end
+
+    it 'invalidates existing pending OTPs' do
+      existing_otp = create(:e_signature_otp, order: order, user: user, status: :pending)
+      described_class.generate_for(order: order, user: user)
+      expect(existing_otp.reload.status).to eq('expired')
+    end
+  end
+
+  describe '#verify' do
+    let(:otp_result) { described_class.generate_for(order: order, user: user) }
+    let(:otp_record) { otp_result[:otp_record] }
+    let(:otp_code) { otp_result[:otp_code] }
+
+    context 'with valid OTP' do
+      it 'returns success' do
+        result = otp_record.verify(otp_code)
+        expect(result[:success]).to be true
+      end
+
+      it 'marks OTP as verified' do
+        otp_record.verify(otp_code)
+        expect(otp_record.reload.status).to eq('verified')
+      end
+
+      it 'sets verified_at timestamp' do
+        otp_record.verify(otp_code)
+        expect(otp_record.reload.verified_at).to be_present
+      end
+    end
+
+    context 'with invalid OTP' do
+      it 'returns failure' do
+        result = otp_record.verify('999999')
+        expect(result[:success]).to be false
+        expect(result[:error]).to eq(:invalid_code)
+      end
+
+      it 'increments attempts counter' do
+        expect {
+          otp_record.verify('999999')
+        }.to change { otp_record.reload.attempts }.by(1)
+      end
+
+      it 'locks OTP after 3 failed attempts' do
+        2.times { otp_record.verify('999999') }
+        expect(otp_record.reload.status).to eq('pending')
+
+        otp_record.verify('999999')
+        expect(otp_record.reload.status).to eq('locked')
+      end
+    end
+
+    context 'with expired OTP' do
+      before { otp_record.update(expires_at: 1.minute.ago) }
+
+      it 'returns expired error' do
+        result = otp_record.verify(otp_code)
+        expect(result[:success]).to be false
+        expect(result[:error]).to eq(:expired)
+      end
+    end
+  end
+
+  describe '#can_resend?' do
+    it 'allows resend when under limit' do
+      otp = create(:e_signature_otp, order: order, user: user)
+      expect(otp.can_resend?).to be true
+    end
+
+    it 'denies resend when limit exceeded' do
+      create_list(:e_signature_otp, 3, order: order, user: user, created_at: 30.minutes.ago)
+      otp = create(:e_signature_otp, order: order, user: user)
+      expect(otp.can_resend?).to be false
+    end
+  end
+end
+```
+
+#### RSpec Service Tests
+
+**File: `spec/services/e_signature/fab_signature_service_spec.rb`**
+```ruby
+require 'rails_helper'
+
+RSpec.describe ESignature::FabSignatureService do
+  let(:order) { create(:order, form_stage: :delivery_stage) }
+  let(:user) { order.sales }
+  let(:request) { double('request', remote_ip: '127.0.0.1', user_agent: 'Test Agent') }
+  let(:service) { described_class.new(order: order, user: user) }
+
+  describe '#initiate_esignature' do
+    it 'generates OTP successfully' do
+      result = service.initiate_esignature(request: request)
+      expect(result[:success]).to be true
+      expect(result[:data][:otp_record]).to be_a(ESignature::Otp)
+    end
+
+    it 'sends OTP email' do
+      expect {
+        service.initiate_esignature(request: request)
+      }.to have_enqueued_job(ActionMailer::MailDeliveryJob)
+    end
+
+    context 'when order already signed' do
+      before { order.update(fab_esigned_at: Time.current) }
+
+      it 'returns failure' do
+        result = service.initiate_esignature(request: request)
+        expect(result[:success]).to be false
+        expect(result[:error]).to eq('FAB already signed')
+      end
+    end
+
+    context 'when user unauthorized' do
+      let(:other_user) { create(:portal_user, :sales) }
+      let(:service) { described_class.new(order: order, user: other_user) }
+
+      it 'returns failure' do
+        result = service.initiate_esignature(request: request)
+        expect(result[:success]).to be false
+        expect(result[:error]).to eq('Unauthorized')
+      end
+    end
+  end
+
+  describe '#verify_and_sign' do
+    let!(:otp_result) { ESignature::Otp.generate_for(order: order, user: user) }
+    let(:otp_code) { otp_result[:otp_code] }
+
+    it 'verifies OTP and applies signature' do
+      result = service.verify_and_sign(otp_code: otp_code, request: request)
+      expect(result[:success]).to be true
+      expect(result[:data][:signature]).to be_a(ESignature::Signature)
+    end
+
+    it 'updates order esigned fields' do
+      service.verify_and_sign(otp_code: otp_code, request: request)
+      order.reload
+      expect(order.fab_esigned_at).to be_present
+      expect(order.fab_esigned_by_id).to eq(user.id)
+    end
+
+    context 'with invalid OTP' do
+      it 'returns failure' do
+        result = service.verify_and_sign(otp_code: '999999', request: request)
+        expect(result[:success]).to be false
+      end
+    end
+  end
+end
+```
+
+#### RSpec Controller Tests
+
+**File: `spec/controllers/sales/e_signatures_controller_spec.rb`**
+```ruby
+require 'rails_helper'
+
+RSpec.describe Sales::ESignaturesController, type: :controller do
+  let(:sales_user) { create(:portal_user, :sales) }
+  let(:order) { create(:order, sales: sales_user, form_stage: :delivery_stage) }
+
+  before { sign_in sales_user }
+
+  describe 'GET #new' do
+    it 'renders the new template' do
+      get :new, params: { order_id: order.id }
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template(:new)
+    end
+
+    context 'when order already signed' do
+      before { order.update(fab_esigned_at: Time.current) }
+
+      it 'redirects with alert' do
+        get :new, params: { order_id: order.id }
+        expect(response).to redirect_to(delivery_stage_portal_sales_order_path(order))
+        expect(flash[:alert]).to be_present
+      end
+    end
+  end
+
+  describe 'POST #create' do
+    let(:valid_params) do
+      {
+        order_id: order.id,
+        e_signature_fab_consent_form: { terms_accepted: '1' }
+      }
+    end
+
+    it 'generates OTP and redirects to verify page' do
+      post :create, params: valid_params
+      expect(response).to redirect_to(verify_portal_sales_order_e_signature_path(order))
+      expect(flash[:notice]).to include('OTP has been sent')
+    end
+
+    it 'enqueues OTP email' do
+      expect {
+        post :create, params: valid_params
+      }.to have_enqueued_job(ActionMailer::MailDeliveryJob)
+    end
+
+    context 'without terms acceptance' do
+      let(:invalid_params) do
+        {
+          order_id: order.id,
+          e_signature_fab_consent_form: { terms_accepted: '0' }
+        }
+      end
+
+      it 'renders new with errors' do
+        post :create, params: invalid_params
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe 'POST #verify_otp' do
+    let!(:otp_result) { ESignature::Otp.generate_for(order: order, user: sales_user) }
+    let(:otp_code) { otp_result[:otp_code] }
+
+    before do
+      session[:otp_record_id] = otp_result[:otp_record].id
+    end
+
+    context 'with valid OTP' do
+      let(:valid_params) do
+        {
+          order_id: order.id,
+          e_signature_otp_verification_form: { otp_code: otp_code }
+        }
+      end
+
+      it 'applies signature and redirects' do
+        post :verify_otp, params: valid_params
+        expect(response).to redirect_to(delivery_stage_portal_sales_order_path(order))
+        expect(flash[:notice]).to include('successfully e-signed')
+      end
+
+      it 'creates signature record' do
+        expect {
+          post :verify_otp, params: valid_params
+        }.to change(ESignature::Signature, :count).by(1)
+      end
+    end
+
+    context 'with invalid OTP' do
+      let(:invalid_params) do
+        {
+          order_id: order.id,
+          e_signature_otp_verification_form: { otp_code: '999999' }
+        }
+      end
+
+      it 'renders verify with error' do
+        post :verify_otp, params: invalid_params
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(flash[:alert]).to be_present
+      end
+    end
+  end
+end
+```
+
+#### Integration Tests (Request Specs)
+
+**File: `spec/requests/sales/e_signature_workflow_spec.rb`**
+```ruby
+require 'rails_helper'
+
+RSpec.describe 'E-Signature Workflow', type: :request do
+  let(:sales_user) { create(:portal_user, :sales) }
+  let(:order) { create(:order, sales: sales_user, form_stage: :delivery_stage) }
+
+  before { sign_in sales_user }
+
+  it 'completes full e-signature workflow' do
+    # Step 1: View FAB preview
+    get new_portal_sales_order_e_signature_path(order)
+    expect(response).to have_http_status(:success)
+
+    # Step 2: Accept T&C and request OTP
+    post portal_sales_order_e_signatures_path(order), params: {
+      e_signature_fab_consent_form: { terms_accepted: '1' }
+    }
+    expect(response).to redirect_to(verify_portal_sales_order_e_signature_path(order))
+
+    # Step 3: View OTP verification page
+    get verify_portal_sales_order_e_signature_path(order)
+    expect(response).to have_http_status(:success)
+
+    # Get OTP from database (simulating email retrieval)
+    otp_record = order.e_signature_otps.last
+    otp_code = '123456' # In test, we'd need to mock this
+
+    # Step 4: Verify OTP and complete signature
+    post verify_otp_portal_sales_order_e_signature_path(order), params: {
+      e_signature_otp_verification_form: { otp_code: otp_code }
+    }
+
+    # Verify redirect and success
+    expect(response).to redirect_to(delivery_stage_portal_sales_order_path(order))
+
+    # Verify order updated
+    order.reload
+    expect(order.fab_esigned_at).to be_present
+    expect(order.fab_esigned_by_id).to eq(sales_user.id)
+
+    # Verify signature created
+    expect(order.sales_signature).to be_present
+    expect(order.sales_signature.status).to eq('signed')
+  end
+end
+```
+
+### 3.14 Deployment and Rollback Considerations
+
+**Feature Flag Implementation:**
+```ruby
+# config/initializers/flipper.rb
+Flipper.configure do |config|
+  config.default do
+    Flipper::Adapters::Memory.new
+  end
+end
+
+# Enable feature flag
+Flipper.enable(:e_signature_fab)
+
+# In controller
+def new
+  unless Flipper.enabled?(:e_signature_fab)
+    redirect_to delivery_stage_portal_sales_order_path(@order),
+                alert: 'E-signature feature is currently unavailable.'
+    return
+  end
+  # ... rest of action
+end
+```
+
+**Deployment Steps:**
+1. Run database migrations (zero-downtime)
+2. Deploy code with feature flag disabled
+3. Verify all services healthy
+4. Enable feature flag for 10% of users (canary deployment)
+5. Monitor error rates and performance metrics
+6. Gradually increase to 50%, then 100%
+
+**Rollback Plan:**
+1. Disable feature flag immediately
+2. Investigate and fix issues
+3. If database rollback needed:
+   ```ruby
+   # Rollback migration
+   rails db:rollback STEP=2
+   ```
+4. Users in progress will see graceful error message
+5. Existing manual FAB upload still functional
+
+**Monitoring and Alerts:**
+```ruby
+# NewRelic custom events
+NewRelic::Agent.record_custom_event('ESignatureInitiated', {
+  order_id: order.id,
+  user_id: user.id
+})
+
+NewRelic::Agent.record_custom_event('ESignatureCompleted', {
+  order_id: order.id,
+  duration: duration_seconds
+})
+
+# Alert on high OTP failure rate
+if (failed_attempts.to_f / total_attempts) > 0.3
+  SlackNotifier.notify("High OTP failure rate detected: #{failed_attempts}/#{total_attempts}")
+end
+```
+
+---
+
+## 📊 Summary and Recommendations
+
+### Key Implementation Priorities
+
+1. **Phase 1 (Week 1-2):** Database schema, models, and core service objects
+2. **Phase 2 (Week 3):** Controllers, views, and OTP functionality
+3. **Phase 3 (Week 4):** PDF signature application and document storage
+4. **Phase 4 (Week 5):** Testing, security audit, and bug fixes
+5. **Phase 5 (Week 6):** UAT, documentation, and production deployment
+
+### Technical Debt Considerations
+
+- **OTP Storage:** Consider using Redis for OTP storage instead of database for better performance
+- **Email Service:** Evaluate dedicated transactional email service (SendGrid, AWS SES)
+- **PDF Library:** Evaluate HexaPDF vs WickedPDF for better performance
+- **Audit Logging:** Consider dedicated audit trail service (e.g., PaperTrail gem)
+
+### Scalability Considerations
+
+- Implement caching for FAB HTML rendering
+- Use background jobs for PDF generation
+- Consider CDN for signed document delivery
+- Database connection pooling for high concurrency
+
+### Security Recommendations
+
+- Regular security audits
+- Penetration testing before production
+- Implement Content Security Policy (CSP)
+- Enable database encryption at rest
+- Regular dependency updates (Dependabot)
+
+---
+
+**END OF SPECIFICATION**
+
+This comprehensive specification provides everything needed to implement the E-Sign FAB feature from product, QA, and technical perspectives. All sections are detailed, actionable, and ready for team implementation.

@@ -1,0 +1,27 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.json, /Users/rorikurniadi/code/smb-app/ide-phoenix/.claude/settings.local.json...
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] MCP server "gitlab": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "gitlab": Successfully connected to undefined server in 67ms
+[DEBUG] MCP server "gitlab": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"GitLab","version":"1.31.1"}}
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 3267s
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.54085.1760506558456
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.54085.1760506558456 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 3266s
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 3266s
+[DEBUG] MCP server "atlassian": Successfully connected to sse server in 569ms
+[DEBUG] MCP server "atlassian": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"atlassian-mcp-server","version":"1.0.0"}}

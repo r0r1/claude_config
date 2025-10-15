@@ -1,0 +1,20 @@
+[
+  {
+    "content": "Find welcome page with Wawasan AI section",
+    "status": "in_progress",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Replace Wawasan AI with report section",
+    "status": "pending",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Add translation support for report section",
+    "status": "pending",
+    "priority": "high",
+    "id": "3"
+  }
+]

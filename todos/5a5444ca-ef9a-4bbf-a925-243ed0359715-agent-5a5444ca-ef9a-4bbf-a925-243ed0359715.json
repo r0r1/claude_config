@@ -1,0 +1,47 @@
+[
+  {
+    "content": "Update registration form to owner-only (remove role selection)",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Update auth controller to force owner role for manual registration",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Update home page registration CTAs to reflect owner-only registration",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Create coach invitations database table and model",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Create Owner::CoachesController for coach management",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Create coach invitation views and email system",
+    "status": "in_progress",
+    "id": "6"
+  },
+  {
+    "content": "Create special coach registration route and view",
+    "status": "pending",
+    "id": "7"
+  },
+  {
+    "content": "Update owner dashboard to include coach management",
+    "status": "pending",
+    "id": "8"
+  },
+  {
+    "content": "Test coach invitation flow end-to-end",
+    "status": "pending",
+    "id": "9"
+  }
+]

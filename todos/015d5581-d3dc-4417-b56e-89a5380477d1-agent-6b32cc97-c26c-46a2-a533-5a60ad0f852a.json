@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Identify root cause of Tom Select pre-selection timing issue",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Fix Stimulus controller initialization race condition with DOM-based approach",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Add proper debugging and error handling for Tom Select initialization",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Test the fix with both new orders (FIFO pre-selection) and existing orders (preserved values)",
+    "status": "completed",
+    "id": "4"
+  }
+]

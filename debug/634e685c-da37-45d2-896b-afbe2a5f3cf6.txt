@@ -1,0 +1,950 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.json, /Users/rorikurniadi/code/smb-app/ide-phoenix/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 27 allow rule(s) to destination 'localSettings': ["Bash(cat:*)","Bash(mv:*)","Bash(xattr:*)","Bash(git log:*)","mcp__gitlab__get_merge_request","mcp__atlassian__getAccessibleAtlassianResources","Bash(curl:*)","mcp__gitlab__list_merge_request_diffs","mcp__atlassian__getJiraIssue","Bash(git fetch:*)","WebFetch(domain:mygitlab-dev.ioh.co.id)","mcp__gitlab__discussion_new","mcp__atlassian__getConfluenceSpaces","mcp__atlassian__createConfluencePage","Bash(claude mcp inspect:*)","Bash(claude mcp tools)","Bash(git show:*)","Bash(gh api:*)","Bash(env)","mcp__gitlab__get_merge_request_commits","Bash(git diff:*)","mcp__gitlab__discussion_new_with_position","Bash(claude mcp list:*)","Bash(awk:*)","Bash(git merge-base:*)","Bash(git remote:*)","WebSearch"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760348282315-7x1ujo.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348282317
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348282317 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348282349
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47399 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348282349 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/code/smb-app/ide-phoenix/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Summarizing last 8 of 37 messages (~148088 tokens)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348282702
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47399 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348282702 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348282727
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47399 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348282727 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Shell snapshot created successfully (52413 bytes)
+[DEBUG] MCP server "gitlab": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 2872s
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348283454
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47399 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348283454 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348283532
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47294 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348283532 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348283547
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47294 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348283547 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called, ENABLE_PLUGINS=true
+[DEBUG] Starting background plugin installations
+[DEBUG] performBackgroundPluginInstallations called
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348283889
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47399 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348283889 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] MCP server "gitlab": Successfully connected to undefined server in 528ms
+[DEBUG] MCP server "gitlab": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"GitLab","version":"1.31.1"}}
+[DEBUG] Summarizing last 1 of 119 messages (~0 tokens)
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 2872s
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 2871s
+[DEBUG] MCP server "atlassian": Successfully connected to sse server in 1423ms
+[DEBUG] MCP server "atlassian": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"atlassian-mcp-server","version":"1.0.0"}}
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 2871s
+[DEBUG] Summarizing last 5 of 38 messages (~137904 tokens)
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Summarizing last 5 of 60 messages (~121221 tokens)
+[DEBUG] Summarizing last 2 of 129 messages (~0 tokens)
+[DEBUG] Summarizing last 1 of 87 messages (~97686 tokens)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Added snapshot for bec200be-b2b0-40e9-8e52-5aaad65d763c, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348307053
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1292 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348307053 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Bash tool invoked with command: claude mcp list
+[DEBUG] Bash tool description: List connected MCP servers
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348319173
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1294 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348319173 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Bash tool invoked with command: echo "https://mygitlab-dev.ioh.co.id/cco/cmo/group-digital-coe/div-smb-digital-product/ide-phoenix/-/merge_requests/254" | sed -E 's|https://[^/]+/(.*)/-/merge_requests/([0-9]+)|\1 \2|'
+[DEBUG] Bash tool description: Extract project path and MR IID from URL
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348328356
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1300 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348328356 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__atlassian__getJiraIssue
+[DEBUG] Executing hooks for PreToolUse:mcp__atlassian__getJiraIssue
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__atlassian__getJiraIssue
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__getJiraIssue" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__get_merge_request
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__get_merge_request
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__get_merge_request
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__get_merge_request" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "atlassian": Calling MCP tool: getJiraIssue
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 2827s
+[DEBUG] MCP server "gitlab": Calling MCP tool: get_merge_request
+[DEBUG] MCP server "gitlab": Tool 'get_merge_request' completed successfully in 707ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__get_merge_request
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__get_merge_request
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__get_merge_request" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "atlassian": Tool 'getJiraIssue' completed successfully in 2s
+[DEBUG] Executing hooks for PostToolUse:mcp__atlassian__getJiraIssue
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__atlassian__getJiraIssue
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__getJiraIssue" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348339711
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1300 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348339711 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__list_merge_request_diffs
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__list_merge_request_diffs
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__list_merge_request_diffs
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__list_merge_request_diffs" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: list_merge_request_diffs
+[DEBUG] MCP server "gitlab": Tool 'list_merge_request_diffs' completed successfully in 167ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__list_merge_request_diffs
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__list_merge_request_diffs
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__list_merge_request_diffs" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348406918
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1302 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348406918 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Task
+[DEBUG] Executing hooks for PreToolUse:Task
+[DEBUG] Getting matching hook commands for PreToolUse with query: Task
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] Executing hooks for SubagentStop
+[DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Task
+[DEBUG] Getting matching hook commands for PostToolUse with query: Task
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348594084
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1304 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348594084 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348609868
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47399 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348609868 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348609890
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47399 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348609890 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348609898
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47616 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348609898 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 2d3e5e25-59e0-4454-aabc-572ea4f4266a
+[DEBUG] FileHistory: Added snapshot for 2d3e5e25-59e0-4454-aabc-572ea4f4266a, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ia2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348700124
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1306 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348700124 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new_with_position
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new_with_position
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new_with_position
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new_with_position" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new_with_position
+[DEBUG] MCP server "gitlab": Tool 'discussion_new_with_position' failed after 0s: MCP error -32603: mcpargs.Unmarshal: failed to unmarshal arguments: missing required field "OldPath"
+[ERROR] McpError: McpError: MCP error -32603: mcpargs.Unmarshal: failed to unmarshal arguments: missing required field "OldPath"
+    at pS1._onresponse (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:15319)
+    at _transport.onmessage (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12515)
+    at sF0.processReadBuffer (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:2163)
+    at Socket.<anonymous> (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:1529)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 317ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 201ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 184ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 226ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 199ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 177ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 146ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 140ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 210ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 165ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 181ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 353ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 153ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 166ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 170ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 189ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 150ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 149ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 203ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 154ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 434ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 207ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 204ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 907ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 247ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 172ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 156ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 191ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 164ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 193ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 162ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348967912
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json.tmp.49018.1760348967912 to /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/634e685c-da37-45d2-896b-afbe2a5f3cf6-agent-634e685c-da37-45d2-896b-afbe2a5f3cf6.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348995133
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47616 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348995133 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348995153
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47616 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348995153 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760348995164
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47696 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760348995164 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Getting matching hook commands for SessionEnd with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Cleaned up session snapshot: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760348282315-7x1ujo.sh
+[DEBUG] MCP server "atlassian": SSE transport closed/disconnected, attempting automatic reconnection
+[DEBUG] FileHistory: Making snapshot for message d7d45ce4-5d9c-45ba-baad-42bb7b46ea93
+[DEBUG] FileHistory: Added snapshot for d7d45ce4-5d9c-45ba-baad-42bb7b46ea93, tracking 0 files
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 2141s
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760349014920
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47696 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760349014920 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760349014929
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 47778 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760349014929 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.49018.1760349014939
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 48206 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.49018.1760349014939 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically

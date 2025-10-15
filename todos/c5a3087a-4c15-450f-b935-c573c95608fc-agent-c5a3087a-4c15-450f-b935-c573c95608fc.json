@@ -1,0 +1,52 @@
+[
+  {
+    "content": "Extract GitLab project and MR information from URL",
+    "status": "completed",
+    "activeForm": "Extracting GitLab project and MR information"
+  },
+  {
+    "content": "Fetch JIRA issue details (if provided)",
+    "status": "pending",
+    "activeForm": "Fetching JIRA issue details"
+  },
+  {
+    "content": "Fetch GitLab MR details and metadata",
+    "status": "completed",
+    "activeForm": "Fetching GitLab MR details"
+  },
+  {
+    "content": "Fetch MR changes (diffs)",
+    "status": "completed",
+    "activeForm": "Fetching MR changes"
+  },
+  {
+    "content": "Fetch existing discussions on MR",
+    "status": "completed",
+    "activeForm": "Fetching existing discussions"
+  },
+  {
+    "content": "Launch code review agent to verify fixes",
+    "status": "completed",
+    "activeForm": "Launching code review agent"
+  },
+  {
+    "content": "Process review results and user confirmation",
+    "status": "completed",
+    "activeForm": "Processing review results"
+  },
+  {
+    "content": "Add verification notes to resolved discussions",
+    "status": "completed",
+    "activeForm": "Adding verification notes"
+  },
+  {
+    "content": "Post new review comments to GitLab",
+    "status": "completed",
+    "activeForm": "Posting new review comments"
+  },
+  {
+    "content": "Generate comprehensive summary report",
+    "status": "in_progress",
+    "activeForm": "Generating summary report"
+  }
+]

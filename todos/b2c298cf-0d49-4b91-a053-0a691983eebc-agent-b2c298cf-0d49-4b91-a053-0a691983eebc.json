@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Revert track_sales_action method to accept order parameter",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Update sales/orders_controller.rb to use new signature",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Update sales/msisdn_controller.rb to use new signature",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Update tests to match new signature",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Update remaining controllers (verifications, payment, customers, deliveries)",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Fix msisdn_spec.rb error handling test",
+    "status": "completed",
+    "id": "6"
+  }
+]

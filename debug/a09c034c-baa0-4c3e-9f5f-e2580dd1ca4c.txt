@@ -1,0 +1,7 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.json, /Users/rorikurniadi/code/smb-app/ide-landing/.claude/settings.local.json...
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.83563.1760435007988
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 61140 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.83563.1760435007988 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically

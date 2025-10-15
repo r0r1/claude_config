@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Check current Node version and asdf setup",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Set Node 20.18.3 as global version",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Configure MCP Atlassian to use Node 20.18.3",
+    "status": "in_progress",
+    "id": "3"
+  },
+  {
+    "content": "Test MCP Atlassian configuration",
+    "status": "pending",
+    "id": "4"
+  }
+]

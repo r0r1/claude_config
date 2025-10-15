@@ -1,0 +1,52 @@
+[
+  {
+    "content": "Check MCP server prerequisites (GitLab and Atlassian)",
+    "status": "completed",
+    "activeForm": "Checking MCP server prerequisites"
+  },
+  {
+    "content": "Extract GitLab project and MR information from URL",
+    "status": "completed",
+    "activeForm": "Extracting GitLab project and MR information"
+  },
+  {
+    "content": "Fetch JIRA issue details",
+    "status": "completed",
+    "activeForm": "Fetching JIRA issue details"
+  },
+  {
+    "content": "Fetch GitLab MR metadata",
+    "status": "completed",
+    "activeForm": "Fetching GitLab MR metadata"
+  },
+  {
+    "content": "Fetch MR changes from git repository",
+    "status": "completed",
+    "activeForm": "Fetching MR changes from git repository"
+  },
+  {
+    "content": "Detect project type (Flutter/Dart vs Fullstack)",
+    "status": "completed",
+    "activeForm": "Detecting project type"
+  },
+  {
+    "content": "Review actual MR diff content",
+    "status": "completed",
+    "activeForm": "Reviewing actual MR diff content"
+  },
+  {
+    "content": "Process review results and get user confirmation",
+    "status": "in_progress",
+    "activeForm": "Processing review results"
+  },
+  {
+    "content": "Post new comments to GitLab",
+    "status": "pending",
+    "activeForm": "Posting new comments"
+  },
+  {
+    "content": "Generate comprehensive summary report",
+    "status": "pending",
+    "activeForm": "Generating summary report"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "content": "Explore existing test structure and patterns",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Add PostalCode model tests",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Add locations_controller API tests",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Add customers_controller tests for postal code params",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  },
+  {
+    "content": "Add JavaScript tests for location_controller",
+    "status": "completed",
+    "priority": "medium",
+    "id": "5"
+  },
+  {
+    "content": "Add integration tests for postal code functionality",
+    "status": "completed",
+    "priority": "medium",
+    "id": "6"
+  },
+  {
+    "content": "Run new tests and fix any failures",
+    "status": "completed",
+    "priority": "high",
+    "id": "7"
+  }
+]

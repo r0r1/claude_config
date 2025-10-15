@@ -1,0 +1,12 @@
+[
+  {
+    "content": "Verify enhanced duplicate validation is working correctly",
+    "status": "completed",
+    "id": "test_enhanced_validation"
+  },
+  {
+    "content": "Test combined ICCID and MSISDN duplicate error display",
+    "status": "completed",
+    "id": "test_combined_errors"
+  }
+]

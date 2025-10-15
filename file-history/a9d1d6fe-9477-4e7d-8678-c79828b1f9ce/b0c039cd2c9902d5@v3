@@ -1,0 +1,55 @@
+---
+description: Update existing Jira issue with comprehensive acceptance criteria, test cases, and technical requirements
+---
+
+First, fetch the existing Jira issue details using the issue ID provided and analyze the current description, comments, and any existing requirements.
+
+Then, generate a comprehensive Jira specification that enhances the existing issue with:
+
+1. **Acceptance Criteria** (Product Owner Perspective)
+   - User story in proper format (if not already present)
+   - Given-When-Then scenarios for all flows (primary, alternative, edge cases)
+   - Functional and non-functional requirements
+   - Business rules and constraints
+   - Error handling and edge cases
+   - UX/UI considerations
+   - Definition of Done checklist
+   - Dependencies and risks
+
+2. **Test Cases** (QA Engineer Perspective)
+   - Complete test case specifications with IDs
+   - Positive test scenarios (happy path)
+   - Negative test scenarios (error handling)
+   - Boundary value tests
+   - Edge cases and security tests
+   - Non-functional tests (performance, security, accessibility, usability)
+   - Regression and integration tests
+   - Automation recommendations (YES/NO/PARTIAL) with rationale
+   - Playwright code examples for automatable tests
+   - Test data requirements and test coverage summary
+
+3. **Technical Requirements** (Senior Rails Developer Perspective)
+   - Architecture and design patterns selection
+   - Database schema changes with zero-downtime migrations
+   - API endpoints specification (if applicable) with request/response formats
+   - Service objects and business logic organization
+   - Background jobs and async processing requirements
+   - Performance optimization strategies (query optimization, caching, scalability)
+   - Security considerations (authentication, authorization, data protection, input validation)
+   - Third-party integrations and webhook handling
+   - Error handling and structured logging strategy
+   - Code organization structure (services, queries, forms, decorators, policies)
+   - Comprehensive testing strategy with RSpec examples (models, services, controllers, jobs)
+   - Deployment and rollback considerations with feature flags
+
+**Usage:**
+Provide the Jira issue ID (e.g., PROJ-123 or just 123)
+
+**Process:**
+1. Fetch the issue details from Jira
+2. Analyze existing description, requirements, and context
+3. Generate comprehensive specifications based on the issue
+4. Format output in markdown ready to update the Jira issue
+5. Include sections for Acceptance Criteria, Test Cases, and Technical Requirements
+
+The output will be comprehensive, actionable, and ready for the development team to implement. Each section will be properly formatted for Jira markdown.

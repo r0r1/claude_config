@@ -1,0 +1,20 @@
+[
+  {
+    "content": "Understand postal code validation logic",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Modify postpaid activation builder to use 00000 for invalid postal codes",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Test the implementation",
+    "status": "completed",
+    "priority": "medium",
+    "id": "3"
+  }
+]

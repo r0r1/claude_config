@@ -1,0 +1,1649 @@
+# ISB-2997: Add Building Name and Error Message in Address - Comprehensive Specification
+
+**Issue Key:** ISB-2997
+**Summary:** Add building name and error message in address
+**Type:** Task
+**Priority:** Medium
+**Assignee:** Hanif Widiyanto
+**Sprint:** ISB Sprint 55
+
+---
+
+## Original Requirements
+
+* Please add building name in sales form but this is optional and not a must to fill
+* Building name located above the address
+* maximum 40 Characters to fill the address and building name
+* Message is under the field building name and Alamat lengkap
+* Please create in Indonesian and English Version
+
+---
+
+# 1. ACCEPTANCE CRITERIA (Product Owner Perspective)
+
+## 1.1 User Story
+
+**As a** Sales User
+**I want to** add an optional building name field when creating customer orders
+**So that** I can capture more precise delivery location information for customers
+
+## 1.2 Given-When-Then Scenarios
+
+### Primary Flow - Happy Path
+
+**Scenario 1.2.1: Successfully add building name with address**
+* **Given** I am a Sales user on the customer information form
+* **When** I enter a building name (≤40 characters) and complete address (≤40 characters)
+* **Then** the form accepts both fields without errors
+* **And** the building name is stored along with the customer address
+* **And** both fields display in the selected language (Indonesian or English)
+
+**Scenario 1.2.2: Skip optional building name field**
+* **Given** I am a Sales user on the customer information form
+* **When** I leave the building name field empty and fill the required address field
+* **Then** the form validates successfully
+* **And** the order is created without building name data
+* **And** no validation error is displayed for the empty building name
+
+### Alternative Flow - Validation Errors
+
+**Scenario 1.2.3: Building name exceeds maximum length**
+* **Given** I am entering a building name
+* **When** I type more than 40 characters in the building name field
+* **Then** an error message appears below the building name field
+* **And** the message displays in the current language (ID/EN)
+* **And** the form cannot be submitted until corrected
+* **Error Messages:**
+  * Indonesian: "Nama gedung maksimal 40 karakter"
+  * English: "Building name maximum 40 characters"
+
+**Scenario 1.2.4: Address exceeds maximum length**
+* **Given** I am entering an address
+* **When** I type more than 40 characters in the address field
+* **Then** an error message appears below the address field
+* **And** the message displays in the current language (ID/EN)
+* **And** the form cannot be submitted until corrected
+* **Error Messages:**
+  * Indonesian: "Alamat lengkap maksimal 40 karakter"
+  * English: "Complete address maximum 40 characters"
+
+**Scenario 1.2.5: Missing required address field**
+* **Given** I am on the customer information form
+* **When** I leave the address field empty and attempt to submit
+* **Then** a required field error appears below the address field
+* **And** the form is blocked from submission
+* **Error Messages:**
+  * Indonesian: "Alamat lengkap wajib diisi"
+  * English: "Complete address is required"
+
+### Edge Cases
+
+**Scenario 1.2.6: Special characters in building name**
+* **Given** I am entering a building name
+* **When** I include special characters (e.g., @, #, $, &, etc.)
+* **Then** the system should accept alphanumeric and common punctuation
+* **And** sanitize potentially dangerous characters
+
+**Scenario 1.2.7: Language switching with pre-filled data**
+* **Given** I have entered data in Indonesian
+* **When** I switch the interface language to English
+* **Then** field labels and error messages update to English
+* **And** previously entered data remains unchanged
+* **And** validation messages re-render in the new language
+
+**Scenario 1.2.8: Form field ordering and visual hierarchy**
+* **Given** I am viewing the customer form
+* **When** the page renders
+* **Then** the building name field appears immediately above the address field
+* **And** both fields are visually aligned
+* **And** the optional indicator is visible for building name
+
+## 1.3 Functional Requirements
+
+| ID | Requirement | Priority |
+|----|-------------|----------|
+| FR-1 | Add "Building Name" field as optional input above address field | MUST |
+| FR-2 | Implement 40-character maximum validation for building name | MUST |
+| FR-3 | Implement 40-character maximum validation for address | MUST |
+| FR-4 | Display inline error messages below respective fields | MUST |
+| FR-5 | Support bilingual error messages (Indonesian/English) | MUST |
+| FR-6 | Persist building name in database with customer record | MUST |
+| FR-7 | Display building name in order summary/details views | SHOULD |
+| FR-8 | Include building name in order export/reports | SHOULD |
+| FR-9 | Real-time character counter for both fields | COULD |
+| FR-10 | Auto-trim whitespace from inputs on blur | SHOULD |
+
+## 1.4 Non-Functional Requirements
+
+| ID | Requirement | Target |
+|----|-------------|--------|
+| NFR-1 | Form field response time | < 100ms |
+| NFR-2 | Validation error display time | < 50ms |
+| NFR-3 | Browser compatibility | Chrome 90+, Firefox 88+, Safari 14+, Edge 90+ |
+| NFR-4 | Mobile responsiveness | Support screens ≥320px width |
+| NFR-5 | Accessibility compliance | WCAG 2.1 Level AA |
+| NFR-6 | Character encoding support | UTF-8 (support Indonesian and English characters) |
+| NFR-7 | Database query performance | Building name retrieval < 50ms |
+
+## 1.5 Business Rules and Constraints
+
+1. Building name is **optional** - form submission is allowed when empty
+2. Address field remains **required** - mandatory validation
+3. Maximum 40 characters enforced at both client-side and server-side
+4. Character count includes spaces and special characters
+5. Validation triggers on:
+   - Field blur (on leaving field)
+   - Form submission attempt
+   - Real-time after first validation error
+6. Building name should not contain:
+   - Leading/trailing whitespace (auto-trimmed)
+   - HTML tags (sanitized)
+   - Script injection attempts (sanitized)
+7. Language preference determined by:
+   - User's language setting in profile
+   - Session language selection
+   - Browser language as fallback
+
+## 1.6 Error Handling and Validation Messages
+
+| Field | Condition | Indonesian Message | English Message |
+|-------|-----------|-------------------|-----------------|
+| Building Name | Exceeds 40 chars | Nama gedung maksimal 40 karakter | Building name maximum 40 characters |
+| Building Name | Invalid characters | Nama gedung mengandung karakter tidak valid | Building name contains invalid characters |
+| Address | Exceeds 40 chars | Alamat lengkap maksimal 40 karakter | Complete address maximum 40 characters |
+| Address | Empty/Required | Alamat lengkap wajib diisi | Complete address is required |
+| Address | Invalid characters | Alamat mengandung karakter tidak valid | Address contains invalid characters |
+
+## 1.7 UX/UI Considerations
+
+1. **Field Positioning:** Building name directly above address field with consistent spacing
+2. **Visual Indicators:**
+   - "(Optional)" label next to building name in gray text
+   - "*" required indicator next to address field
+3. **Error Display:**
+   - Red text below field
+   - Red border around invalid field
+   - Error icon (⚠) next to error message
+4. **Success States:**
+   - Green border for valid fields (optional)
+   - Checkmark icon when validation passes (optional)
+5. **Placeholder Text:**
+   - Building Name (ID): "Contoh: Gedung Cyber, Menara BCA" (optional)
+   - Building Name (EN): "Example: Cyber Building, BCA Tower" (optional)
+   - Address (ID): "Contoh: Jl. Sudirman No. 123, RT 01/RW 02"
+   - Address (EN): "Example: 123 Sudirman Street, RT 01/RW 02"
+6. **Character Counter:** Display "X/40" below field (updates in real-time)
+7. **Mobile Optimization:**
+   - Touch-friendly input fields (min 44px height)
+   - Appropriate keyboard type (text input)
+   - Proper zoom behavior (font-size ≥16px to prevent auto-zoom)
+
+## 1.8 Definition of Done
+
+- ✓ Building name field added to customer form with proper positioning
+- ✓ Maximum 40-character validation implemented for both fields
+- ✓ Indonesian and English translations added to locale files
+- ✓ Error messages display correctly below fields
+- ✓ Building name persists to database correctly
+- ✓ Building name displays in order views/details
+- ✓ Field is clearly marked as optional
+- ✓ All validation scenarios tested and passing
+- ✓ Responsive design verified on mobile/tablet/desktop
+- ✓ Accessibility standards met (keyboard nav, screen readers)
+- ✓ Code reviewed and approved
+- ✓ Unit tests written with >80% coverage
+- ✓ Integration tests cover all scenarios
+- ✓ Documentation updated (if applicable)
+- ✓ Deployed to staging and verified
+- ✓ Product Owner sign-off obtained
+
+## 1.9 Dependencies and Risks
+
+**Dependencies:**
+* Database migration to add building_name column
+* I18n locale file updates for translations
+* Form validation library/framework capabilities
+* Customer model and controller modifications
+
+**Risks:**
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Database migration fails in production | HIGH | Test migration in staging; prepare rollback script; run during low-traffic window |
+| Character limit too restrictive for some addresses | MEDIUM | Monitor customer feedback; prepare to adjust limit if needed |
+| Translation inconsistencies | LOW | Review with native speakers; use consistent terminology |
+| Performance impact on form validation | LOW | Use debounced validation; optimize validation logic |
+| Legacy data without building name | LOW | Ensure null values handled gracefully in all views |
+
+---
+
+# 2. TEST CASES (QA Engineer Perspective)
+
+## 2.1 Positive Test Scenarios (Happy Path)
+
+**TC-001: Valid Building Name and Address Entry**
+* **Test ID:** TC-ISB-2997-001
+* **Priority:** P1 (Critical)
+* **Prerequisites:** User logged in as Sales role
+* **Test Steps:**
+  1. Navigate to customer creation form
+  2. Enter "Gedung Cyber" in Building Name field (12 chars)
+  3. Enter "Jl. Sudirman No. 123" in Address field (22 chars)
+  4. Click Submit
+* **Expected Result:**
+  - Form submits successfully
+  - No validation errors displayed
+  - Building name and address saved to database
+  - Success message displayed
+* **Automation:** YES
+
+**TC-002: Optional Building Name Left Empty**
+* **Test ID:** TC-ISB-2997-002
+* **Priority:** P1 (Critical)
+* **Prerequisites:** User logged in as Sales role
+* **Test Steps:**
+  1. Navigate to customer creation form
+  2. Leave Building Name field empty
+  3. Enter "Jl. Gatot Subroto No. 45" in Address field
+  4. Click Submit
+* **Expected Result:**
+  - Form submits successfully
+  - No validation errors for empty building name
+  - Address saved with NULL building_name in database
+  - Success message displayed
+* **Automation:** YES
+
+**TC-003: Maximum Characters - Exact Limit (40 chars)**
+* **Test ID:** TC-ISB-2997-003
+* **Priority:** P1 (Critical)
+* **Prerequisites:** User logged in as Sales role
+* **Test Steps:**
+  1. Navigate to customer creation form
+  2. Enter exactly 40 characters in Building Name: "Gedung Perkantoran Central Business Park"
+  3. Enter exactly 40 characters in Address: "Jalan Jenderal Sudirman Kavling 52-53 J"
+  4. Click Submit
+* **Expected Result:**
+  - Form submits successfully
+  - No validation errors
+  - Both fields saved correctly
+  - Character count shows "40/40"
+* **Automation:** YES
+
+## 2.2 Negative Test Scenarios (Error Handling)
+
+**TC-004: Building Name Exceeds 40 Characters**
+* **Test ID:** TC-ISB-2997-004
+* **Priority:** P1 (Critical)
+* **Prerequisites:** User logged in as Sales role, Language set to Indonesian
+* **Test Steps:**
+  1. Navigate to customer creation form
+  2. Enter 41 characters in Building Name field
+  3. Tab out of field (trigger blur validation)
+* **Expected Result:**
+  - Error message displayed below field: "Nama gedung maksimal 40 karakter"
+  - Field border turns red
+  - Error icon (⚠) appears
+  - Form submission blocked
+  - Character counter shows "41/40" in red
+* **Automation:** YES
+
+**TC-005: Address Exceeds 40 Characters**
+* **Test ID:** TC-ISB-2997-005
+* **Priority:** P1 (Critical)
+* **Prerequisites:** User logged in as Sales role, Language set to English
+* **Test Steps:**
+  1. Navigate to customer creation form
+  2. Enter 45 characters in Address field
+  3. Tab out of field
+* **Expected Result:**
+  - Error message displayed: "Complete address maximum 40 characters"
+  - Field border turns red
+  - Error icon appears
+  - Form submission blocked
+* **Automation:** YES
+
+**TC-006: Required Address Field Empty**
+* **Test ID:** TC-ISB-2997-006
+* **Priority:** P1 (Critical)
+* **Prerequisites:** User logged in as Sales role
+* **Test Steps:**
+  1. Navigate to customer creation form
+  2. Leave Address field empty
+  3. Fill other required fields
+  4. Click Submit
+* **Expected Result:**
+  - Required field error displayed: "Alamat lengkap wajib diisi" (ID) or "Complete address is required" (EN)
+  - Field border turns red
+  - Form submission blocked
+  - Focus returns to address field
+* **Automation:** YES
+
+**TC-007: Special Characters in Building Name**
+* **Test ID:** TC-ISB-2997-007
+* **Priority:** P2 (High)
+* **Prerequisites:** User logged in as Sales role
+* **Test Steps:**
+  1. Navigate to customer creation form
+  2. Enter "Gedung <script>alert('XSS')</script>" in Building Name
+  3. Enter valid address
+  4. Submit form
+* **Expected Result:**
+  - Script tags sanitized/stripped
+  - Either error message displayed or tags removed
+  - XSS attack prevented
+  - Database stores safe string
+* **Automation:** PARTIAL (manual security review needed)
+
+## 2.3 Boundary Value Tests
+
+**TC-008: Building Name - 0 Characters**
+* **Test ID:** TC-ISB-2997-008
+* **Priority:** P2 (High)
+* **Test Steps:** Enter 0 characters (empty), submit form
+* **Expected Result:** Form accepts (field is optional)
+* **Automation:** YES
+
+**TC-009: Building Name - 1 Character**
+* **Test ID:** TC-ISB-2997-009
+* **Priority:** P2 (High)
+* **Test Steps:** Enter 1 character ("A"), submit form
+* **Expected Result:** Form accepts
+* **Automation:** YES
+
+**TC-010: Building Name - 39 Characters**
+* **Test ID:** TC-ISB-2997-010
+* **Priority:** P2 (High)
+* **Test Steps:** Enter 39 characters, submit form
+* **Expected Result:** Form accepts
+* **Automation:** YES
+
+**TC-011: Building Name - 40 Characters**
+* **Test ID:** TC-ISB-2997-011
+* **Priority:** P1 (Critical)
+* **Test Steps:** Enter exactly 40 characters, submit form
+* **Expected Result:** Form accepts
+* **Automation:** YES
+
+**TC-012: Building Name - 41 Characters**
+* **Test ID:** TC-ISB-2997-012
+* **Priority:** P1 (Critical)
+* **Test Steps:** Enter 41 characters, submit form
+* **Expected Result:** Validation error displayed, submission blocked
+* **Automation:** YES
+
+**TC-013: Address - 1 Character**
+* **Test ID:** TC-ISB-2997-013
+* **Priority:** P2 (High)
+* **Test Steps:** Enter 1 character in required address field
+* **Expected Result:** Form accepts (meets minimum requirement)
+* **Automation:** YES
+
+**TC-014: Address - 40 Characters**
+* **Test ID:** TC-ISB-2997-014
+* **Priority:** P1 (Critical)
+* **Test Steps:** Enter exactly 40 characters
+* **Expected Result:** Form accepts
+* **Automation:** YES
+
+**TC-015: Address - 41 Characters**
+* **Test ID:** TC-ISB-2997-015
+* **Priority:** P1 (Critical)
+* **Test Steps:** Enter 41 characters
+* **Expected Result:** Validation error, submission blocked
+* **Automation:** YES
+
+## 2.4 Edge Cases and Security Tests
+
+**TC-016: Leading and Trailing Whitespace**
+* **Test ID:** TC-ISB-2997-016
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Enter "  Gedung Cyber  " (with spaces) in Building Name
+  2. Submit form
+* **Expected Result:**
+  - Whitespace auto-trimmed to "Gedung Cyber"
+  - Stored without leading/trailing spaces
+* **Automation:** YES
+
+**TC-017: SQL Injection Attempt**
+* **Test ID:** TC-ISB-2997-017
+* **Priority:** P1 (Critical - Security)
+* **Test Steps:**
+  1. Enter "'; DROP TABLE customers; --" in Building Name
+  2. Submit form
+* **Expected Result:**
+  - Input sanitized or rejected
+  - Database not compromised
+  - Error logged if malicious input detected
+* **Automation:** PARTIAL
+
+**TC-018: Unicode and Special Characters**
+* **Test ID:** TC-ISB-2997-018
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Enter "Gedung™ Café №123 €$¥" in Building Name
+  2. Submit form
+* **Expected Result:**
+  - Valid unicode characters accepted
+  - Stored correctly with UTF-8 encoding
+  - Displays correctly in views
+* **Automation:** YES
+
+**TC-019: Only Whitespace in Building Name**
+* **Test ID:** TC-ISB-2997-019
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Enter "          " (only spaces) in Building Name
+  2. Submit form
+* **Expected Result:**
+  - Treated as empty field (auto-trimmed)
+  - Form accepts (optional field)
+* **Automation:** YES
+
+**TC-020: Copy-Paste Large Text**
+* **Test ID:** TC-ISB-2997-020
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Copy 200 characters from external source
+  2. Paste into Building Name field
+  3. Observe behavior
+* **Expected Result:**
+  - Field truncates to 40 characters OR
+  - Validation error displayed immediately
+  - Form submission blocked until corrected
+* **Automation:** PARTIAL
+
+## 2.5 Internationalization (i18n) Tests
+
+**TC-021: Indonesian Language Validation Messages**
+* **Test ID:** TC-ISB-2997-021
+* **Priority:** P1 (Critical)
+* **Prerequisites:** Language set to Indonesian
+* **Test Steps:**
+  1. Set interface language to Indonesian
+  2. Trigger validation errors for both fields
+  3. Verify error messages
+* **Expected Result:**
+  - Building Name error: "Nama gedung maksimal 40 karakter"
+  - Address error: "Alamat lengkap maksimal 40 karakter"
+  - Required error: "Alamat lengkap wajib diisi"
+* **Automation:** YES
+
+**TC-022: English Language Validation Messages**
+* **Test ID:** TC-ISB-2997-022
+* **Priority:** P1 (Critical)
+* **Prerequisites:** Language set to English
+* **Test Steps:**
+  1. Set interface language to English
+  2. Trigger validation errors for both fields
+  3. Verify error messages
+* **Expected Result:**
+  - Building Name error: "Building name maximum 40 characters"
+  - Address error: "Complete address maximum 40 characters"
+  - Required error: "Complete address is required"
+* **Automation:** YES
+
+**TC-023: Language Switching with Errors Displayed**
+* **Test ID:** TC-ISB-2997-023
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Trigger validation error in Indonesian
+  2. Switch language to English while error is displayed
+  3. Observe error message update
+* **Expected Result:**
+  - Error message re-renders in English
+  - Field data unchanged
+  - Error styling remains
+* **Automation:** PARTIAL
+
+## 2.6 Non-Functional Tests
+
+**TC-024: Performance - Form Validation Response Time**
+* **Test ID:** TC-ISB-2997-024
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Measure time from blur event to validation message display
+  2. Repeat 10 times, calculate average
+* **Expected Result:**
+  - Average response time < 100ms
+  - No visible lag or delay
+* **Automation:** YES (performance monitoring)
+
+**TC-025: Accessibility - Keyboard Navigation**
+* **Test ID:** TC-ISB-2997-025
+* **Priority:** P1 (Critical)
+* **Test Steps:**
+  1. Navigate form using only keyboard (Tab, Shift+Tab)
+  2. Fill fields without mouse
+  3. Submit form with Enter key
+* **Expected Result:**
+  - Tab order logical (Building Name → Address → other fields)
+  - Focus indicators visible
+  - All interactions possible via keyboard
+* **Automation:** PARTIAL (axe-core automated, manual verification)
+
+**TC-026: Accessibility - Screen Reader Compatibility**
+* **Test ID:** TC-ISB-2997-026
+* **Priority:** P1 (Critical)
+* **Test Steps:**
+  1. Use screen reader (NVDA/JAWS/VoiceOver)
+  2. Navigate to Building Name and Address fields
+  3. Trigger validation errors
+* **Expected Result:**
+  - Field labels announced clearly
+  - "Optional" status announced for Building Name
+  - "Required" status announced for Address
+  - Error messages announced when displayed
+* **Automation:** NO (manual testing required)
+
+**TC-027: Mobile Responsiveness - Small Screen**
+* **Test ID:** TC-ISB-2997-027
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Open form on mobile device (320px width)
+  2. Enter data in both fields
+  3. Trigger validation errors
+* **Expected Result:**
+  - Fields stack vertically
+  - Error messages visible and readable
+  - Touch targets ≥44px
+  - No horizontal scrolling required
+* **Automation:** PARTIAL (viewport testing automated)
+
+**TC-028: Browser Compatibility - Chrome**
+* **Test ID:** TC-ISB-2997-028
+* **Priority:** P1 (Critical)
+* **Test Steps:** Execute all critical test cases in Chrome 90+
+* **Expected Result:** All tests pass
+* **Automation:** YES (cross-browser testing)
+
+**TC-029: Browser Compatibility - Firefox**
+* **Test ID:** TC-ISB-2997-029
+* **Priority:** P1 (Critical)
+* **Test Steps:** Execute all critical test cases in Firefox 88+
+* **Expected Result:** All tests pass
+* **Automation:** YES
+
+**TC-030: Browser Compatibility - Safari**
+* **Test ID:** TC-ISB-2997-030
+* **Priority:** P2 (High)
+* **Test Steps:** Execute all critical test cases in Safari 14+
+* **Expected Result:** All tests pass
+* **Automation:** YES
+
+## 2.7 Regression Tests
+
+**TC-031: Existing Address Functionality Unchanged**
+* **Test ID:** TC-ISB-2997-031
+* **Priority:** P1 (Critical)
+* **Test Steps:**
+  1. Fill form without using new Building Name field
+  2. Submit form
+  3. Verify existing address functionality
+* **Expected Result:**
+  - Existing address validation works as before
+  - No regression in form submission
+  - Legacy data displays correctly
+* **Automation:** YES
+
+**TC-032: Order Creation Workflow Integration**
+* **Test ID:** TC-ISB-2997-032
+* **Priority:** P1 (Critical)
+* **Test Steps:**
+  1. Create complete order with building name
+  2. Proceed through all order stages
+  3. Verify building name persists throughout
+* **Expected Result:**
+  - Building name visible in order summary
+  - Building name included in order details
+  - Building name in confirmation emails/documents
+* **Automation:** PARTIAL
+
+**TC-033: Database Integrity - Existing Records**
+* **Test ID:** TC-ISB-2997-033
+* **Priority:** P1 (Critical)
+* **Test Steps:**
+  1. Query existing customer records (pre-migration)
+  2. Verify NULL building_name handling
+  3. Display existing orders in UI
+* **Expected Result:**
+  - Existing records display correctly with NULL building_name
+  - No errors when accessing legacy data
+  - UI gracefully handles missing building name
+* **Automation:** YES
+
+## 2.8 Integration Tests
+
+**TC-034: API Integration - Create Customer with Building Name**
+* **Test ID:** TC-ISB-2997-034
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Send POST request to customer creation API
+  2. Include building_name in payload
+  3. Verify response
+* **Expected Result:**
+  - API accepts building_name parameter
+  - Response includes building_name
+  - Database record created correctly
+* **Automation:** YES
+
+**TC-035: Export Functionality - Building Name Included**
+* **Test ID:** TC-ISB-2997-035
+* **Priority:** P2 (High)
+* **Test Steps:**
+  1. Create customers with and without building names
+  2. Export customer data (CSV/Excel)
+  3. Verify export content
+* **Expected Result:**
+  - Building name column present in export
+  - Values populated correctly
+  - Empty cells for NULL values
+* **Automation:** PARTIAL
+
+## 2.9 Test Data Requirements
+
+**Valid Test Data:**
+* Building Name: "Gedung Cyber", "Menara BCA", "Plaza Indonesia", "The Energy Building"
+* Address: "Jl. Sudirman No. 123", "Jalan Gatot Subroto Kav. 56", "123 Main Street Jakarta"
+
+**Boundary Test Data:**
+* Exactly 40 chars: "Gedung Perkantoran Central Business Park" (40 chars)
+* 41 chars: "Gedung Perkantoran Central Business Parks" (41 chars)
+
+**Invalid Test Data:**
+* XSS: "<script>alert('XSS')</script>"
+* SQL Injection: "'; DROP TABLE customers; --"
+* HTML: "<b>Bold Building</b>"
+* Special chars: "!@#$%^&*()_+={}[]|\\:;'<>?,./"
+
+**Unicode Test Data:**
+* "Gedung™ Café №123"
+* "ビルディング" (Japanese)
+* "Здание" (Cyrillic)
+
+## 2.10 Automation Recommendations
+
+**Automated Tests (Playwright):**
+* All positive scenarios (TC-001 to TC-003)
+* All negative scenarios (TC-004 to TC-007)
+* All boundary tests (TC-008 to TC-015)
+* Most edge cases (TC-016, TC-018, TC-019)
+* i18n validation (TC-021, TC-022)
+* Browser compatibility (TC-028 to TC-030)
+* Regression tests (TC-031, TC-033)
+* API integration (TC-034)
+
+**Manual Tests Required:**
+* Accessibility with screen readers (TC-026)
+* Complex security scenarios (TC-017)
+* Visual design review
+* Exploratory testing
+
+**Partial Automation:**
+* Copy-paste behavior (TC-020)
+* Language switching dynamics (TC-023)
+* Mobile responsiveness (TC-027) - viewport automated, UX manual
+* Export validation (TC-035) - file generation automated, content review manual
+
+## 2.11 Playwright Test Examples
+
+```javascript
+// TC-001: Valid Building Name and Address Entry
+import { test, expect } from '@playwright/test';
+
+test('TC-001: Valid building name and address entry', async ({ page }) => {
+  await page.goto('/portal/sales/customers/new');
+
+  // Fill building name
+  await page.fill('[name="customer[building_name]"]', 'Gedung Cyber');
+
+  // Fill address
+  await page.fill('[name="customer[address]"]', 'Jl. Sudirman No. 123');
+
+  // Fill other required fields
+  await page.fill('[name="customer[name]"]', 'Test Customer');
+  await page.fill('[name="customer[phone]"]', '081234567890');
+
+  // Submit form
+  await page.click('button[type="submit"]');
+
+  // Assert success
+  await expect(page.locator('.alert-success')).toBeVisible();
+  await expect(page.locator('.alert-success')).toContainText('Customer created successfully');
+});
+
+// TC-002: Optional building name left empty
+test('TC-002: Optional building name left empty', async ({ page }) => {
+  await page.goto('/portal/sales/customers/new');
+
+  // Leave building name empty
+  await page.fill('[name="customer[building_name]"]', '');
+
+  // Fill required address
+  await page.fill('[name="customer[address]"]', 'Jl. Gatot Subroto No. 45');
+
+  // Fill other required fields
+  await page.fill('[name="customer[name]"]', 'Test Customer 2');
+  await page.fill('[name="customer[phone]"]', '081234567891');
+
+  // Submit form
+  await page.click('button[type="submit"]');
+
+  // Assert success (no error for empty optional field)
+  await expect(page.locator('.alert-success')).toBeVisible();
+  await expect(page.locator('.error-building-name')).not.toBeVisible();
+});
+
+// TC-004: Building name exceeds 40 characters (Indonesian)
+test('TC-004: Building name exceeds 40 characters', async ({ page }) => {
+  await page.goto('/portal/sales/customers/new?locale=id');
+
+  // Enter 41 characters
+  const longText = 'A'.repeat(41);
+  await page.fill('[name="customer[building_name]"]', longText);
+
+  // Blur to trigger validation
+  await page.press('[name="customer[building_name]"]', 'Tab');
+
+  // Assert error message
+  await expect(page.locator('.error-building-name')).toBeVisible();
+  await expect(page.locator('.error-building-name')).toContainText('Nama gedung maksimal 40 karakter');
+
+  // Assert field styling
+  await expect(page.locator('[name="customer[building_name]"]')).toHaveClass(/border-red/);
+});
+
+// TC-005: Address exceeds 40 characters (English)
+test('TC-005: Address exceeds 40 characters', async ({ page }) => {
+  await page.goto('/portal/sales/customers/new?locale=en');
+
+  // Enter 45 characters
+  const longAddress = 'B'.repeat(45);
+  await page.fill('[name="customer[address]"]', longAddress);
+
+  // Blur to trigger validation
+  await page.press('[name="customer[address]"]', 'Tab');
+
+  // Assert error message
+  await expect(page.locator('.error-address')).toBeVisible();
+  await expect(page.locator('.error-address')).toContainText('Complete address maximum 40 characters');
+});
+
+// TC-011: Boundary test - exactly 40 characters
+test('TC-011: Building name exactly 40 characters', async ({ page }) => {
+  await page.goto('/portal/sales/customers/new');
+
+  // Enter exactly 40 characters
+  const exactText = 'Gedung Perkantoran Central Business Park'; // 40 chars
+  await page.fill('[name="customer[building_name]"]', exactText);
+
+  // Fill other fields
+  await page.fill('[name="customer[address]"]', 'Jl. Test No. 1');
+  await page.fill('[name="customer[name]"]', 'Test Customer');
+  await page.fill('[name="customer[phone]"]', '081234567890');
+
+  // Submit
+  await page.click('button[type="submit"]');
+
+  // Assert success
+  await expect(page.locator('.alert-success')).toBeVisible();
+  await expect(page.locator('.error-building-name')).not.toBeVisible();
+});
+
+// TC-021: Indonesian language validation
+test('TC-021: Indonesian language validation messages', async ({ page }) => {
+  await page.goto('/portal/sales/customers/new?locale=id');
+
+  // Trigger building name error
+  await page.fill('[name="customer[building_name]"]', 'A'.repeat(41));
+  await page.press('[name="customer[building_name]"]', 'Tab');
+  await expect(page.locator('.error-building-name')).toContainText('Nama gedung maksimal 40 karakter');
+
+  // Trigger address error
+  await page.fill('[name="customer[address]"]', 'B'.repeat(41));
+  await page.press('[name="customer[address]"]', 'Tab');
+  await expect(page.locator('.error-address')).toContainText('Alamat lengkap maksimal 40 karakter');
+
+  // Trigger required error
+  await page.fill('[name="customer[address]"]', '');
+  await page.click('button[type="submit"]');
+  await expect(page.locator('.error-address')).toContainText('Alamat lengkap wajib diisi');
+});
+
+// TC-025: Keyboard navigation accessibility
+test('TC-025: Keyboard navigation', async ({ page }) => {
+  await page.goto('/portal/sales/customers/new');
+
+  // Tab to building name
+  await page.keyboard.press('Tab');
+  await expect(page.locator('[name="customer[building_name]"]')).toBeFocused();
+
+  // Type in building name
+  await page.keyboard.type('Gedung Test');
+
+  // Tab to address
+  await page.keyboard.press('Tab');
+  await expect(page.locator('[name="customer[address]"]')).toBeFocused();
+
+  // Type in address
+  await page.keyboard.type('Jl. Test No. 123');
+
+  // Fill other fields and submit with Enter
+  await page.fill('[name="customer[name]"]', 'Test Customer');
+  await page.fill('[name="customer[phone]"]', '081234567890');
+  await page.keyboard.press('Enter');
+
+  // Assert form submitted
+  await expect(page.locator('.alert-success')).toBeVisible();
+});
+```
+
+## 2.12 Test Coverage Summary
+
+| Test Category | Test Count | Automation | Priority |
+|---------------|------------|------------|----------|
+| Positive Scenarios | 3 | 100% | P1 |
+| Negative Scenarios | 4 | 75% | P1 |
+| Boundary Tests | 8 | 100% | P1-P2 |
+| Edge Cases | 5 | 80% | P1-P2 |
+| Internationalization | 3 | 66% | P1-P2 |
+| Non-Functional | 7 | 57% | P1-P2 |
+| Regression | 3 | 66% | P1 |
+| Integration | 2 | 50% | P2 |
+| **Total** | **35** | **74%** | **Mixed** |
+
+**Coverage Metrics:**
+* Critical (P1) tests: 20 (57%)
+* High (P2) tests: 15 (43%)
+* Automated tests: 26 (74%)
+* Manual tests: 4 (11%)
+* Partial automation: 5 (15%)
+
+---
+
+# 3. TECHNICAL REQUIREMENTS (Senior Rails Developer Perspective)
+
+## 3.1 Architecture and Design Patterns
+
+**Design Pattern Selection:**
+1. **MVC Pattern:** Standard Rails architecture
+2. **Form Object Pattern:** Use for complex form validation (optional, if form becomes complex)
+3. **Service Object Pattern:** For business logic related to customer address processing (if needed)
+4. **Decorator Pattern:** For displaying building name in views (optional)
+5. **I18n Pattern:** Rails internationalization for bilingual support
+
+**Architectural Decisions:**
+* Keep validation logic simple - use Rails built-in validators
+* Client-side validation using Stimulus controllers for UX
+* Server-side validation as source of truth (never trust client)
+* Database-level constraints for data integrity
+* RESTful principles for API endpoints (if applicable)
+
+## 3.2 Database Schema Changes
+
+**Migration Strategy:**
+
+```ruby
+# db/migrate/20251014_add_building_name_to_customers.rb
+class AddBuildingNameToCustomers < ActiveRecord::Migration[8.0]
+  def up
+    # Use safe migration practices for zero-downtime deployment
+    add_column :customers, :building_name, :string, limit: 40, null: true
+    add_index :customers, :building_name, algorithm: :concurrently, if_not_exists: true
+
+    # Add comment for documentation
+    change_column_comment :customers, :building_name,
+      "Optional building name for customer address (max 40 characters)"
+  end
+
+  def down
+    remove_index :customers, :building_name, algorithm: :concurrently, if_exists: true
+    remove_column :customers, :building_name
+  end
+end
+```
+
+**Schema Changes:**
+
+| Table | Column | Type | Constraints | Index |
+|-------|--------|------|-------------|-------|
+| customers | building_name | VARCHAR(40) | NULL, max_length: 40 | Non-unique index |
+
+**Zero-Downtime Migration Checklist:**
+- ✓ Use `add_column` with `null: true` (no default value to avoid table lock)
+- ✓ Add index `concurrently` to avoid blocking writes
+- ✓ Use `if_not_exists` / `if_exists` for idempotency
+- ✓ No foreign key constraints that would lock tables
+- ✓ Run during low-traffic window (optional, but recommended)
+- ✓ Test migration in staging environment first
+- ✓ Prepare rollback script
+
+**Rollback Plan:**
+```bash
+# If migration needs to be rolled back
+bin/rails db:rollback
+
+# Or specific version
+bin/rails db:migrate:down VERSION=20251014
+
+# Verify data integrity after rollback
+bin/rails runner "puts Customer.count"
+```
+
+## 3.3 Model Changes
+
+**Customer Model:**
+
+```ruby
+# app/models/customer.rb
+class Customer < ApplicationRecord
+  # Associations
+  belongs_to :ide_user, optional: true
+  belongs_to :portal_user, optional: true
+  has_many :orders, dependent: :destroy
+
+  # Validations
+  validates :address, presence: true, length: { maximum: 40 }
+  validates :building_name, length: { maximum: 40 }, allow_blank: true
+
+  # Sanitization callbacks
+  before_validation :strip_whitespace
+  before_save :sanitize_inputs
+
+  # Scopes
+  scope :with_building_name, -> { where.not(building_name: nil) }
+  scope :without_building_name, -> { where(building_name: nil) }
+
+  # Instance methods
+  def full_address
+    [building_name, address].compact.join(', ')
+  end
+
+  def has_building_name?
+    building_name.present?
+  end
+
+  private
+
+  def strip_whitespace
+    self.building_name = building_name&.strip
+    self.address = address&.strip
+  end
+
+  def sanitize_inputs
+    # Remove potentially dangerous HTML/script tags
+    self.building_name = ActionController::Base.helpers.sanitize(building_name) if building_name.present?
+    self.address = ActionController::Base.helpers.sanitize(address) if address.present?
+  end
+end
+```
+
+**Validation Strategy:**
+* **Presence:** Address required, building_name optional
+* **Length:** Both fields max 40 characters
+* **Sanitization:** Strip whitespace, remove HTML tags
+* **Database constraints:** VARCHAR(40) enforces at DB level
+
+## 3.4 Controller Changes
+
+**Sales::CustomersController:**
+
+```ruby
+# app/controllers/sales/customers_controller.rb
+module Sales
+  class CustomersController < ApplicationController
+    before_action :authenticate_portal_user!
+    before_action :set_customer, only: [:show, :edit, :update, :destroy]
+
+    def new
+      @customer = Customer.new
+    end
+
+    def create
+      @customer = Customer.new(customer_params)
+
+      if @customer.save
+        flash[:success] = t('customers.created_successfully')
+        redirect_to sales_customer_path(@customer)
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
+
+    def edit
+      # Existing code
+    end
+
+    def update
+      if @customer.update(customer_params)
+        flash[:success] = t('customers.updated_successfully')
+        redirect_to sales_customer_path(@customer)
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
+    private
+
+    def customer_params
+      params.require(:customer).permit(
+        :name,
+        :phone,
+        :email,
+        :building_name,  # NEW: Add building_name to permitted params
+        :address,
+        :city,
+        :postal_code,
+        # ... other existing attributes
+      )
+    end
+
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
+  end
+end
+```
+
+## 3.5 View Changes
+
+**Form Partial:**
+
+```erb
+<%# app/views/sales/customers/_form.html.erb %>
+<%= form_with model: [:sales, @customer], local: true, class: "space-y-4" do |f| %>
+
+  <%# ... existing fields ... %>
+
+  <%# NEW: Building Name Field (Optional) %>
+  <div class="form-group">
+    <%= f.label :building_name, class: "block text-sm font-medium text-gray-700" do %>
+      <%= t('.building_name') %>
+      <span class="text-gray-500 text-xs font-normal">(<%= t('common.optional') %>)</span>
+    <% end %>
+
+    <%= f.text_field :building_name,
+        maxlength: 40,
+        class: "mt-1 block w-full rounded-md shadow-sm #{'border-red-500' if @customer.errors[:building_name].any?}",
+        placeholder: t('.building_name_placeholder'),
+        data: {
+          controller: "character-counter validation",
+          validation_max_length_value: 40,
+          validation_field_name_value: "building_name",
+          action: "blur->validation#validateLength input->character-counter#update"
+        } %>
+
+    <%# Character Counter %>
+    <div class="flex justify-between mt-1">
+      <div>
+        <% if @customer.errors[:building_name].any? %>
+          <p class="text-sm text-red-600 flex items-center">
+            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            <%= @customer.errors[:building_name].first %>
+          </p>
+        <% end %>
+      </div>
+      <span class="text-sm text-gray-500" data-character-counter-target="counter">0/40</span>
+    </div>
+  </div>
+
+  <%# Address Field (Required) %>
+  <div class="form-group">
+    <%= f.label :address, class: "block text-sm font-medium text-gray-700" do %>
+      <%= t('.address') %>
+      <span class="text-red-500">*</span>
+    <% end %>
+
+    <%= f.text_field :address,
+        maxlength: 40,
+        required: true,
+        class: "mt-1 block w-full rounded-md shadow-sm #{'border-red-500' if @customer.errors[:address].any?}",
+        placeholder: t('.address_placeholder'),
+        data: {
+          controller: "character-counter validation",
+          validation_max_length_value: 40,
+          validation_field_name_value: "address",
+          action: "blur->validation#validateLength input->character-counter#update"
+        } %>
+
+    <%# Character Counter and Error Message %>
+    <div class="flex justify-between mt-1">
+      <div>
+        <% if @customer.errors[:address].any? %>
+          <p class="text-sm text-red-600 flex items-center">
+            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            <%= @customer.errors[:address].first %>
+          </p>
+        <% end %>
+      </div>
+      <span class="text-sm text-gray-500" data-character-counter-target="counter">0/40</span>
+    </div>
+  </div>
+
+  <%# ... rest of form ... %>
+
+  <div class="flex justify-end space-x-2">
+    <%= link_to t('common.cancel'), sales_customers_path, class: "btn btn-secondary" %>
+    <%= f.submit t('common.submit'), class: "btn btn-primary" %>
+  </div>
+<% end %>
+```
+
+**Show View:**
+
+```erb
+<%# app/views/sales/customers/show.html.erb %>
+<div class="customer-details">
+  <%# ... existing fields ... %>
+
+  <% if @customer.building_name.present? %>
+    <div class="detail-row">
+      <dt class="font-medium text-gray-500"><%= t('.building_name') %></dt>
+      <dd class="mt-1 text-gray-900"><%= @customer.building_name %></dd>
+    </div>
+  <% end %>
+
+  <div class="detail-row">
+    <dt class="font-medium text-gray-500"><%= t('.address') %></dt>
+    <dd class="mt-1 text-gray-900"><%= @customer.address %></dd>
+  </div>
+
+  <%# Or use the full_address method %>
+  <div class="detail-row">
+    <dt class="font-medium text-gray-500"><%= t('.full_address') %></dt>
+    <dd class="mt-1 text-gray-900"><%= @customer.full_address %></dd>
+  </div>
+
+  <%# ... rest of details ... %>
+</div>
+```
+
+## 3.6 Stimulus JavaScript Controllers
+
+**Character Counter Controller:**
+
+```javascript
+// app/javascript/controllers/character_counter_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = ["counter"]
+  static values = {
+    maxLength: { type: Number, default: 40 }
+  }
+
+  connect() {
+    this.update()
+  }
+
+  update() {
+    const input = this.element.querySelector('input, textarea')
+    if (!input) return
+
+    const currentLength = input.value.length
+    const maxLength = this.maxLengthValue
+
+    // Update counter text
+    if (this.hasCounterTarget) {
+      this.counterTarget.textContent = `${currentLength}/${maxLength}`
+
+      // Change color if exceeding limit
+      if (currentLength > maxLength) {
+        this.counterTarget.classList.add('text-red-600')
+        this.counterTarget.classList.remove('text-gray-500')
+      } else {
+        this.counterTarget.classList.add('text-gray-500')
+        this.counterTarget.classList.remove('text-red-600')
+      }
+    }
+  }
+}
+```
+
+**Validation Controller:**
+
+```javascript
+// app/javascript/controllers/validation_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static values = {
+    maxLength: { type: Number, default: 40 },
+    fieldName: String
+  }
+
+  validateLength(event) {
+    const input = event.target
+    const value = input.value.trim()
+    const maxLength = this.maxLengthValue
+
+    // Remove existing error messages
+    this.clearErrors(input)
+
+    // Validate length
+    if (value.length > maxLength) {
+      this.showError(input, this.getErrorMessage('max_length'))
+      input.classList.add('border-red-500')
+      input.classList.remove('border-gray-300')
+    } else {
+      input.classList.remove('border-red-500')
+      input.classList.add('border-gray-300')
+    }
+
+    // Validate required (only for address field)
+    if (this.fieldNameValue === 'address' && value.length === 0) {
+      this.showError(input, this.getErrorMessage('required'))
+      input.classList.add('border-red-500')
+    }
+  }
+
+  clearErrors(input) {
+    const errorContainer = input.parentElement.querySelector('.validation-error')
+    if (errorContainer) {
+      errorContainer.remove()
+    }
+  }
+
+  showError(input, message) {
+    const errorDiv = document.createElement('div')
+    errorDiv.className = 'validation-error text-sm text-red-600 flex items-center mt-1'
+    errorDiv.innerHTML = `
+      <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+      </svg>
+      ${message}
+    `
+
+    const counterContainer = input.parentElement.querySelector('.flex.justify-between')
+    if (counterContainer) {
+      counterContainer.querySelector('div').appendChild(errorDiv)
+    }
+  }
+
+  getErrorMessage(type) {
+    const locale = document.documentElement.lang || 'en'
+    const fieldName = this.fieldNameValue
+
+    const messages = {
+      en: {
+        building_name: {
+          max_length: 'Building name maximum 40 characters'
+        },
+        address: {
+          max_length: 'Complete address maximum 40 characters',
+          required: 'Complete address is required'
+        }
+      },
+      id: {
+        building_name: {
+          max_length: 'Nama gedung maksimal 40 karakter'
+        },
+        address: {
+          max_length: 'Alamat lengkap maksimal 40 karakter',
+          required: 'Alamat lengkap wajib diisi'
+        }
+      }
+    }
+
+    return messages[locale]?.[fieldName]?.[type] || messages.en[fieldName][type]
+  }
+}
+```
+
+## 3.7 Internationalization (I18n)
+
+**English Locale:**
+
+```yaml
+# config/locales/en.yml
+en:
+  sales:
+    customers:
+      form:
+        building_name: "Building Name"
+        building_name_placeholder: "Example: Cyber Building, BCA Tower"
+        address: "Complete Address"
+        address_placeholder: "Example: 123 Sudirman Street, RT 01/RW 02"
+      show:
+        building_name: "Building Name"
+        address: "Address"
+        full_address: "Full Address"
+      created_successfully: "Customer created successfully"
+      updated_successfully: "Customer updated successfully"
+
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            building_name:
+              too_long: "Building name maximum 40 characters"
+              invalid: "Building name contains invalid characters"
+            address:
+              blank: "Complete address is required"
+              too_long: "Complete address maximum 40 characters"
+              invalid: "Address contains invalid characters"
+
+  common:
+    optional: "optional"
+    required: "required"
+    submit: "Submit"
+    cancel: "Cancel"
+```
+
+**Indonesian Locale:**
+
+```yaml
+# config/locales/id.yml
+id:
+  sales:
+    customers:
+      form:
+        building_name: "Nama Gedung"
+        building_name_placeholder: "Contoh: Gedung Cyber, Menara BCA"
+        address: "Alamat Lengkap"
+        address_placeholder: "Contoh: Jl. Sudirman No. 123, RT 01/RW 02"
+      show:
+        building_name: "Nama Gedung"
+        address: "Alamat"
+        full_address: "Alamat Lengkap"
+      created_successfully: "Customer berhasil dibuat"
+      updated_successfully: "Customer berhasil diperbarui"
+
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            building_name:
+              too_long: "Nama gedung maksimal 40 karakter"
+              invalid: "Nama gedung mengandung karakter tidak valid"
+            address:
+              blank: "Alamat lengkap wajib diisi"
+              too_long: "Alamat lengkap maksimal 40 karakter"
+              invalid: "Alamat mengandung karakter tidak valid"
+
+  common:
+    optional: "opsional"
+    required: "wajib"
+    submit: "Kirim"
+    cancel: "Batal"
+```
+
+## 3.8 Testing Strategy with RSpec
+
+**Model Tests:**
+
+```ruby
+# spec/models/customer_spec.rb
+require 'rails_helper'
+
+RSpec.describe Customer, type: :model do
+  describe 'validations' do
+    context 'building_name' do
+      it 'is optional' do
+        customer = build(:customer, building_name: nil)
+        expect(customer).to be_valid
+      end
+
+      it 'allows valid building name' do
+        customer = build(:customer, building_name: 'Gedung Cyber')
+        expect(customer).to be_valid
+      end
+
+      it 'rejects building name exceeding 40 characters' do
+        customer = build(:customer, building_name: 'A' * 41)
+        expect(customer).not_to be_valid
+        expect(customer.errors[:building_name]).to include('is too long (maximum is 40 characters)')
+      end
+
+      it 'accepts building name with exactly 40 characters' do
+        customer = build(:customer, building_name: 'A' * 40)
+        expect(customer).to be_valid
+      end
+
+      it 'strips leading and trailing whitespace' do
+        customer = create(:customer, building_name: '  Gedung Cyber  ')
+        expect(customer.building_name).to eq('Gedung Cyber')
+      end
+
+      it 'sanitizes HTML tags' do
+        customer = create(:customer, building_name: '<script>alert("XSS")</script>Gedung')
+        expect(customer.building_name).not_to include('<script>')
+      end
+    end
+
+    context 'address' do
+      it 'is required' do
+        customer = build(:customer, address: nil)
+        expect(customer).not_to be_valid
+        expect(customer.errors[:address]).to include("can't be blank")
+      end
+
+      it 'rejects address exceeding 40 characters' do
+        customer = build(:customer, address: 'B' * 41)
+        expect(customer).not_to be_valid
+        expect(customer.errors[:address]).to include('is too long (maximum is 40 characters)')
+      end
+    end
+  end
+
+  describe '#full_address' do
+    it 'combines building name and address when both present' do
+      customer = build(:customer, building_name: 'Gedung Cyber', address: 'Jl. Sudirman No. 123')
+      expect(customer.full_address).to eq('Gedung Cyber, Jl. Sudirman No. 123')
+    end
+
+    it 'returns only address when building name is absent' do
+      customer = build(:customer, building_name: nil, address: 'Jl. Sudirman No. 123')
+      expect(customer.full_address).to eq('Jl. Sudirman No. 123')
+    end
+  end
+end
+```
+
+**Controller Tests:**
+
+```ruby
+# spec/requests/sales/customers_spec.rb
+require 'rails_helper'
+
+RSpec.describe 'Sales::Customers', type: :request do
+  let(:sales_user) { create(:portal_user, :sales) }
+
+  before do
+    sign_in sales_user
+  end
+
+  describe 'POST /portal/sales/customers' do
+    context 'with valid building name and address' do
+      let(:valid_params) do
+        {
+          customer: {
+            name: 'Test Customer',
+            phone: '081234567890',
+            email: 'test@example.com',
+            building_name: 'Gedung Cyber',
+            address: 'Jl. Sudirman No. 123',
+            city: 'Jakarta',
+            postal_code: '12345'
+          }
+        }
+      end
+
+      it 'creates a new customer' do
+        expect {
+          post sales_customers_path, params: valid_params
+        }.to change(Customer, :count).by(1)
+
+        customer = Customer.last
+        expect(customer.building_name).to eq('Gedung Cyber')
+        expect(customer.address).to eq('Jl. Sudirman No. 123')
+        expect(response).to redirect_to(sales_customer_path(customer))
+      end
+    end
+
+    context 'without building name (optional)' do
+      let(:params_without_building) do
+        {
+          customer: {
+            name: 'Test Customer',
+            phone: '081234567890',
+            building_name: '',
+            address: 'Jl. Sudirman No. 123',
+            city: 'Jakarta'
+          }
+        }
+      end
+
+      it 'creates customer successfully' do
+        expect {
+          post sales_customers_path, params: params_without_building
+        }.to change(Customer, :count).by(1)
+
+        customer = Customer.last
+        expect(customer.building_name).to be_nil
+        expect(response).to have_http_status(:redirect)
+      end
+    end
+  end
+end
+```
+
+**Factory Updates:**
+
+```ruby
+# spec/factories/customers.rb
+FactoryBot.define do
+  factory :customer do
+    name { Faker::Name.name }
+    phone { Faker::PhoneNumber.phone_number }
+    email { Faker::Internet.email }
+    building_name { ['Gedung Cyber', 'Menara BCA', 'Plaza Indonesia', nil].sample }
+    address { Faker::Address.street_address }
+    city { 'Jakarta' }
+    postal_code { Faker::Address.zip_code }
+
+    trait :with_building_name do
+      building_name { 'Gedung Cyber' }
+    end
+
+    trait :without_building_name do
+      building_name { nil }
+    end
+  end
+end
+```
+
+## 3.9 Deployment and Rollback Strategy
+
+**Deployment Steps:**
+
+```bash
+# 1. Run tests locally
+bin/rspec
+bin/rubocop
+
+# 2. Create feature branch
+git checkout -b feature/ISB-2997-add-building-name
+
+# 3. Commit changes
+git add .
+git commit -m "feat(customers): add optional building name field
+
+- Add building_name column to customers table
+- Implement 40-character validation for building_name and address
+- Add bilingual error messages (ID/EN)
+- Create Stimulus controllers for character counting and validation
+- Update views, models, controllers
+- Add comprehensive tests with 95%+ coverage
+
+Closes ISB-2997"
+
+# 4. Push and create merge request
+git push origin feature/ISB-2997-add-building-name
+
+# 5. Deploy to staging (after merge)
+# Run migration on staging
+RAILS_ENV=staging bin/rails db:migrate
+
+# 6. Deploy to production (after approval)
+RAILS_ENV=production bin/rails db:migrate
+```
+
+**Rollback Plan:**
+
+```bash
+# If issues detected in production:
+RAILS_ENV=production bin/rails db:rollback
+
+# Or specific version
+RAILS_ENV=production bin/rails db:migrate:down VERSION=20251014
+
+# Verify rollback
+bin/rails runner "puts Customer.column_names.include?('building_name')"
+```
+
+## 3.10 Implementation Checklist
+
+**Phase 1: Database and Model**
+- ✓ Create migration for building_name column
+- ✓ Add validations to Customer model
+- ✓ Add helper methods (full_address, has_building_name?)
+- ✓ Add scopes for querying
+- ✓ Implement sanitization callbacks
+- ✓ Write model tests
+
+**Phase 2: Backend**
+- ✓ Update CustomersController to permit building_name
+- ✓ Add error handling
+- ✓ Write controller tests
+
+**Phase 3: Frontend**
+- ✓ Update form view with building_name field
+- ✓ Add field labels and placeholders
+- ✓ Add error message containers
+- ✓ Update show view to display building_name
+
+**Phase 4: JavaScript**
+- ✓ Create CharacterCounterController
+- ✓ Create ValidationController
+- ✓ Wire up Stimulus data attributes
+
+**Phase 5: Internationalization**
+- ✓ Add English translations
+- ✓ Add Indonesian translations
+- ✓ Test language switching
+
+**Phase 6: Testing**
+- ✓ Write comprehensive unit tests
+- ✓ Write integration tests
+- ✓ Verify 80%+ code coverage
+- ✓ Run full test suite
+
+**Phase 7: Security and Performance**
+- ✓ Run Brakeman security scan
+- ✓ Test XSS prevention
+- ✓ Verify authorization
+
+**Phase 8: Deployment**
+- ✓ Deploy to staging
+- ✓ Manual testing on staging
+- ✓ Deploy to production
+- ✓ Monitor for issues
+
+---
+
+# SUMMARY
+
+This comprehensive specification provides:
+
+1. **Acceptance Criteria:** User stories, scenarios, functional requirements, business rules, UX considerations, and definition of done
+2. **Test Cases:** 35 detailed test cases covering all scenarios with 74% automation coverage and Playwright examples
+3. **Technical Requirements:** Complete implementation guide with database migrations, model/controller/view changes, Stimulus controllers, i18n setup, comprehensive testing strategy with RSpec examples, and deployment procedures
+
+The implementation follows Rails 8 best practices, ensures zero-downtime deployment, maintains 80%+ test coverage, supports bilingual UX, and includes robust security measures.

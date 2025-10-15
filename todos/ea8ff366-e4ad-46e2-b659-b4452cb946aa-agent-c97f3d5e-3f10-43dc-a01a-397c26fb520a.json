@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Fix empty devise/registrations_controller.rb that's causing Zeitwerk::NameError",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Ensure custom registrations controller inherits properly from Devise",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Verify all registration views exist and are properly configured",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Run registration specs to confirm fixes work",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Fix deprecation warnings about :unprocessable_entity status code in Devise configuration",
+    "status": "completed",
+    "id": "5"
+  }
+]

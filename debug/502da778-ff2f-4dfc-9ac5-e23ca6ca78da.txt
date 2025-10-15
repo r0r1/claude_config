@@ -1,0 +1,69 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/code/projects/sportifa/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 59 allow rule(s) to destination 'localSettings': ["Bash(bin/dev:*)","Bash(curl:*)","Bash(rails:*)","Bash(mkdir:*)","Bash(pkill:*)","Bash(rm:*)","Bash(kill:*)","Bash(mv:*)","Bash(find:*)","Bash(for file in /Users/rorikurniadi/code/projects/sportifa/app/controllers/owner/*.rb)","Bash(do sed -i '' 's/class Admin::/class Owner::/g' \"$file\")","Bash(done)","Bash(do sed -i '' 's/require_community_admin/require_owner/g' \"$file\")","Bash(sed:*)","Bash(bundle exec rspec:*)","Bash(rspec:*)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/registrations_spec.rb)","Bash(RAILS_ENV=test bundle exec rspec)","Bash(RAILS_ENV=test bundle exec rspec spec/models/user_spec.rb -l 487)","Bash(RAILS_ENV=test bundle exec rspec spec/models/user_profile_spec.rb:219 spec/models/user_profile_spec.rb:230 spec/models/user_profile_spec.rb:358)","Bash(RAILS_ENV=test bundle exec rspec spec/models/user_profile_spec.rb:358)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/sessions_spec.rb -fd)","Bash(ruby:*)","Bash(RAILS_ENV=test bundle exec rspec spec/models/user_spec.rb -e \"email confirmation and verification\" -fd)","Bash(brakeman:*)","Bash(grep:*)","Bash(RAILS_ENV=test bundle exec rspec --version)","Bash(RAILS_ENV=test bundle exec rspec --format progress)","Bash(RAILS_ENV=test bundle exec rspec --format progress --no-profile)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:68 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:96 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/sessions_spec.rb:25 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:100 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb --format progress --dry-run)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:16 spec/requests/owner/sport_classes_spec.rb:44 spec/requests/owner/sport_classes_spec.rb:52 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/models/sport_class_spec.rb:245 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/models/sport_class_spec.rb:271 spec/models/sport_class_spec.rb:292 spec/models/sport_class_spec.rb:311 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/models/sport_class_spec.rb:421 -f progress)","Bash(RAILS_ENV=test bundle exec rspec spec/models/sport_class_spec.rb:429 spec/models/sport_class_spec.rb:438 spec/models/sport_class_spec.rb:448 -f progress)","Bash(RAILS_ENV=test bundle exec rspec --format progress --fail-fast)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/registrations_spec.rb --format progress)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/registrations_spec.rb spec/requests/sessions_spec.rb --format documentation)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:25 --format documentation)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:124 --format documentation)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:125 --format documentation)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:52 --format documentation)","Bash(RAILS_ENV=test bundle exec rspec --format documentation -e \"let.*member.*create.*user.*member.*verified.*member.*example.*com\" spec/requests/owner/sport_classes_spec.rb)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/owner/sport_classes_spec.rb:104 --format documentation)","Bash(RAILS_ENV=test bundle exec rails routes)","Bash(RAILS_ENV=test bundle exec rspec spec/models/user_profile_spec.rb:219 --format documentation)","Bash(RAILS_ENV=test bundle exec rspec spec/models/user_spec.rb:605 --format documentation)","Bash(RAILS_ENV=test bundle exec rspec spec/models/user_spec.rb:805 --format documentation)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/registrations_spec.rb:257 --format documentation)","Bash(RAILS_ENV=test ruby test_auth_debug.rb)","Bash(echo $RAILS_ENV)","Bash(RAILS_ENV=test bundle exec rspec spec/requests/sessions_spec.rb:25 --format documentation)","Bash(RAILS_ENV=test bundle exec rails runner \"puts Rails.env\")","Bash(bundle exec rails runner:*)"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/code/projects/sportifa/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760175391847-97f325.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/502da778-ff2f-4dfc-9ac5-e23ca6ca78da-agent-502da778-ff2f-4dfc-9ac5-e23ca6ca78da.json.tmp.56459.1760175391851
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/502da778-ff2f-4dfc-9ac5-e23ca6ca78da-agent-502da778-ff2f-4dfc-9ac5-e23ca6ca78da.json.tmp.56459.1760175391851 to /Users/rorikurniadi/.claude/todos/502da778-ff2f-4dfc-9ac5-e23ca6ca78da-agent-502da778-ff2f-4dfc-9ac5-e23ca6ca78da.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/502da778-ff2f-4dfc-9ac5-e23ca6ca78da-agent-502da778-ff2f-4dfc-9ac5-e23ca6ca78da.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.56459.1760175392504
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42658 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.56459.1760175392504 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.56459.1760175392509
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42658 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.56459.1760175392509 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.56459.1760175392696
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42658 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.56459.1760175392696 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[ERROR] AxiosError: Error
+    at LC (/$bunfs/root/claude:27:1142)
+    at <anonymous> (/$bunfs/root/claude:32:9845)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:862:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2146)
+    at processTicksAndRejections (native:7:39)
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.vscode/extensions/anthropic.claude-code-2.0.13-darwin-arm64/resources/native-binary/claude)
+[DEBUG] Shell snapshot created successfully (49138 bytes)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.56459.1760175394569
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 43407 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.56459.1760175394569 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] rg error (signal=undefined, code=ABORT_ERR, stderr: ), 0 results
+[ERROR] AbortError: AbortError: The operation was aborted.
+    at unknown
+    at abortChildProcess (node:child_process:937:42)
+    at onAbortListener2 (node:child_process:35:24)
+    at abort (unknown)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for SessionEnd with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Cleaned up session snapshot: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760175391847-97f325.sh

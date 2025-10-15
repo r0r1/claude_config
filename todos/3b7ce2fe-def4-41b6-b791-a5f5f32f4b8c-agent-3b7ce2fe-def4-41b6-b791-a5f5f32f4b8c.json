@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Fix CMS migrations similar to SSO",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Start CMS service on port 3002",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Verify all services are working",
+    "status": "completed",
+    "id": "3"
+  }
+]

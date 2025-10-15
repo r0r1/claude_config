@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/mcp list:*)",
+      "WebFetch(domain:ioh-smb.atlassian.net)",
+      "Bash(git fetch:*)",
+      "Bash(mcp list:*)",
+      "Bash(git log:*)",
+      "Read(//Users/rorikurniadi/.config/**)",
+      "Read(//Users/rorikurniadi/.claude/**)",
+      "Bash(test:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

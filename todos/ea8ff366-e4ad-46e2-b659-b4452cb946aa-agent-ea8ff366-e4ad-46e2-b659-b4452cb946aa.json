@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Fix desktop user menu Profile link to connect to profile management",
+    "status": "completed",
+    "id": "7"
+  },
+  {
+    "content": "Fix mobile profile menu Edit Profil link to connect to profile management",
+    "status": "completed",
+    "id": "8"
+  },
+  {
+    "content": "Add Settings link functionality",
+    "status": "completed",
+    "id": "9"
+  }
+]

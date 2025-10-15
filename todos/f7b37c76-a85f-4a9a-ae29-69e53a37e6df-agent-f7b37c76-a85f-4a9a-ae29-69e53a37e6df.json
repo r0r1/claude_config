@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Configure Rails i18n for Bahasa Indonesia",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Create Indonesian locale file",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Update application layout with Indonesian text",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Translate home page to Indonesian",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Translate authentication forms to Indonesian",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Update tests for Indonesian text",
+    "status": "completed",
+    "id": "6"
+  }
+]

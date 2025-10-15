@@ -1,0 +1,118 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 43 allow rule(s) to destination 'localSettings': ["Bash(asdf install:*)","Bash(brew uninstall:*)","Bash(rm:*)","Bash(asdf global:*)","Bash(node:*)","Bash(exec zsh)","Bash(asdf current:*)","Bash(asdf reshim:*)","Bash(source:*)","Bash(/usr/local/bin/npx --version)","Bash(/usr/local/bin/node:*)","Bash(npx:*)","Bash(asdf where:*)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/node --version)","Bash(npm cache clean:*)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npm --version)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx --version)","Bash(hash -r)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" npm --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" node --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" npx -y mcp-remote --help)","Bash(echo $PATH)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx -y mcp-remote --help)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" timeout 5 /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx -y mcp-remote https://example.com/test)","Bash(fvm:*)","Bash(dart:*)","Bash(brew install:*)","Bash(export PATH=\"$PATH\":\"$HOME/.pub-cache/bin\")","Bash(curl:*)","Bash(unzip:*)","Bash(chmod:*)","Bash(sudo mv:*)","Bash(mkdir:*)","Bash(mv:*)","Bash(export PATH=\"$HOME/bin:$PATH\")","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=5d77ce04-50a6-d56f-c47b-c63ad893210a dNLpQN++xeo6UhPiaRAFom7FRoRAmt5ZNAU5oafboSSo)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault status)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -cancel)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -init)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def dNLpQN++xeo6UhPiaRAFom7FRoRAmt5ZNAU5oafboSSo)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def PQonAnoIFTsdtWBgc9oVs70aTaM7NBNm9OyaNoPLE+yY)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def c4342b37aa0eda5cbf00ae50bc2b2cff284023c27120e05e5022eb8ade151187)"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760086852546-ulbx30.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/585a04da-4859-446a-bf9b-fd892d6b1074-agent-585a04da-4859-446a-bf9b-fd892d6b1074.json.tmp.3344.1760086852549
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/585a04da-4859-446a-bf9b-fd892d6b1074-agent-585a04da-4859-446a-bf9b-fd892d6b1074.json.tmp.3344.1760086852549 to /Users/rorikurniadi/.claude/todos/585a04da-4859-446a-bf9b-fd892d6b1074-agent-585a04da-4859-446a-bf9b-fd892d6b1074.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/585a04da-4859-446a-bf9b-fd892d6b1074-agent-585a04da-4859-446a-bf9b-fd892d6b1074.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086852567
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39811 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086852567 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086852869
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39811 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086852869 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086852879
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39811 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086852879 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: /Users/rorikurniadi/Pictures/Photos Library.photoslibrary: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Caches/com.apple.ap.adprivacyd: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/HomeKit: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Messages: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Calendars: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/DuetExpertCenter: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/AppleMediaServices: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/CloudStorage/OneDrive-IndosatooredooHutchison: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/IdentityServices: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Autosave Information: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Daemon Containers: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Assistant/SiriVocabulary: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Application Support/CallHistoryDB: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Application Support/com.apple.avfoundation/Frecents: Operation not permitted (os error 1)
+), 165043 results
+[ERROR] RangeError: RangeError [ERR_CHILD_PROCESS_STDIO_MAXBUFFER]: stdout maxBuffer length exceeded
+    at Socket.onChildStdout (node:child_process:490:14)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Shell snapshot created successfully (52998 bytes)
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": No token data found
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086855068
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39811 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086855068 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086855176
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39706 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086855176 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086855186
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39706 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086855186 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called, ENABLE_PLUGINS=true
+[DEBUG] Trust not accepted for current directory - skipping plugin installations
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086855865
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39811 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086855865 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] MCP server "atlassian": No client info found
+[DEBUG] MCP server "atlassian": Token expired without refresh token
+[DEBUG] MCP server "atlassian": Generated new OAuth state
+[DEBUG] MCP server "atlassian": Saving code verifier
+[DEBUG] MCP server "atlassian": Authorization URL: https://mcp.atlassian.com/v1/authorize?response_type=code&client_id=9X0Z1dqjGnTQuP5x&code_challenge=k2TUsBCKJd2Xar3iSrtBslX_byqFhyP6uHIgbwSPcsI&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A3118%2Fcallback&state=pnDBieNahVU-qtMXbu_fNvTzeyy0n3cwH49fkqe8nj8
+[DEBUG] MCP server "atlassian": Scopes in URL: NOT FOUND
+[DEBUG] MCP server "atlassian": No scopes available from URL or metadata
+[DEBUG] MCP server "atlassian": Redirection handling is disabled, skipping redirect
+[DEBUG] MCP server "atlassian": SSE Connection failed after 1994ms: {"url":"https://mcp.atlassian.com/v1/sse","error":"Unauthorized","errorType":"cV","stack":"Error: Unauthorized\n    at Jy1._authThenStart (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:24267)\n    at async Jy1.start (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:26119)\n    at async dS1.connect (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12678)\n    at async dS1.connect (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:145296)"}
+[ERROR] MCP server "atlassian" Error: Unauthorized
+[DEBUG] MCP server "atlassian": Authentication required for SSE server
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Cleaned up session snapshot: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760086852546-ulbx30.sh
+[DEBUG] FileHistory: Added snapshot for 5792fc04-c386-4f50-af92-11f2abac5b03, tracking 0 files
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3344.1760086859112
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40191 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3344.1760086859112 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically

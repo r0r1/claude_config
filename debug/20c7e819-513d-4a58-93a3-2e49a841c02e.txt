@@ -1,0 +1,7 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.local.json...
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.4966.1760087042941
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40382 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.4966.1760087042941 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically

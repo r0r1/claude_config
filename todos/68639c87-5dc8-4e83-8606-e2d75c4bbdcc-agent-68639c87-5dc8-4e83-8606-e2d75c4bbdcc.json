@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Create spec/requests/owner/sport_classes_spec.rb",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Enhance spec/models/user_spec.rb for Owner features",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Enhance spec/models/sport_class_spec.rb for Owner features",
+    "status": "completed",
+    "id": "6"
+  },
+  {
+    "content": "Add mobile-first styling to existing sport class views",
+    "status": "completed",
+    "id": "7"
+  }
+]

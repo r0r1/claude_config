@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Explore repository structure and identify project type",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Read package.json and other config files to understand build/dev setup",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Check for existing documentation (README, etc.)",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Analyze code architecture and key directories",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Check for any existing rules files (.cursorrules, etc.)",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Create CLAUDE.md with comprehensive guidance",
+    "status": "completed",
+    "id": "6"
+  }
+]

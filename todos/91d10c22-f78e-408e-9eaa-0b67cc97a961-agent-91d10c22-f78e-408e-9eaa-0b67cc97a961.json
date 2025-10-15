@@ -1,0 +1,37 @@
+[
+  {
+    "content": "Update custom fields form UI to include position dropdown",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Update JavaScript controller to handle position field",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Add helper methods to Transaction model for position filtering",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Update PDF export template with positioned custom fields",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Update Excel export template with positioned custom fields",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Update Word export template with positioned custom fields",
+    "status": "completed",
+    "id": "6"
+  },
+  {
+    "content": "Test the implementation with sample data",
+    "status": "completed",
+    "id": "7"
+  }
+]

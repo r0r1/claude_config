@@ -1,0 +1,62 @@
+[
+  {
+    "content": "Remove debug statements from db/seeds/create_historical_transactions.rb",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Remove debug statements from db/seeds/demo_recurring_budget.rb",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Remove debug statements from db/seeds/create_lusi_demo.rb",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Remove debug statements from db/seeds/system_categories.rb",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "Remove debug statements from db/seeds/create_historical_budgets.rb",
+    "status": "completed",
+    "priority": "high",
+    "id": "5"
+  },
+  {
+    "content": "Remove debug statements from db/seeds.rb",
+    "status": "completed",
+    "priority": "high",
+    "id": "6"
+  },
+  {
+    "content": "Remove debug statements from migration file db/migrate/20250609153103_create_default_budget_plans_for_existing_budgets.rb",
+    "status": "completed",
+    "priority": "high",
+    "id": "7"
+  },
+  {
+    "content": "Remove debug statements from bin/test_subscription.rb",
+    "status": "completed",
+    "priority": "medium",
+    "id": "8"
+  },
+  {
+    "content": "Remove debug statements from bin/test_midtrans_webhook.rb",
+    "status": "completed",
+    "priority": "medium",
+    "id": "9"
+  },
+  {
+    "content": "Remove debug statements from bin/check_subscription.rb",
+    "status": "completed",
+    "priority": "medium",
+    "id": "10"
+  }
+]

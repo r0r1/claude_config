@@ -1,0 +1,1366 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 43 allow rule(s) to destination 'localSettings': ["Bash(asdf install:*)","Bash(brew uninstall:*)","Bash(rm:*)","Bash(asdf global:*)","Bash(node:*)","Bash(exec zsh)","Bash(asdf current:*)","Bash(asdf reshim:*)","Bash(source:*)","Bash(/usr/local/bin/npx --version)","Bash(/usr/local/bin/node:*)","Bash(npx:*)","Bash(asdf where:*)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/node --version)","Bash(npm cache clean:*)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npm --version)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx --version)","Bash(hash -r)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" npm --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" node --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" npx -y mcp-remote --help)","Bash(echo $PATH)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx -y mcp-remote --help)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" timeout 5 /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx -y mcp-remote https://example.com/test)","Bash(fvm:*)","Bash(dart:*)","Bash(brew install:*)","Bash(export PATH=\"$PATH\":\"$HOME/.pub-cache/bin\")","Bash(curl:*)","Bash(unzip:*)","Bash(chmod:*)","Bash(sudo mv:*)","Bash(mkdir:*)","Bash(mv:*)","Bash(export PATH=\"$HOME/bin:$PATH\")","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=5d77ce04-50a6-d56f-c47b-c63ad893210a dNLpQN++xeo6UhPiaRAFom7FRoRAmt5ZNAU5oafboSSo)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault status)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -cancel)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -init)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def dNLpQN++xeo6UhPiaRAFom7FRoRAmt5ZNAU5oafboSSo)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def PQonAnoIFTsdtWBgc9oVs70aTaM7NBNm9OyaNoPLE+yY)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def c4342b37aa0eda5cbf00ae50bc2b2cff284023c27120e05e5022eb8ade151187)"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760088473795-3dr3ah.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/ca5c7ff2-6a5f-4b8c-948b-30553018235d-agent-ca5c7ff2-6a5f-4b8c-948b-30553018235d.json.tmp.13377.1760088473798
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/ca5c7ff2-6a5f-4b8c-948b-30553018235d-agent-ca5c7ff2-6a5f-4b8c-948b-30553018235d.json.tmp.13377.1760088473798 to /Users/rorikurniadi/.claude/todos/ca5c7ff2-6a5f-4b8c-948b-30553018235d-agent-ca5c7ff2-6a5f-4b8c-948b-30553018235d.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/ca5c7ff2-6a5f-4b8c-948b-30553018235d-agent-ca5c7ff2-6a5f-4b8c-948b-30553018235d.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088473819
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40073 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088473819 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Summarizing last 9 of 16 messages (~144479 tokens)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088474086
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40073 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088474086 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088474101
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40073 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088474101 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: /Users/rorikurniadi/Library/Caches/com.apple.ap.adprivacyd: Operation not permitted (os error 1)
+), 170055 results
+[ERROR] RangeError: RangeError [ERR_CHILD_PROCESS_STDIO_MAXBUFFER]: stdout maxBuffer length exceeded
+    at Socket.onChildStdout (node:child_process:490:14)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Shell snapshot created successfully (53027 bytes)
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1752s
+[DEBUG] MCP server "gitlab-ioh": Starting connection with timeout of 30000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088476135
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40073 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088476135 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088476204
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39968 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088476204 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088476213
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39968 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088476213 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called, ENABLE_PLUGINS=true
+[DEBUG] Trust not accepted for current directory - skipping plugin installations
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088476672
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40073 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088476672 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] MCP server "gitlab-ioh": Successfully connected to undefined server in 573ms
+[DEBUG] MCP server "gitlab-ioh": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"GitLab","version":"1.31.1"}}
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1751s
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1751s
+[DEBUG] MCP server "atlassian": Successfully connected to sse server in 1133ms
+[DEBUG] MCP server "atlassian": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"atlassian-mcp-server","version":"1.0.0"}}
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1751s
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Added snapshot for 8bcffd13-a32f-4a6d-b668-0bf6bac3b8af, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088523426
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40103 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088523426 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088523447
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40135 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088523447 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088523455
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40239 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088523455 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 706a05f9-45a3-4472-b449-326ee993d700
+[DEBUG] FileHistory: Added snapshot for 706a05f9-45a3-4472-b449-326ee993d700, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088554255
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40267 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088554255 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088554275
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40302 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088554275 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088554284
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40401 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088554284 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 5d6c2b87-11c6-4d03-9a1a-6ed34d48143f
+[DEBUG] FileHistory: Added snapshot for 5d6c2b87-11c6-4d03-9a1a-6ed34d48143f, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088581664
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40421 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088581664 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088581683
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40442 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088581683 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088581692
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40558 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088581692 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 27d9ebe4-3349-41bf-b4d9-4da3ec8fd0b4
+[DEBUG] FileHistory: Added snapshot for 27d9ebe4-3349-41bf-b4d9-4da3ec8fd0b4, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_project_merge_requests" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: list_project_merge_requests
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' failed after 0s: MCP error -32603: ListProjectMergeRequests(ide-phoenix): 404 Not Found
+[ERROR] McpError: McpError: MCP error -32603: ListProjectMergeRequests(ide-phoenix): 404 Not Found
+    at dS1._onresponse (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:15319)
+    at _transport.onmessage (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12515)
+    at lF0.processReadBuffer (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:2163)
+    at Socket.<anonymous> (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:1529)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088611110
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40581 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088611110 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088611180
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40612 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088611180 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088611192
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40721 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088611192 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 79c790ee-8f98-43ab-9cc0-cc01ca0646ac
+[DEBUG] FileHistory: Added snapshot for 79c790ee-8f98-43ab-9cc0-cc01ca0646ac, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_project_merge_requests" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: list_project_merge_requests
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' still running (30s elapsed)
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' still running (60s elapsed)
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' still running (90s elapsed)
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' still running (120s elapsed)
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' completed successfully in 2m 11s
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' failed after 133s: MCP tool "list_project_merge_requests" response (354616 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+[ERROR] MCPContentTooLargeError: MCPContentTooLargeError: MCP tool "list_project_merge_requests" response (354616 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+    at Zq0 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:725:585)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Yr2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:7874)
+    at async Object.call (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:18552)
+    at async BS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:66145)
+    at async K2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:62271)
+    at async d7B (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:1683:2859)
+    at async z2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:3396:2126)
+    at async AS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:61464)
+    at async oj5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:60403)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_project_merge_requests" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: list_project_merge_requests
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_project_merge_requests' completed successfully in 162ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__list_project_merge_requests
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_project_merge_requests" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088799284
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40751 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088799284 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088799350
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40776 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088799350 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088799364
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40971 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088799364 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 0b1dbac6-279b-4b04-b74d-3aaaaa68b3d2
+[DEBUG] FileHistory: Added snapshot for 0b1dbac6-279b-4b04-b74d-3aaaaa68b3d2, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__get_merge_request
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__get_merge_request
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__get_merge_request
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_merge_request" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: get_merge_request
+[DEBUG] MCP server "gitlab-ioh": Tool 'get_merge_request' completed successfully in 659ms
+[DEBUG] MCP server "gitlab-ioh": Tool 'get_merge_request' failed after 1s: MCP tool "get_merge_request" response (34312 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+[ERROR] MCPContentTooLargeError: MCPContentTooLargeError: MCP tool "get_merge_request" response (34312 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+    at Zq0 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:725:585)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Yr2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:7874)
+    at async Object.call (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:18552)
+    at async BS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:66145)
+    at async K2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:62271)
+    at async d7B (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:1683:2859)
+    at async z2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:3396:2126)
+    at async AS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:61464)
+    at async oj5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:60403)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__list_merge_request_diffs
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__list_merge_request_diffs
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__list_merge_request_diffs
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_merge_request_diffs" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: list_merge_request_diffs
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_merge_request_diffs' completed successfully in 207ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__list_merge_request_diffs
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__list_merge_request_diffs
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_merge_request_diffs" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088903751
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40971 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088903751 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088903809
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40971 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088903809 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088903823
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41169 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088903823 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088937107
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41169 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088937107 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760088938919
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41169 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760088938919 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: ./OneDrive - Indosatooredoo Hutchison: Operation not permitted (os error 1)
+rg: ./Pictures/Photos Library.photoslibrary: Operation not permitted (os error 1)
+rg: ./Library/Caches/com.apple.ap.adprivacyd: Operation not permitted (os error 1)
+rg: ./.codeium/windsurf/bin/windsurf: No such file or directory (os error 2)
+rg: ./Library/HomeKit: Operation not permitted (os error 1)
+rg: ./Library/Messages: Operation not permitted (os error 1)
+rg: ./Library/Calendars: Operation not permitted (os error 1)
+rg: ./Library/CloudStorage/OneDrive-IndosatooredooHutchison: Operation not permitted (os error 1)
+rg: File system loop found: ./Library/WebKit/com.tinyapp.TablePlus/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.tinyapp.TablePlus/WebsiteData/IndexedDB
+rg: File system loop found: ./Library/WebKit/com.oracle.java.Java-Updater/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.oracle.java.Java-Updater/WebsiteData/IndexedDB
+rg: File system loop found: ./Library/WebKit/us.zoom.xos/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/us.zoom.xos/WebsiteData/IndexedDB
+rg: File system loop found: ./Library/WebKit/com.microsoft.OneDrive/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.microsoft.OneDrive/WebsiteData/IndexedDB
+rg: File system loop found: ./Library/WebKit/com.electron.ollama/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.electron.ollama/WebsiteData/IndexedDB
+rg: ./Desktop: Operation not permitted (os error 1)
+rg: File system loop found: ./Library/WebKit/com.adobe.Reader/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.adobe.Reader/WebsiteData/IndexedDB
+rg: File system loop found: ./Library/WebKit/com.apple.Spotlight/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.apple.Spotlight/WebsiteData/IndexedDB
+rg: File system loop found: ./Library/WebKit/com.microsoft.teams/WebsiteData/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.microsoft.teams/WebsiteData/IndexedDB
+rg: File system loop found: ./Library/WebKit/com.googlecode.iterm2/WebsiteDataStore/ac0e9812-7f88-478b-b361-5526082eddb3/IndexedDB/v0 points to an ancestor ./Library/WebKit/com.googlecode.iterm2/WebsiteDataStore/ac0e9812-7f88-478b-b361-5526082eddb3/IndexedDB
+rg: ./Library/IdentityServices: Operation not permitted (os error 1)
+rg: ./.docker/bin/docker-compose-v1: No such file or directory (os error 2)
+rg: ./.docker/bin/vpnkit: No such file or directory (os error 2)
+rg: ./Library/Saved Application State/com.apple.mail.savedState: Operation not permitted (os error 1)
+rg: ./.rd/bin/nerdctl: No such file or directory (os error 2)
+rg: ./.rd/bin/kuberlr: No such file or directory (os error 2)
+rg: ./.rd/bin/docker: No such file or directory (os error 2)
+rg: ./.rd/bin/docker-credential-ecr-login: No such file or directory (os error 2)
+rg: ./.rd/bin/rdctl: No such file or directory (os error 2)
+rg: ./.rd/bin/docker-credential-osxkeychain: No such file or directory (os error 2)
+rg: ./.rd/bin/docker-credential-none: No such file or directory (os error 2)
+rg: ./.rd/bin/docker-buildx: No such file or directory (os error 2)
+rg: ./.rd/bin/docker-compose: No such file or directory (os error 2)
+rg: ./.rd/bin/kubectl: No such file or directory (os error 2)
+rg: ./.rd/bin/helm: No such file or directory (os error 2)
+rg: ./Library/Saved Application State/com.apple.Notes.savedState: Operation not permitted (os error 1)
+rg: ./Library/Saved Application State/com.microsoft.Powerpoint.savedState: No such file or directory (os error 2)
+), 200569 results
+[ERROR] RangeError: RangeError [ERR_CHILD_PROCESS_STDIO_MAXBUFFER]: stdout maxBuffer length exceeded
+    at Socket.onChildStdout (node:child_process:490:14)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message fad2976b-8316-4dd8-87a2-fe325da07e28
+[DEBUG] FileHistory: Added snapshot for fad2976b-8316-4dd8-87a2-fe325da07e28, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Task
+[DEBUG] Executing hooks for PreToolUse:Task
+[DEBUG] Getting matching hook commands for PreToolUse with query: Task
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__get_merge_request
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__get_merge_request
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__get_merge_request
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_merge_request" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__get_issue
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__get_issue
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__get_issue
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_issue" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: get_merge_request
+[DEBUG] MCP server "gitlab-ioh": Tool 'get_merge_request' failed after 0s: MCP error -32603: getting merge request IID 235 (project ISB): 404 Not Found
+listing discussions for MR IID 235 (project ISB): failed to list merge request discussions: 404 Not Found
+listing diffs for MR IID 235 (project ISB): listing merge request diffs for MR IID 235 (project ISB): 404 Not Found
+[ERROR] McpError: McpError: MCP error -32603: getting merge request IID 235 (project ISB): 404 Not Found
+listing discussions for MR IID 235 (project ISB): failed to list merge request discussions: 404 Not Found
+listing diffs for MR IID 235 (project ISB): listing merge request diffs for MR IID 235 (project ISB): 404 Not Found
+    at dS1._onresponse (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:15319)
+    at _transport.onmessage (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12515)
+    at lF0.processReadBuffer (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:2163)
+    at Socket.<anonymous> (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:1529)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: get_issue
+[DEBUG] MCP server "gitlab-ioh": Tool 'get_issue' failed after 0s: MCP error -32603: failed to fetch discussions for issue 2959 in project ISB: failed to list discussions: 404 Not Found
+GetIssue("ISB", 2959): 404 Not Found
+[ERROR] McpError: McpError: MCP error -32603: failed to fetch discussions for issue 2959 in project ISB: failed to list discussions: 404 Not Found
+GetIssue("ISB", 2959): 404 Not Found
+    at dS1._onresponse (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:15319)
+    at _transport.onmessage (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12515)
+    at lF0.processReadBuffer (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:2163)
+    at Socket.<anonymous> (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:1529)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__get_user
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__get_user
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__get_user
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_user" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: get_user
+[DEBUG] MCP server "gitlab-ioh": Tool 'get_user' completed successfully in 123ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__get_user
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__get_user
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_user" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__list_projects
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__list_projects
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__list_projects
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_projects" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089082020
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41169 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089082020 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089082035
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41343 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089082035 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089088497
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41410 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089088497 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 45a1beba-fe8f-48e0-ae1d-d3ff4cc72e54
+[DEBUG] FileHistory: Added snapshot for 45a1beba-fe8f-48e0-ae1d-d3ff4cc72e54, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__atlassian__search
+[DEBUG] Executing hooks for PreToolUse:mcp__atlassian__search
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__atlassian__search
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__search" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": Calling MCP tool: search
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1131s
+[DEBUG] MCP server "atlassian": Tool 'search' completed successfully in 1s
+[DEBUG] Executing hooks for PostToolUse:mcp__atlassian__search
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__atlassian__search
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__search" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__atlassian__fetch
+[DEBUG] Executing hooks for PreToolUse:mcp__atlassian__fetch
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__atlassian__fetch
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__fetch" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": Calling MCP tool: fetch
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1122s
+[DEBUG] MCP server "atlassian": Tool 'fetch' completed successfully in 1s
+[DEBUG] Executing hooks for PostToolUse:mcp__atlassian__fetch
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__atlassian__fetch
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__fetch" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Task
+[DEBUG] Executing hooks for PreToolUse:Task
+[DEBUG] Getting matching hook commands for PreToolUse with query: Task
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__get_merge_request
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__get_merge_request
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__get_merge_request
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_merge_request" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__atlassian__getJiraIssue
+[DEBUG] Executing hooks for PreToolUse:mcp__atlassian__getJiraIssue
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__atlassian__getJiraIssue
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__getJiraIssue" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: get_merge_request
+[DEBUG] MCP server "gitlab-ioh": Tool 'get_merge_request' failed after 0s: MCP error -32603: listing diffs for MR IID 235 (project isb/core-api): listing merge request diffs for MR IID 235 (project isb/core-api): 404 Not Found
+getting merge request IID 235 (project isb/core-api): 404 Not Found
+listing discussions for MR IID 235 (project isb/core-api): failed to list merge request discussions: 404 Not Found
+[ERROR] McpError: McpError: MCP error -32603: listing diffs for MR IID 235 (project isb/core-api): listing merge request diffs for MR IID 235 (project isb/core-api): 404 Not Found
+getting merge request IID 235 (project isb/core-api): 404 Not Found
+listing discussions for MR IID 235 (project isb/core-api): failed to list merge request discussions: 404 Not Found
+    at dS1._onresponse (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:15319)
+    at _transport.onmessage (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12515)
+    at lF0.processReadBuffer (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:2163)
+    at Socket.<anonymous> (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:1529)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": Calling MCP tool: getJiraIssue
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1081s
+[ERROR] MCP server "atlassian" Failed to fetch tenant info for cloud ID: https://indosatooredoo.atlassian.net. Status: 404
+[DEBUG] MCP server "atlassian": Tool 'getJiraIssue' failed after 0s: Failed to fetch tenant info for cloud ID: https://indosatooredoo.atlassian.net. Status: 404
+[ERROR] Error: Error: Failed to fetch tenant info for cloud ID: https://indosatooredoo.atlassian.net. Status: 404
+    at Yr2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:7494)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.call (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:18552)
+    at async BS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:66145)
+    at async K2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2485:62271)
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__atlassian__getAccessibleAtlassianResources
+[DEBUG] Executing hooks for PreToolUse:mcp__atlassian__getAccessibleAtlassianResources
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__atlassian__getAccessibleAtlassianResources
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__getAccessibleAtlassianResources" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": Calling MCP tool: getAccessibleAtlassianResources
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1075s
+[DEBUG] MCP server "atlassian": Tool 'getAccessibleAtlassianResources' completed successfully in 877ms
+[DEBUG] Executing hooks for PostToolUse:mcp__atlassian__getAccessibleAtlassianResources
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__atlassian__getAccessibleAtlassianResources
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__getAccessibleAtlassianResources" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__atlassian__getJiraIssue
+[DEBUG] Executing hooks for PreToolUse:mcp__atlassian__getJiraIssue
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__atlassian__getJiraIssue
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__getJiraIssue" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__list_projects
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__list_projects
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__list_projects
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_projects" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "atlassian": Calling MCP tool: getJiraIssue
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1068s
+[DEBUG] MCP server "atlassian": Tool 'getJiraIssue' completed successfully in 1s
+[DEBUG] Executing hooks for PostToolUse:mcp__atlassian__getJiraIssue
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__atlassian__getJiraIssue
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__atlassian__getJiraIssue" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: list_projects
+[DEBUG] MCP server "gitlab-ioh": Tool 'list_projects' completed successfully in 112ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__list_projects
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__list_projects
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__list_projects" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089177179
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41410 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089177179 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for SubagentStop
+[DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Task
+[DEBUG] Getting matching hook commands for PostToolUse with query: Task
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089308097
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41410 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089308097 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089308120
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41410 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089308120 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089308130
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41528 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089308130 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message af2d2120-429c-4893-af1f-4edf5ba51157
+[DEBUG] FileHistory: Added snapshot for af2d2120-429c-4893-af1f-4edf5ba51157, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' completed successfully in 724ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089478953
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41528 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089478953 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089478983
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41528 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089478983 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089478992
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41636 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089478992 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 19c67372-b95f-49ae-9f95-bdb9d9a873c0
+[DEBUG] FileHistory: Added snapshot for 19c67372-b95f-49ae-9f95-bdb9d9a873c0, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new_with_position
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new_with_position
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new_with_position
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new_with_position" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new_with_position
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new_with_position' failed after 0s: MCP error -32603: failed to create diff discussion: failed to create diff discussion: POST https://mygitlab-dev.ioh.co.id/api/v4/projects/cco%2Fcmo%2Fgroup-digital-coe%2Fdiv-smb-digital-product%2Fide-phoenix/merge_requests/235/discussions: 400 {message: 400 Bad request - Note {:line_code=>["can't be blank", "must be a valid line code"]}}
+[ERROR] McpError: McpError: MCP error -32603: failed to create diff discussion: failed to create diff discussion: POST https://mygitlab-dev.ioh.co.id/api/v4/projects/cco%2Fcmo%2Fgroup-digital-coe%2Fdiv-smb-digital-product%2Fide-phoenix/merge_requests/235/discussions: 400 {message: 400 Bad request - Note {:line_code=>["can't be blank", "must be a valid line code"]}}
+    at dS1._onresponse (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:15319)
+    at _transport.onmessage (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12515)
+    at lF0.processReadBuffer (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:2163)
+    at Socket.<anonymous> (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:554:1529)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__get_merge_request_commits
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__get_merge_request_commits
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__get_merge_request_commits
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_merge_request_commits" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: get_merge_request_commits
+[DEBUG] MCP server "gitlab-ioh": Tool 'get_merge_request_commits' completed successfully in 132ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__get_merge_request_commits
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__get_merge_request_commits
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__get_merge_request_commits" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' completed successfully in 375ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' completed successfully in 246ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Persisting permission update: addRules to source 'localSettings'
+[DEBUG] Persisting 1 allow rule(s) to localSettings
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/settings.local.json.tmp.13377.1760089794416
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 3299 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/settings.local.json.tmp.13377.1760089794416 to /Users/rorikurniadi/.claude/settings.local.json
+[DEBUG] File /Users/rorikurniadi/.claude/settings.local.json written atomically
+[DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["mcp__gitlab-ioh__discussion_new"]
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' still running (30s elapsed)
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' completed successfully in 59s
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' completed successfully in 409ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089918489
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41636 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089918489 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089918516
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41636 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089918516 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760089918526
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41795 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760089918526 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 84eeeec1-fa66-4a76-b0ec-5dcca2614a96
+[DEBUG] FileHistory: Added snapshot for 84eeeec1-fa66-4a76-b0ec-5dcca2614a96, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' completed successfully in 417ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab-ioh__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab-ioh": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab-ioh": Tool 'discussion_new' completed successfully in 290ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab-ioh__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab-ioh__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab-ioh__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090155941
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41795 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090155941 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090155975
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41795 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090155975 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090155986
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41920 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090155986 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 34a21e8e-6a41-4b6d-b987-757e98cee713
+[DEBUG] FileHistory: Added snapshot for 34a21e8e-6a41-4b6d-b987-757e98cee713, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool:
+[ERROR] SyntaxError: SyntaxError: Unexpected token '`', "```json
+{
+"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:62:719
+    at Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:8:15093)
+    at ga2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:753:22219)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090319096
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41920 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090319096 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] executePreToolHooks called for tool: Write
+[DEBUG] Executing hooks for PreToolUse:Write
+[DEBUG] Getting matching hook commands for PreToolUse with query: Write
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Permission suggestions for Write: [
+  {
+    "type": "setMode",
+    "mode": "acceptEdits",
+    "destination": "session"
+  }
+]
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] FileHistory: Tracked file modification for /Users/rorikurniadi/.claude/prompts/review-mr-with-jira.md
+[DEBUG] rg error (signal=undefined, code=ABORT_ERR, stderr: rg: /Users/rorikurniadi/Documents: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Caches/com.apple.ap.adprivacyd: Operation not permitted (os error 1)
+), 8225 results
+[ERROR] AbortError: AbortError: The operation was aborted
+    at abortChildProcess (node:child_process:725:27)
+    at EventTarget.onAbortListener (node:child_process:795:7)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:831:20)
+    at EventTarget.dispatchEvent (node:internal/event_target:766:26)
+    at abortSignal (node:internal/abort_controller:370:10)
+    at AbortController.abort (node:internal/abort_controller:392:5)
+    at Timeout._onTimeout (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:3428:2059)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/prompts/review-mr-with-jira.md.tmp.13377.1760090366232
+[DEBUG] Temp file written successfully, size: 3236 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/prompts/review-mr-with-jira.md.tmp.13377.1760090366232 to /Users/rorikurniadi/.claude/prompts/review-mr-with-jira.md
+[DEBUG] File /Users/rorikurniadi/.claude/prompts/review-mr-with-jira.md written atomically
+[DEBUG] Executing hooks for PostToolUse:Write
+[DEBUG] Getting matching hook commands for PostToolUse with query: Write
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Write" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Stream started - received first chunk
+[ERROR] Error: Error: Language not supported while highlighting code, falling back to markdown: 
+    at hK (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:729)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:457
+    at Array.map (<anonymous>)
+    at tF (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:448)
+    at UlB (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:12745)
+    at G$ (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:73:19415)
+    at Sa (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:42814)
+    at S9 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:38355)
+    at Ym (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:38283)
+    at z$ (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:38137)
+[ERROR] Error: Error: Language not supported while highlighting code, falling back to markdown: 
+    at hK (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:729)
+    at file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:457
+    at Array.map (<anonymous>)
+    at tF (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:448)
+    at UlB (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2116:12745)
+    at G$ (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:73:19415)
+    at Sa (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:42814)
+    at S9 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:38355)
+    at Ym (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:38283)
+    at z$ (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:75:38137)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090385435
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41920 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090385435 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090385463
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 41920 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090385463 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090385471
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42102 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090385471 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Cleaned up session snapshot: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760088473795-3dr3ah.sh
+[DEBUG] MCP server "atlassian": SSE transport closed/disconnected, attempting automatic reconnection
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Token expires in -238s, attempting proactive refresh
+[DEBUG] MCP server "atlassian": Starting token refresh
+[DEBUG] FileHistory: Making snapshot for message e6cfcdb8-162b-44bf-81ad-1f1e99fc353c
+[DEBUG] FileHistory: Added snapshot for e6cfcdb8-162b-44bf-81ad-1f1e99fc353c, tracking 1 files
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.13377.1760090465599
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 42532 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.13377.1760090465599 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically

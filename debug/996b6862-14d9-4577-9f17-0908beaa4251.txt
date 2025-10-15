@@ -1,0 +1,53 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.local.json...
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1997s
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1996s
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.12746.1760088232730
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40806 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.12746.1760088232730 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1995s
+[DEBUG] MCP server "atlassian": Successfully connected to sse server in 1653ms
+[DEBUG] MCP server "atlassian": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"atlassian-mcp-server","version":"1.0.0"}}
+[DEBUG] MCP server "gitlab-ioh": Starting connection with timeout of 30000ms
+[ERROR] MCP server "gitlab-ioh" Server stderr: [12797] Using static OAuth client metadata from string
+[ERROR] MCP server "gitlab-ioh" Server stderr: [12797] Using automatically selected callback port: 45385
+[ERROR] MCP server "gitlab-ioh" Server stderr: [12797] [12797] Connecting to remote server: https://mygitlab-dev.ioh.co.id/api/v4/mcp
+[ERROR] MCP server "gitlab-ioh" Server stderr: [12797] Using transport strategy: http-first
+[ERROR] MCP server "gitlab-ioh" Server stderr: [12797] Connection error: SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at parseJSONFromBytes (node:internal/deps/undici/undici:5738:19)
+    at successSteps (node:internal/deps/undici/undici:5719:27)
+    at fullyReadBody (node:internal/deps/undici/undici:4609:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async consumeBody (node:internal/deps/undici/undici:5728:7)
+    at async discoverAuthorizationServerMetadata (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:12475:40)
+    at async authInternal (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:12261:20)
+    at async auth (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:12235:12)
+    at async StreamableHTTPClientTransport.send (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:13454:26)
+[ERROR] MCP server "gitlab-ioh" Server stderr: [12797] Fatal error: SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at parseJSONFromBytes (node:internal/deps/undici/undici:5738:19)
+    at successSteps (node:internal/deps/undici/undici:5719:27)
+    at fullyReadBody (node:internal/deps/undici/undici:4609:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async consumeBody (node:internal/deps/undici/undici:5728:7)
+    at async discoverAuthorizationServerMetadata (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:12475:40)
+    at async authInternal (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:12261:20)
+    at async auth (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:12235:12)
+    at async StreamableHTTPClientTransport.send (file:///Users/rorikurniadi/.npm/_npx/705d23756ff7dacc/node_modules/mcp-remote/dist/chunk-AKJME7CQ.js:13454:26)
+[DEBUG] MCP server "gitlab-ioh": Connection failed after 2505ms: MCP error -32000: Connection closed
+[ERROR] MCP server "gitlab-ioh" Connection failed: MCP error -32000: Connection closed

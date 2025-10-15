@@ -1,0 +1,52 @@
+[
+  {
+    "content": "Create mobile-first edit profile view with comprehensive form validation",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Create public profile preview view for owners",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Add mobile-first UI improvements to existing sport class views",
+    "status": "pending",
+    "id": "3"
+  },
+  {
+    "content": "Create comprehensive request specs for Owner::ProfilesController",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Create comprehensive request specs for Owner::SportClassesController",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Enhance User model tests with Owner-specific functionality",
+    "status": "completed",
+    "id": "6"
+  },
+  {
+    "content": "Enhance SportClass model tests with Owner relationship tests",
+    "status": "completed",
+    "id": "7"
+  },
+  {
+    "content": "Create mobile performance optimizations and PWA enhancements",
+    "status": "pending",
+    "id": "8"
+  },
+  {
+    "content": "Add security enhancements for Owner operations",
+    "status": "pending",
+    "id": "9"
+  },
+  {
+    "content": "Implement advanced mobile UI patterns and accessibility",
+    "status": "pending",
+    "id": "10"
+  }
+]

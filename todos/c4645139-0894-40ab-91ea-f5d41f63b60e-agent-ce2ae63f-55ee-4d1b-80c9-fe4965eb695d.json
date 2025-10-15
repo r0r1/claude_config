@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Find and analyze the sales controller that handles MSISDN stage",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Examine ICCID and MSISDN models to understand status fields and scopes",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Analyze current @iccid_options population logic in controller",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Check for existing filtering logic and business rules",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Implement proper filtering for available ICCID/MSISDN records",
+    "status": "completed",
+    "id": "5"
+  },
+  {
+    "content": "Optimize queries for performance and add proper error handling",
+    "status": "in_progress",
+    "id": "6"
+  }
+]

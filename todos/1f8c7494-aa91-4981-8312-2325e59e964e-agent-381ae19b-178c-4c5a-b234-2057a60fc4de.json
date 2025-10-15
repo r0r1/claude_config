@@ -1,0 +1,50 @@
+[
+  {
+    "content": "Remove console.log from calculator_controller.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Remove console.log and console.error from reports_charts.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Remove console.log from type_selector_controller.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Remove console.log and console.error from transaction_form_controller.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "Remove console.log and console.error from select2_controller.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "5"
+  },
+  {
+    "content": "Remove console.log and console.error from chart_controller.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "6"
+  },
+  {
+    "content": "Remove console.log from transaction_filter_controller.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "7"
+  },
+  {
+    "content": "Remove console.log, console.error, and console.warn from dialog_controller.js",
+    "status": "completed",
+    "priority": "high",
+    "id": "8"
+  }
+]

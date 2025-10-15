@@ -1,0 +1,92 @@
+[
+  {
+    "content": "Add Nylas gem to Gemfile and create Nylas initializer with API credentials",
+    "status": "pending",
+    "id": "1"
+  },
+  {
+    "content": "Create EmailConnection model with OAuth token management and status tracking",
+    "status": "pending",
+    "id": "2"
+  },
+  {
+    "content": "Create EmailImport model for tracking import job history and metadata",
+    "status": "pending",
+    "id": "3"
+  },
+  {
+    "content": "Implement BaseService and ServiceResult classes for consistent service architecture",
+    "status": "pending",
+    "id": "4"
+  },
+  {
+    "content": "Create RateLimiterService for managing Nylas API quota limits",
+    "status": "pending",
+    "id": "5"
+  },
+  {
+    "content": "Implement CircuitBreakerService for handling service failures gracefully",
+    "status": "pending",
+    "id": "6"
+  },
+  {
+    "content": "Create Nylas::BaseService with connection validation and rate limiting",
+    "status": "pending",
+    "id": "7"
+  },
+  {
+    "content": "Implement Nylas::EmailImportService for fetching and processing emails",
+    "status": "pending",
+    "id": "8"
+  },
+  {
+    "content": "Create EmailImportJob with comprehensive error handling and retry logic",
+    "status": "pending",
+    "id": "9"
+  },
+  {
+    "content": "Implement ScheduledEmailImportJob with batch processing for 10k+ users",
+    "status": "pending",
+    "id": "10"
+  },
+  {
+    "content": "Create TransactionCreationService with idempotency and database transactions",
+    "status": "pending",
+    "id": "11"
+  },
+  {
+    "content": "Implement BulkTransactionProcessor for efficient batch processing",
+    "status": "pending",
+    "id": "12"
+  },
+  {
+    "content": "Add OAuth authentication routes and controller for Nylas connection flow",
+    "status": "pending",
+    "id": "13"
+  },
+  {
+    "content": "Create email connection management UI in user profile section",
+    "status": "pending",
+    "id": "14"
+  },
+  {
+    "content": "Write comprehensive RSpec tests with VCR for all new services and jobs",
+    "status": "pending",
+    "id": "15"
+  },
+  {
+    "content": "Implement dashboard caching optimization for improved performance",
+    "status": "pending",
+    "id": "16"
+  },
+  {
+    "content": "Add production monitoring and alerting for email import system",
+    "status": "pending",
+    "id": "17"
+  },
+  {
+    "content": "Update Good Job configuration for optimized email import queue management",
+    "status": "pending",
+    "id": "18"
+  }
+]

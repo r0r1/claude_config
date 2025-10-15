@@ -1,0 +1,12 @@
+[
+  {
+    "content": "Fix failing idempotency test in BudgetRecurrenceJob spec",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Run full RSpec suite to verify all tests pass",
+    "status": "completed",
+    "id": "2"
+  }
+]

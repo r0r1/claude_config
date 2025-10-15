@@ -1,0 +1,166 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 43 allow rule(s) to destination 'localSettings': ["Bash(asdf install:*)","Bash(brew uninstall:*)","Bash(rm:*)","Bash(asdf global:*)","Bash(node:*)","Bash(exec zsh)","Bash(asdf current:*)","Bash(asdf reshim:*)","Bash(source:*)","Bash(/usr/local/bin/npx --version)","Bash(/usr/local/bin/node:*)","Bash(npx:*)","Bash(asdf where:*)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/node --version)","Bash(npm cache clean:*)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npm --version)","Bash(/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx --version)","Bash(hash -r)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" npm --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" node --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:$PATH\" npx -y mcp-remote --help)","Bash(echo $PATH)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx --version)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx -y mcp-remote --help)","Bash(PATH=\"/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\" HOME=\"/Users/rorikurniadi\" SHELL=\"/bin/zsh\" timeout 5 /Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/bin/npx -y mcp-remote https://example.com/test)","Bash(fvm:*)","Bash(dart:*)","Bash(brew install:*)","Bash(export PATH=\"$PATH\":\"$HOME/.pub-cache/bin\")","Bash(curl:*)","Bash(unzip:*)","Bash(chmod:*)","Bash(sudo mv:*)","Bash(mkdir:*)","Bash(mv:*)","Bash(export PATH=\"$HOME/bin:$PATH\")","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=5d77ce04-50a6-d56f-c47b-c63ad893210a dNLpQN++xeo6UhPiaRAFom7FRoRAmt5ZNAU5oafboSSo)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault status)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -cancel)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -init)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def dNLpQN++xeo6UhPiaRAFom7FRoRAmt5ZNAU5oafboSSo)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def PQonAnoIFTsdtWBgc9oVs70aTaM7NBNm9OyaNoPLE+yY)","Bash(PATH=\"$HOME/bin:$PATH\" VAULT_ADDR='http://127.0.0.1:8200' vault operator generate-root -nonce=9133c5c4-ce5c-29fa-e125-7d5932ae4def c4342b37aa0eda5cbf00ae50bc2b2cff284023c27120e05e5022eb8ade151187)"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760086775929-dxz8ru.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/4b722c9a-b84b-46d8-95b7-81a13ac6dfff-agent-4b722c9a-b84b-46d8-95b7-81a13ac6dfff.json.tmp.2335.1760086775968
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/4b722c9a-b84b-46d8-95b7-81a13ac6dfff-agent-4b722c9a-b84b-46d8-95b7-81a13ac6dfff.json.tmp.2335.1760086775968 to /Users/rorikurniadi/.claude/todos/4b722c9a-b84b-46d8-95b7-81a13ac6dfff-agent-4b722c9a-b84b-46d8-95b7-81a13ac6dfff.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/4b722c9a-b84b-46d8-95b7-81a13ac6dfff-agent-4b722c9a-b84b-46d8-95b7-81a13ac6dfff.json written atomically
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Summarizing last 14 of 22 messages (~147271 tokens)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086776477
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39555 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086776477 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086776599
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39555 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086776599 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086776656
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39555 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086776656 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086776912
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39555 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086776912 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: /Users/rorikurniadi/Pictures/Photos Library.photoslibrary: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Caches/com.apple.ap.adprivacyd: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Trial: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Mail: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/com.apple.aiml.instrumentation: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Desktop: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Shortcuts: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/.zcompdump-IT-MAC-92229578-5.9.lock: No such file or directory (os error 2)
+rg: /Users/rorikurniadi/Library/Sharing: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/HomeKit: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Messages: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Calendars: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Library/Caches/com.apple.homed: Operation not permitted (os error 1)
+), 180161 results
+[ERROR] RangeError: RangeError [ERR_CHILD_PROCESS_STDIO_MAXBUFFER]: stdout maxBuffer length exceeded
+    at new NodeError (node:internal/errors:399:5)
+    at Socket.onChildStdout (node:child_process:487:14)
+    at Socket.emit (node:events:512:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:324:12)
+    at readableAddChunk (node:internal/streams/readable:293:11)
+    at Readable.push (node:internal/streams/readable:234:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": No token data found
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086779665
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39586 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086779665 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086779674
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39586 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086779674 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086779804
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39586 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086779804 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086779814
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39586 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086779814 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086779823
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39586 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086779823 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called, ENABLE_PLUGINS=true
+[DEBUG] Trust not accepted for current directory - skipping plugin installations
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086781614
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39691 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086781614 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] Shell snapshot created successfully (52411 bytes)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086781703
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39691 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086781703 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] MCP server "atlassian": SSE Connection failed after 2431ms: {"url":"https://mcp.atlassian.com/v1/sse","error":"URL.canParse is not a function","errorType":"TypeError","stack":"TypeError: URL.canParse is not a function\n    at Object.refinement (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:6624)\n    at Y (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:71915)\n    at IN._parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:72281)\n    at IN._parseSync (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:26629)\n    at IN._parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:72161)\n    at nG._parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:57236)\n    at nG._parseSync (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:26629)\n    at nG.safeParse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:27037)\n    at nG.parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:26795)\n    at AW1 (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:19918)"}
+[ERROR] MCP server "atlassian" TypeError: URL.canParse is not a function
+[DEBUG] MCP server "atlassian": Connection failed after 2433ms: URL.canParse is not a function
+[ERROR] MCP server "atlassian" Connection failed: URL.canParse is not a function
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": No token data found
+[DEBUG] MCP server "atlassian": Using redirect port: 58605
+[DEBUG] MCP server "atlassian": Failed to fetch OAuth metadata: URL.canParse is not a function
+[DEBUG] MCP server "atlassian": Generated new OAuth state
+[DEBUG] MCP server "atlassian": Starting SDK auth
+[DEBUG] MCP server "atlassian": Server URL: https://mcp.atlassian.com/v1/sse
+[DEBUG] MCP server "atlassian": SDK auth error: TypeError: URL.canParse is not a function
+[DEBUG] MCP server "atlassian": MCP OAuth server cleaned up
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": No token data found
+[DEBUG] MCP server "atlassian": SSE Connection failed after 321ms: {"url":"https://mcp.atlassian.com/v1/sse","error":"URL.canParse is not a function","errorType":"TypeError","stack":"TypeError: URL.canParse is not a function\n    at Object.refinement (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:6624)\n    at Y (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:71915)\n    at IN._parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:72281)\n    at IN._parseSync (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:26629)\n    at IN._parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:72161)\n    at nG._parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:57236)\n    at nG._parseSync (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:26629)\n    at nG.safeParse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:27037)\n    at nG.parse (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:63:26795)\n    at AW1 (file:///Users/rorikurniadi/.asdf/installs/nodejs/19.8.1/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:19918)"}
+[ERROR] MCP server "atlassian" TypeError: URL.canParse is not a function
+[DEBUG] MCP server "atlassian": Connection failed after 324ms: URL.canParse is not a function
+[ERROR] MCP server "atlassian" Connection failed: URL.canParse is not a function
+[DEBUG] MCP server "atlassian": No token data found
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] FileHistory: Added snapshot for a75316ee-78a7-433b-b7ce-5cfe0121cc79, tracking 0 files
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086799657
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39729 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086799657 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086799684
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 39811 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086799684 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Cleaned up session snapshot: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760086775929-dxz8ru.sh
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.2335.1760086808063
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40206 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.2335.1760086808063 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically

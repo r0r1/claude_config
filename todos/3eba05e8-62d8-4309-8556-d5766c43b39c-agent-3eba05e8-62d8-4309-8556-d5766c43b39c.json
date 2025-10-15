@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Analyze UAT pipeline Slack notifications to understand the pattern",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Identify where to add Slack notifications in production pipeline",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Add Slack notifications to prod-docker-build job",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Add Slack notifications to prod-deploy job with manual approval link",
+    "status": "completed",
+    "id": "4"
+  }
+]

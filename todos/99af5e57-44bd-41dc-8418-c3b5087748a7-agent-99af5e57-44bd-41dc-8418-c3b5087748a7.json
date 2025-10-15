@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Create .gitlab-ci.yml file with multi-stage pipeline",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Update k8s/uat/deployment.yaml to use environment variables",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Update k8s/production/deployment.yaml to use environment variables",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Create documentation for required GitLab CI/CD variables",
+    "status": "completed",
+    "id": "4"
+  }
+]

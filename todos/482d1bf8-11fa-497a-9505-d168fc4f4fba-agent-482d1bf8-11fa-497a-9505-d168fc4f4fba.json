@@ -1,0 +1,17 @@
+[
+  {
+    "content": "Fix delivery spec e_fab endpoint returning 406 status",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Fix transaction_receipt view undefined paid_at method error",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Fix payment spec invoice endpoint returning 406 status",
+    "status": "completed",
+    "id": "3"
+  }
+]

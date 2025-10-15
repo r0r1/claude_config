@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Examine current landing page to understand structure",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Update brand name from existing to 'Tring for Transaction Linking'",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Create jargon/copy for transaction form creation, export, and sharing features",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Add specific sections for all transaction types with explanations",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Add placeholder images for each transaction type section",
+    "status": "completed",
+    "id": "5"
+  }
+]

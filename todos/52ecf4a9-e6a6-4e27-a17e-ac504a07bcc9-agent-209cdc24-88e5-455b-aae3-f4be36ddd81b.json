@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Fix RuboCop violations in msisdn_stage_service_spec.rb - rename indexed let statements",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Fix RuboCop violations in msisdn_submission_service_spec.rb - rename indexed let statements",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Fix RuboCop violations in order_notification_service_spec.rb - reduce nested group depth",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Run tests to ensure all fixes maintain functionality",
+    "status": "completed",
+    "id": "4"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Fix ALL remaining rspec issues to resolve CI process",
+    "status": "completed",
+    "id": "fix-all-rspec-ci"
+  },
+  {
+    "content": "Fix RSpec failures in spec/models",
+    "status": "completed",
+    "id": "fix-models-rspec"
+  },
+  {
+    "content": "Fix RSpec failures in spec/jobs",
+    "status": "completed",
+    "id": "fix-jobs-rspec"
+  },
+  {
+    "content": "Fix RSpec failures in spec/requests",
+    "status": "completed",
+    "id": "fix-requests-rspec"
+  },
+  {
+    "content": "Fix RSpec failures in spec/features",
+    "status": "completed",
+    "id": "fix-features-rspec"
+  }
+]

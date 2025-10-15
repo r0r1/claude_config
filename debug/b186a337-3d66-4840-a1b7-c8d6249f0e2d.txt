@@ -1,0 +1,63 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.json, /Users/rorikurniadi/.claude/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["Bash(cat:*)"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Summarizing all 5 messages (~41959 tokens)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.73287.1760433276826
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 59530 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.73287.1760433276826 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.73287.1760433276858
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 59530 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.73287.1760433276858 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760433276900-il3hs0.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/b186a337-3d66-4840-a1b7-c8d6249f0e2d-agent-b186a337-3d66-4840-a1b7-c8d6249f0e2d.json.tmp.73287.1760433276907
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/b186a337-3d66-4840-a1b7-c8d6249f0e2d-agent-b186a337-3d66-4840-a1b7-c8d6249f0e2d.json.tmp.73287.1760433276907 to /Users/rorikurniadi/.claude/todos/b186a337-3d66-4840-a1b7-c8d6249f0e2d-agent-b186a337-3d66-4840-a1b7-c8d6249f0e2d.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/b186a337-3d66-4840-a1b7-c8d6249f0e2d-agent-b186a337-3d66-4840-a1b7-c8d6249f0e2d.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.73287.1760433276927
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 59100 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.73287.1760433276927 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Summarizing all 5 messages (~62973 tokens)
+[DEBUG] Summarizing all 5 messages (~84772 tokens)
+[DEBUG] Summarizing last 3 of 48 messages (~141541 tokens)
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/.claude/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] rg error (signal=undefined, code=ABORT_ERR, stderr: ), 0 results
+[ERROR] AbortError: AbortError: The operation was aborted.
+    at unknown
+    at abortChildProcess (node:child_process:937:42)
+    at onAbortListener2 (node:child_process:35:24)
+    at abort (unknown)
+[DEBUG] rg error (signal=undefined, code=ABORT_ERR, stderr: ), 0 results
+[ERROR] AbortError: AbortError: The operation was aborted.
+    at unknown
+    at abortChildProcess (node:child_process:937:42)
+    at onAbortListener2 (node:child_process:35:24)
+    at abort (unknown)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.vscode/extensions/anthropic.claude-code-2.0.14-darwin-arm64/resources/native-binary/claude)
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for SessionEnd with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)

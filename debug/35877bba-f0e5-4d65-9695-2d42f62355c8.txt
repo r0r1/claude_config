@@ -1,0 +1,43 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.local.json...
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760087144969-0s2dwm.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/35877bba-f0e5-4d65-9695-2d42f62355c8-agent-35877bba-f0e5-4d65-9695-2d42f62355c8.json.tmp.5707.1760087144973
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/35877bba-f0e5-4d65-9695-2d42f62355c8-agent-35877bba-f0e5-4d65-9695-2d42f62355c8.json.tmp.5707.1760087144973 to /Users/rorikurniadi/.claude/todos/35877bba-f0e5-4d65-9695-2d42f62355c8-agent-35877bba-f0e5-4d65-9695-2d42f62355c8.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/35877bba-f0e5-4d65-9695-2d42f62355c8-agent-35877bba-f0e5-4d65-9695-2d42f62355c8.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.5707.1760087144992
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40059 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.5707.1760087144992 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Summarizing all 2 messages (~0 tokens)
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.5707.1760087145198
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40059 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.5707.1760087145198 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] rg error (signal=undefined, code=ERR_CHILD_PROCESS_STDIO_MAXBUFFER, stderr: rg: /Users/rorikurniadi/Library/Caches/com.apple.ap.adprivacyd: Operation not permitted (os error 1)
+rg: /Users/rorikurniadi/Documents: Operation not permitted (os error 1)
+), 170862 results
+[ERROR] RangeError: RangeError [ERR_CHILD_PROCESS_STDIO_MAXBUFFER]: stdout maxBuffer length exceeded
+    at Socket.onChildStdout (node:child_process:490:14)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:489:12)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23)
+[DEBUG] Shell snapshot created successfully (53027 bytes)

@@ -1,0 +1,8 @@
+[
+  {
+    "content": "Fix kubectl apply command to skip TLS verification",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  }
+]

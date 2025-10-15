@@ -1,0 +1,26 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.local.json...
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Token expired without refresh token
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.3770.1760086863128
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 40191 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.3770.1760086863128 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] MCP server "atlassian": Found client info
+[DEBUG] MCP server "atlassian": Token expired without refresh token
+[DEBUG] MCP server "atlassian": Generated new OAuth state
+[DEBUG] MCP server "atlassian": Saving code verifier
+[DEBUG] MCP server "atlassian": Authorization URL: https://mcp.atlassian.com/v1/authorize?response_type=code&client_id=9X0Z1dqjGnTQuP5x&code_challenge=xr3deH8eZYKetyfKuxKFxB0KCcLwIHxfzmv7lzykpUE&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A3118%2Fcallback&state=7_TiOULu8-0BUTfrnGdRuEpTSjqBzsuse8z4lFXVwAY
+[DEBUG] MCP server "atlassian": Scopes in URL: NOT FOUND
+[DEBUG] MCP server "atlassian": No scopes available from URL or metadata
+[DEBUG] MCP server "atlassian": Redirection handling is disabled, skipping redirect
+[DEBUG] MCP server "atlassian": SSE Connection failed after 485ms: {"url":"https://mcp.atlassian.com/v1/sse","error":"Unauthorized","errorType":"cV","stack":"Error: Unauthorized\n    at Jy1._authThenStart (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:24267)\n    at async Jy1.start (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:558:26119)\n    at async dS1.connect (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:12678)\n    at async dS1.connect (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:552:145296)"}
+[ERROR] MCP server "atlassian" Error: Unauthorized
+[DEBUG] MCP server "atlassian": Authentication required for SSE server

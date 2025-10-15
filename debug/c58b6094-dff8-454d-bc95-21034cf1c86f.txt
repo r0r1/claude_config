@@ -1,0 +1,1306 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.json, /Users/rorikurniadi/code/smb-app/ide-phoenix/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 48 allow rule(s) to destination 'localSettings': ["Bash(cat:*)","Bash(mv:*)","Bash(xattr:*)","Bash(git log:*)","mcp__gitlab__get_merge_request","mcp__atlassian__getAccessibleAtlassianResources","Bash(curl:*)","mcp__gitlab__list_merge_request_diffs","mcp__atlassian__getJiraIssue","Bash(git fetch:*)","WebFetch(domain:mygitlab-dev.ioh.co.id)","mcp__gitlab__discussion_new","mcp__atlassian__getConfluenceSpaces","mcp__atlassian__createConfluencePage","Bash(claude mcp inspect:*)","Bash(claude mcp tools)","Bash(git show:*)","Bash(gh api:*)","Bash(env)","mcp__gitlab__get_merge_request_commits","Bash(git diff:*)","mcp__gitlab__discussion_new_with_position","Bash(claude mcp list:*)","Bash(awk:*)","Bash(git merge-base:*)","Bash(git remote:*)","WebSearch","WebFetch(domain:ioh-smb.atlassian.net)","mcp__gitlab__discussion_list","Bash(if [ -z \"$GITLAB_TOKEN\" ])","Bash(then echo \"GITLAB_TOKEN not set\")","Bash(exit 1)","Bash(fi)","Bash(git rev-parse:*)","mcp__gitlab__discussion_add_note","mcp__gitlab__discussion_resolve","Bash(then echo \"GITLAB_TOKEN not set\" exit 1 fi)","Read(//private/tmp/**)","mcp__atlassian__editJiraIssue","mcp__atlassian__addCommentToJiraIssue","Bash(python3:*)","Read(//tmp/**)","Read(//Users/rorikurniadi/**)","Bash(git for-each-ref:*)","WebFetch(domain:git.telkom.co.id)","SlashCommand(/update-jira-spec)","mcp__gitlab__list_projects","mcp__gitlab__list_project_merge_requests"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760506522287-v1t7ri.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506522289
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506522289 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506522305
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506522305 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/code/smb-app/ide-phoenix/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Summarizing last 5 of 17 messages (~125144 tokens)
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506522647
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506522647 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506522660
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506522660 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506522842
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506522842 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Shell snapshot created successfully (52413 bytes)
+[DEBUG] MCP server "gitlab": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Token expires in -3415s, attempting proactive refresh
+[DEBUG] MCP server "atlassian": Starting token refresh
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506523306
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506523306 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506523364
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65685 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506523364 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506523374
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65685 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506523374 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called, ENABLE_PLUGINS=true
+[DEBUG] Starting background plugin installations
+[DEBUG] performBackgroundPluginInstallations called
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760506523698
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760506523698 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] MCP server "gitlab": Successfully connected to undefined server in 461ms
+[DEBUG] MCP server "gitlab": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":true,"serverVersion":{"name":"GitLab","version":"1.31.1"}}
+[DEBUG] Summarizing last 6 of 31 messages (~128479 tokens)
+[DEBUG] MCP server "atlassian": Found client info
+[DEBUG] Summarizing last 4 of 49 messages (~122155 tokens)
+[DEBUG] MCP server "atlassian": Token refresh successful, saving new tokens
+[DEBUG] MCP server "atlassian": Saving tokens
+[DEBUG] MCP server "atlassian": Token expires in: 3300
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Token refreshed successfully
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 3299s
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 3299s
+[DEBUG] Summarizing last 3 of 98 messages (~141674 tokens)
+[DEBUG] MCP server "atlassian": Successfully connected to sse server in 3193ms
+[DEBUG] MCP server "atlassian": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"atlassian-mcp-server","version":"1.0.0"}}
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 3299s
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Summarizing last 11 of 61 messages (~141090 tokens)
+[DEBUG] Summarizing last 5 of 60 messages (~145791 tokens)
+[DEBUG] Summarizing last 3 of 107 messages (~110845 tokens)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Added snapshot for 02202bfe-1aa6-49d8-86ca-fabc54bdc453, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506554129
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1321 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506554129 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506565520
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1323 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506565520 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506579397
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1328 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506579397 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__get_merge_request
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__get_merge_request
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__get_merge_request
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__get_merge_request" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__list_merge_request_diffs
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__list_merge_request_diffs
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__list_merge_request_diffs
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__list_merge_request_diffs" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: get_merge_request
+[DEBUG] MCP server "gitlab": Calling MCP tool: list_merge_request_diffs
+[DEBUG] MCP server "gitlab": Tool 'list_merge_request_diffs' completed successfully in 774ms
+[DEBUG] MCP server "gitlab": Tool 'get_merge_request' completed successfully in 894ms
+[DEBUG] MCP server "gitlab": Tool 'list_merge_request_diffs' failed after 1s: MCP tool "list_merge_request_diffs" response (43776 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+[ERROR] MCPContentTooLargeError: MCPContentTooLargeError: MCP tool "list_merge_request_diffs" response (43776 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+    at TE0 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:725:585)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async yr2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:7874)
+    at async Object.call (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:18711)
+    at async nS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:64762)
+    at async c2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:62271)
+    at async HZB (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:1690:2867)
+    at async p2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:3418:2126)
+    at async iS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:61464)
+    at async cS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:60403)
+[DEBUG] MCP server "gitlab": Tool 'get_merge_request' failed after 1s: MCP tool "get_merge_request" response (91378 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+[ERROR] MCPContentTooLargeError: MCPContentTooLargeError: MCP tool "get_merge_request" response (91378 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+    at TE0 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:725:585)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async yr2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:7874)
+    at async Object.call (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:18711)
+    at async nS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:64762)
+    at async c2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:62271)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506626366
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1188 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506626366 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506638954
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1190 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506638954 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_list
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_list
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_list
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_list" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_list
+[DEBUG] MCP server "gitlab": Tool 'discussion_list' completed successfully in 514ms
+[DEBUG] MCP server "gitlab": Tool 'discussion_list' failed after 0s: MCP tool "discussion_list" response (45162 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+[ERROR] MCPContentTooLargeError: MCPContentTooLargeError: MCP tool "discussion_list" response (45162 tokens) exceeds maximum allowed tokens (25000). Please use pagination, filtering, or limit parameters to reduce the response size.
+    at TE0 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:725:585)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async yr2 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:7874)
+    at async Object.call (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:794:18711)
+    at async nS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:64762)
+    at async c2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:62271)
+    at async HZB (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:1690:2867)
+    at async p2Q (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:3418:2126)
+    at async iS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:61464)
+    at async cS5 (file:///Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/cli.js:2492:60403)
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506653887
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1360 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506653887 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Bash
+[DEBUG] Executing hooks for PreToolUse:Bash
+[DEBUG] Getting matching hook commands for PreToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Bash
+[DEBUG] Getting matching hook commands for PostToolUse with query: Bash
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Bash" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506717249
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1362 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760506717249 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Task
+[DEBUG] Executing hooks for PreToolUse:Task
+[DEBUG] Getting matching hook commands for PreToolUse with query: Task
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Glob
+[DEBUG] Executing hooks for PreToolUse:Glob
+[DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Glob
+[DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Glob
+[DEBUG] Executing hooks for PreToolUse:Glob
+[DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Glob
+[DEBUG] Executing hooks for PreToolUse:Glob
+[DEBUG] Getting matching hook commands for PreToolUse with query: Glob
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Glob
+[DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Glob
+[DEBUG] Getting matching hook commands for PostToolUse with query: Glob
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Glob" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: Grep
+[DEBUG] Executing hooks for PreToolUse:Grep
+[DEBUG] Getting matching hook commands for PreToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] executePreToolHooks called for tool: Read
+[DEBUG] Executing hooks for PreToolUse:Read
+[DEBUG] Getting matching hook commands for PreToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Read
+[DEBUG] Getting matching hook commands for PostToolUse with query: Read
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Read" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Grep
+[DEBUG] Getting matching hook commands for PostToolUse with query: Grep
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Grep" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Stream started - received first chunk
+[DEBUG] Executing hooks for SubagentStop
+[DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Executing hooks for PostToolUse:Task
+[DEBUG] Getting matching hook commands for PostToolUse with query: Task
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "Task" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507018277
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1364 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507018277 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760507033947
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760507033947 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760507033972
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65790 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760507033972 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760507033984
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65999 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760507033984 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760507199307
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 65999 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760507199307 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Executing hooks for UserPromptSubmit
+[DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] FileHistory: Making snapshot for message 8ae6be68-7e47-4db8-b1de-56e5c5a5e6b5
+[DEBUG] FileHistory: Added snapshot for 8ae6be68-7e47-4db8-b1de-56e5c5a5e6b5, tracking 0 files
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507315078
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1375 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507315078 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 427ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 244ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 167ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 174ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 219ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 174ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 151ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 142ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: mcp__gitlab__discussion_new
+[DEBUG] Executing hooks for PreToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PreToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab": Calling MCP tool: discussion_new
+[DEBUG] MCP server "gitlab": Tool 'discussion_new' completed successfully in 177ms
+[DEBUG] Executing hooks for PostToolUse:mcp__gitlab__discussion_new
+[DEBUG] Getting matching hook commands for PostToolUse with query: mcp__gitlab__discussion_new
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "mcp__gitlab__discussion_new" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507464821
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 1391 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507464821 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] executePreToolHooks called for tool: TodoWrite
+[DEBUG] Executing hooks for PreToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PreToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507506640
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json.tmp.53422.1760507506640 to /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/c58b6094-dff8-454d-bc95-21034cf1c86f-agent-c58b6094-dff8-454d-bc95-21034cf1c86f.json written atomically
+[DEBUG] Executing hooks for PostToolUse:TodoWrite
+[DEBUG] Getting matching hook commands for PostToolUse with query: TodoWrite
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "TodoWrite" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Hooks: getAsyncHookResponseAttachments called
+[DEBUG] Hooks: checkForNewResponses called
+[DEBUG] Hooks: Found 0 total hooks in registry
+[DEBUG] Hooks: checkForNewResponses returning 0 responses
+[DEBUG] Slash commands included in SlashCommand tool: /update-jira-spec
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760507521127
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 66210 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760507521127 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for Stop
+[DEBUG] Getting matching hook commands for Stop with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760507521149
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 66210 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760507521149 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.53422.1760507521159
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 66288 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.53422.1760507521159 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Getting matching hook commands for Notification with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)

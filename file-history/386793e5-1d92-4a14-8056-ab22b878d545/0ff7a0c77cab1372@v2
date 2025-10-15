@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "GitLab": {
+      "command": "/opt/homebrew/bin/gitlab-mcp",
+      "args": [
+        "--base-url",
+        "https://mygitlab-dev.ioh.co.id",
+        "--client-id",
+        "d124b180827654dee964ac13749e885c452457b3598cc722b08bbe099e1b2b16"
+      ]
+    }
+  }
+}

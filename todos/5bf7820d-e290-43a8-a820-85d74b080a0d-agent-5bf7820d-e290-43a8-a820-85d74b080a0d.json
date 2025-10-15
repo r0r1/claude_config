@@ -1,0 +1,27 @@
+[
+  {
+    "content": "Remove GA tracking calls from Sessions controller",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Remove GA tracking calls from Registrations controller",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Remove GA tracking calls from Sales Orders controller",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Update specs to test session flags instead of GA calls",
+    "status": "completed",
+    "id": "4"
+  },
+  {
+    "content": "Run tests to verify changes",
+    "status": "completed",
+    "id": "5"
+  }
+]

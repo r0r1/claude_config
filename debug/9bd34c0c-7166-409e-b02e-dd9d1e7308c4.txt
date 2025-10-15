@@ -1,0 +1,159 @@
+[DEBUG] Watching for changes in setting files /Users/rorikurniadi/.claude/settings.json, /Users/rorikurniadi/code/ide-mobile/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'localSettings': ["Bash(env)"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/rorikurniadi/.zshrc
+[DEBUG] Snapshots directory: /Users/rorikurniadi/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760422538100-csp6x9.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude/todos/9bd34c0c-7166-409e-b02e-dd9d1e7308c4-agent-9bd34c0c-7166-409e-b02e-dd9d1e7308c4.json.tmp.23127.1760422538103
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/rorikurniadi/.claude/todos/9bd34c0c-7166-409e-b02e-dd9d1e7308c4-agent-9bd34c0c-7166-409e-b02e-dd9d1e7308c4.json.tmp.23127.1760422538103 to /Users/rorikurniadi/.claude/todos/9bd34c0c-7166-409e-b02e-dd9d1e7308c4-agent-9bd34c0c-7166-409e-b02e-dd9d1e7308c4.json
+[DEBUG] File /Users/rorikurniadi/.claude/todos/9bd34c0c-7166-409e-b02e-dd9d1e7308c4-agent-9bd34c0c-7166-409e-b02e-dd9d1e7308c4.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422538118
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55897 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422538118 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/rorikurniadi/.asdf/installs/nodejs/20.18.3/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/rorikurniadi/.claude/skills, project=/Users/rorikurniadi/code/ide-mobile/.claude/skills
+[DEBUG] Loaded 0 skills total (managed: 0, user: 0, project: 0)
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422538387
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55897 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422538387 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422538399
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55897 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422538399 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1455s
+[DEBUG] MCP server "gitlab-ioh": Initializing HTTP transport to https://mygitlab-dev.ioh.co.id/api/v4/mcp
+[DEBUG] MCP server "gitlab-ioh": Node version: v20.18.3, Platform: darwin
+[DEBUG] MCP server "gitlab-ioh": Environment: {"NODE_OPTIONS":"not set","UV_THREADPOOL_SIZE":"default","HTTP_PROXY":"not set","HTTPS_PROXY":"not set","NO_PROXY":"not set"}
+[DEBUG] MCP server "gitlab-ioh": MTLS options: default
+[DEBUG] MCP server "gitlab-ioh": HTTP transport options: {"url":"https://mygitlab-dev.ioh.co.id/api/v4/mcp","headers":{"User-Agent":"claude-code/2.0.14"},"hasAuthProvider":true,"timeoutMs":60000}
+[DEBUG] MCP server "gitlab-ioh": HTTP transport created successfully
+[DEBUG] MCP server "gitlab-ioh": Client created, setting up request handler
+[DEBUG] MCP server "gitlab-ioh": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "gitlab-ioh": Testing basic HTTP connectivity to https://mygitlab-dev.ioh.co.id/api/v4/mcp
+[DEBUG] MCP server "gitlab-ioh": Parsed URL: host=mygitlab-dev.ioh.co.id, port=default, protocol=https:
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422539094
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55897 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422539094 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Executing hooks for SessionStart:startup
+[DEBUG] Getting matching hook commands for SessionStart with query: startup
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+[DEBUG] Found 0 hook commands to execute
+[DEBUG] MCP server "gitlab-ioh": No token data found
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422539210
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55792 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422539210 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422539219
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55792 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422539219 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] performStartupChecks called, ENABLE_PLUGINS=true
+[DEBUG] Starting background plugin installations
+[DEBUG] performBackgroundPluginInstallations called
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422539680
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55897 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422539680 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] Shell snapshot created successfully (52413 bytes)
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1454s
+[DEBUG] MCP server "gitlab-ioh": HTTP Connection failed after 1077ms: Unexpected token '<', "<!DOCTYPE "... is not valid JSON (code: none, errno: none)
+[ERROR] MCP server "gitlab-ioh" SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[DEBUG] MCP server "gitlab-ioh": Connection failed after 1079ms: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[ERROR] MCP server "gitlab-ioh" Connection failed: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1454s
+[DEBUG] MCP server "atlassian": Successfully connected to sse server in 1317ms
+[DEBUG] MCP server "atlassian": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"serverVersion":{"name":"atlassian-mcp-server","version":"1.0.0"}}
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1453s
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1452s
+[DEBUG] MCP server "gitlab-ioh": No token data found
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422563479
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 55957 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422563479 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1430s
+[DEBUG] MCP server "gitlab-ioh": No token data found
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] FileHistory: Added snapshot for a85341a4-9532-4169-8c7e-fc43d3ddd558, tracking 0 files
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422564069
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 56039 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422564069 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1424s
+[DEBUG] MCP server "gitlab-ioh": No token data found
+[DEBUG] AutoUpdaterWrapper: Installation type: npm-global, using native: false
+[DEBUG] Getting matching hook commands for SessionEnd with query: undefined
+[DEBUG] Found 0 hook matchers in settings
+[DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+[DEBUG] Cleaned up session snapshot: /Users/rorikurniadi/.claude/shell-snapshots/snapshot-zsh-1760422538100-csp6x9.sh
+[DEBUG] MCP server "atlassian": SSE transport closed/disconnected, attempting automatic reconnection
+[DEBUG] MCP server "atlassian": SSE transport initialized, awaiting connection
+[DEBUG] MCP server "atlassian": Starting connection with timeout of 30000ms
+[DEBUG] MCP server "atlassian": Returning tokens
+[DEBUG] MCP server "atlassian": Token length: 74
+[DEBUG] MCP server "atlassian": Has refresh token: true
+[DEBUG] MCP server "atlassian": Expires in: 1221s
+[DEBUG] Writing to temp file: /Users/rorikurniadi/.claude.json.tmp.23127.1760422772637
+[DEBUG] Preserving file permissions: 100644
+[DEBUG] Temp file written successfully, size: 56817 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/rorikurniadi/.claude.json.tmp.23127.1760422772637 to /Users/rorikurniadi/.claude.json
+[DEBUG] File /Users/rorikurniadi/.claude.json written atomically

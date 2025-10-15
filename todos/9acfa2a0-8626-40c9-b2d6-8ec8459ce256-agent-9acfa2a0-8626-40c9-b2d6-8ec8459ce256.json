@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Remove authentication checks from components",
+    "status": "completed",
+    "id": "1"
+  },
+  {
+    "content": "Redirect editProfile route to landingUrl/profile",
+    "status": "completed",
+    "id": "2"
+  },
+  {
+    "content": "Update components to show content without authentication",
+    "status": "completed",
+    "id": "3"
+  },
+  {
+    "content": "Test the changes",
+    "status": "completed",
+    "id": "4"
+  }
+]
