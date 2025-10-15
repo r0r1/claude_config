@@ -10,13 +10,42 @@ You will review a GitLab Merge Request in the context of a JIRA issue, performin
 
 ## Token Optimization Strategy
 
-**IMPORTANT:** This command is optimized to minimize token usage:
-- **Multi-strategy discussion fetching**: Attempts to fetch only unresolved discussions first, then falls back to pagination
-- If discussion history exceeds token limits (>25K tokens), **gracefully skips** discussion verification
-- When skipped, performs a **fresh code review only** without verifying existing discussions
+**IMPORTANT:** This command is optimized to handle large MRs with extensive discussion history:
+
+### Token Limit Issues with MCP Tools
+
+MCP tools have a **25,000 token response limit**. For MRs with extensive discussions, this can cause issues at multiple steps:
+
+1. **Step 3 - MR Details**: `get_merge_request` may return >90K tokens if MR has many discussions
+2. **Step 4 - Diffs**: Large MRs with many files may exceed limits
+3. **Step 4b - Discussions**: Discussion lists may return >50K tokens on active MRs
+
+### Adaptive Fallback Strategy
+
+The command uses **multi-tier fallback strategies** at each step:
+
+- **MR Details**: Try MCP tool → Fall back to direct GitLab API call for just metadata
+- **Diffs**: Try MCP tool → Fall back to direct GitLab API call for complete diff
+- **Discussions**: Try unresolved filter → Try pagination → Gracefully skip if still too large
+
+### When Discussions Are Skipped
+
+If discussion history exceeds token limits (>25K tokens):
+- **Skips** existing discussion verification entirely
+- Performs a **fresh code review** of all changes
+- Posts **all findings as new discussions**
+- Displays clear warnings to user
+- Recommends manual review of existing discussions
+
+### Processing Approach
+
 - Discussions are processed **in small batches** (5-10 at a time) when successfully fetched
 - Progress is displayed incrementally to keep you informed
-- This adaptive approach ensures the review completes even on MRs with 100+ discussions
+- Uses direct GitLab API when MCP tools hit token limits
+- This adaptive approach ensures the review completes even on MRs with:
+  - 100+ discussions
+  - 65+ commits
+  - 28+ files changed
 
 ## Arguments Provided
 - **Merge Request**: $1 (URL or MR ID)
@@ -130,17 +159,54 @@ Store this context for the code review. This will be used to validate that the M
 
 ## Step 3: Fetch GitLab MR Details
 
-Use the GitLab MCP server tool `get_merge_request` to fetch the merge request details:
+**IMPORTANT:** MRs with extensive discussions may cause `get_merge_request` to exceed token limits because it includes embedded discussion data.
 
+**Strategy 1: Try MCP tool with parameters to exclude discussions**
+
+First, check what parameters are available:
 ```
-Use MCP tool: mcp__gitlab__get_merge_request (or check with /mcp list for exact prefix)
+Use Bash: /mcp inspect gitlab
+```
+
+Look for parameters like `include_discussions`, `include_notes`, or similar that can exclude discussion data.
+
+Then try the MCP tool with optimized parameters:
+```
+Use MCP tool: mcp__gitlab__get_merge_request
 Parameters:
 - Merge request identifier (format depends on MCP server config - may be project/MR IID combination)
+- If available, add parameters to exclude discussions/notes (e.g., include_discussions=false, render_html=false, etc.)
 ```
+
+**Common parameter patterns to try:**
+- `include_notes=false` - Exclude discussion notes
+- `include_discussions=false` - Exclude discussions
+- `render_html=false` - Don't render HTML descriptions
+- Check the MCP tool documentation for exact parameter names
 
 The exact parameter format may vary. If needed, check `/mcp inspect gitlab` to see parameter requirements.
 
-Extract and display from the MR response:
+**Strategy 2: If Strategy 1 still fails with "response exceeds maximum allowed tokens" error, use GitLab API directly**
+
+If the MCP tool fails due to token limits even with parameters, fall back to direct API call:
+
+```
+Use Bash tool to call GitLab API:
+curl -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" \
+     "https://gitlab.com/api/v4/projects/{encoded_project_path}/merge_requests/{iid}"
+```
+
+Notes:
+- **Getting the GitLab Token**:
+  - First, try to get it from environment: Check if `GITLAB_TOKEN` or `GITLAB_PRIVATE_TOKEN` is set
+  - If not available, ask the user to provide their GitLab Personal Access Token
+  - The token needs at least `read_api` scope
+- The project path needs to be URL-encoded (e.g., "cco%2Fcmo%2Fgroup-digital-coe%2Fdiv-smb-digital-product%2Fide-phoenix")
+- Replace `https://gitlab.com` with your GitLab instance URL if using self-hosted GitLab (e.g., "https://mygitlab-dev.ioh.co.id")
+- The GitLab API's base MR endpoint returns only MR metadata **without** embedded discussions by default
+- This is much more token-efficient than the MCP tool which may be fetching and including discussion data
+
+**Extract and display from the MR response:**
 - MR title
 - Description
 - Source branch
@@ -148,14 +214,41 @@ Extract and display from the MR response:
 - Author
 - Status (open, merged, closed)
 - Web URL
-- Base commit SHA, start commit SHA, and head commit SHA (needed for posting comments to specific lines)
+- Base commit SHA (diff_refs.base_sha)
+- Start commit SHA (diff_refs.start_sha)
+- Head commit SHA (diff_refs.head_sha)
+- These SHAs are needed for posting comments to specific lines
+
+If using API directly, display note to user:
+```
+ℹ️ Using GitLab API directly for MR details (MCP response too large due to extensive discussions).
+```
 
 ## Step 4: Fetch MR Changes (Complete Diff)
 
 **IMPORTANT:** Fetch ALL changes in the MR (from base branch to head branch), NOT just the latest commit.
 
-Use the GitLab MCP server tool `list_merge_request_diffs` to fetch the detailed changes:
+**CRITICAL INSTRUCTION TO REVIEWER:**
+  - The diffs provided show the FINAL STATE after all changes
+  - Lines starting with '+' are the NEW CODE (already implemented)
+  - Lines starting with '-' are the OLD CODE (removed)
+  - DO NOT claim "the diff shows X but the code shows Y"
+  - DO NOT re-check file contents - trust the diff
+  - Review what IS in the diff, not what you think SHOULD be there
 
+**Strategy 1: Try MCP tool for complete changes**
+
+```
+Use MCP tool: mcp__gitlab__get_merge_request_changes
+Parameters:
+- Merge request identifier (same as Step 3)
+```
+
+This tool specifically returns the complete set of changes (files and diffs) for the entire MR.
+
+**Strategy 2: Alternative MCP tool**
+
+If the above doesn't work, try:
 ```
 Use MCP tool: mcp__gitlab__list_merge_request_diffs
 Parameters:
@@ -164,23 +257,23 @@ Parameters:
 
 This will return a list of diff versions for the merge request. **You need the COMPLETE diff** showing ALL changes from the target branch (base) to the source branch (head).
 
+If `list_merge_request_diffs` returns multiple versions, you typically want the latest version, but ensure it represents the COMPLETE cumulative diff.
+
+**Strategy 3: If MCP tools fail with token limits, use GitLab API directly**
+
+```
+Use Bash tool to call GitLab API:
+curl -H "PRIVATE-TOKEN: ${GITLAB_TOKEN}" \
+     "https://gitlab.com/api/v4/projects/{encoded_project_path}/merge_requests/{iid}/changes"
+```
+
+This API endpoint returns the complete diff for the MR.
+
 **CRITICAL:** Ensure you're getting the FULL MR diff, not individual commit diffs:
 - The diff should show ALL accumulated changes in the MR
 - This is the diff from `target_branch...source_branch` (three-dot diff)
 - NOT just the latest commit's changes
 - NOT just changes since the last review
-
-If `list_merge_request_diffs` returns multiple versions, you typically want the latest version, but ensure it represents the COMPLETE cumulative diff.
-
-**Alternative if the above doesn't work:**
-If the MCP tool returns individual commit diffs or incomplete data, you may need to use:
-```
-Use MCP tool: mcp__gitlab__get_merge_request_changes
-Parameters:
-- Merge request identifier (same as Step 3)
-```
-
-This tool specifically returns the complete set of changes (files and diffs) for the entire MR.
 
 Parse the response to extract:
 - **All changed files** (paths) - every file modified in the entire MR
@@ -1005,6 +1098,24 @@ Throughout the process, handle these potential errors:
 - **Invalid MR URL or ID**: Validate the format before attempting API calls
 - **JIRA issue not found**: Check if the issue key is valid and accessible
 - **Permission Errors**: User may not have access to the MR or JIRA issue
+
+**MR Fetching Errors (Step 3):**
+- **MR response exceeds token limits**: If `get_merge_request` returns >25K tokens due to embedded discussions:
+  - Fall back to direct GitLab API call: `/api/v4/projects/{project}/merge_requests/{iid}`
+  - This returns only MR metadata without discussions
+  - Display note to user about using direct API
+- **GitLab token not available**: If API fallback is needed but token not found:
+  - Ask user to provide GitLab Personal Access Token with `read_api` scope
+  - Can be set as environment variable: `GITLAB_TOKEN`
+
+**Diff Fetching Errors (Step 4):**
+- **Diff response exceeds token limits**: If MCP tools fail to fetch complete diff:
+  - Fall back to direct GitLab API call: `/api/v4/projects/{project}/merge_requests/{iid}/changes`
+  - This returns complete MR diff
+- **Very large diffs**: If diff is still too large (>100MB):
+  - Warn user that MR is extremely large
+  - Suggest reviewing files incrementally or in smaller batches
+  - May need to manually review some files
 
 **Discussion Fetching Errors (Step 4b):**
 - **Failed to fetch discussions**: If `discussion_list` fails, log error but continue with review (just won't be able to check existing discussions)
