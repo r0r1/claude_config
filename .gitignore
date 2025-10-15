@@ -1,0 +1,8 @@
+debug/
+ide/
+shell-snapshots/
+.vscode/
+projects/
+*.log
+todos/
+statsig/
