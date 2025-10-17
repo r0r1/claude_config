@@ -611,6 +611,34 @@ After all operations are complete, provide a comprehensive final summary:
    - Manually verify {cannot_verify_count} discussion(s) that couldn't be auto-verified
    - Review inline comments on specific lines: {MR URL}#notes
 
+### Cost Consumption
+
+
+After all operations are complete, calculate token usage and provide a comprehensive final summary:
+
+**Calculate Token Usage and Cost**
+
+Calculate the total tokens used and estimated cost:
+
+```
+Total Tokens Used = Current Token Count - Starting Token Count (from Token Usage Tracking section)
+
+Cost Estimation (based on Claude Sonnet 4.5 pricing):
+- Input tokens: $3.00 per million tokens
+- Output tokens: $15.00 per million tokens
+
+Estimated Cost Calculation:
+- Input cost = (Input tokens / 1,000,000) × $3.00
+- Output cost = (Output tokens / 1,000,000) × $15.00
+- Total estimated cost = Input cost + Output cost
+```
+
+**Note:** Token count breakdown (input vs output) may not be directly visible. Provide total token usage and a conservative cost estimate assuming a typical input:output ratio for code review tasks (approximately 70:30 ratio).
+
+**Display Comprehensive Summary**
+
+Provide a comprehensive final summary:
+
 ### 🔗 Links
 
 - **View MR Discussions:** {MR URL}#notes
