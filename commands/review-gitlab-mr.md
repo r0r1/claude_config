@@ -450,6 +450,11 @@ If user chooses option 1 or 3 (post new comments), proceed with posting.
 
 For each review item in the `new_issues` JSON array, **ALWAYS ATTEMPT INLINE COMMENT FIRST**:
 
+**CRITICAL: Before attempting inline comments, verify you have the correct SHA values:**
+- From Step 3, you should have extracted: `diff_refs.base_sha`, `diff_refs.head_sha`, `diff_refs.start_sha`
+- Display these values to confirm: "Using SHAs - base: {base_sha}, start: {start_sha}, head: {head_sha}"
+- If these are missing or null, inline comments will fail
+
 ```
 Use MCP tool: mcp__gitlab__discussion_new
 Parameters:
@@ -474,14 +479,20 @@ Parameters:
   ---
   🤖 Automated review by Claude Code"
 
-- Position (REQUIRED for inline comments):
-  - base_sha: {from Step 3}
-  - start_sha: {from Step 3}
-  - head_sha: {from Step 3}
+- Position (REQUIRED for inline comments - use exact structure):
+  - base_sha: {diff_refs.base_sha from Step 3 MR details}
+  - start_sha: {diff_refs.start_sha from Step 3 MR details}
+  - head_sha: {diff_refs.head_sha from Step 3 MR details}
   - position_type: "text"
-  - new_path: {file_path from review item}
-  - new_line: {line_number from review item}
+  - new_path: {file_path from review item - must match exact file path in diff}
+  - new_line: {line_number from review item - must be a line that was ADDED (+) in the diff}
 ```
+
+**IMPORTANT NOTES ABOUT LINE NUMBERS:**
+- `new_line` must be a line number that appears in the NEW version of the file (after changes)
+- The line must be visible in the diff (either added or in context)
+- Lines that were only in the old file (deleted lines with -) cannot be commented on with new_line
+- If you need to comment on a deleted line, you would use `old_line` instead (but typically we comment on new code)
 
 **Why inline comments are preferred:**
 - They appear directly on the code line in the diff view
@@ -533,8 +544,12 @@ Parameters:
 
 For each posting attempt:
 1. **Start with inline**: Log "Posting inline comment {n} of {total} on {file_path}:{line_number}..."
+   - Log the position parameters being used: "Position: base={base_sha}, start={start_sha}, head={head_sha}, path={new_path}, line={new_line}"
 2. **If inline succeeds**: Log "✅ Inline comment posted successfully" and move to next item
-3. **If inline fails**: Log "⚠️ Inline posting failed: {error_reason}. Retrying as general thread..."
+3. **If inline fails**:
+   - Log the FULL error message: "⚠️ Inline posting failed with error: {full_error_message}"
+   - Include the error code if available
+   - Log "Retrying as general thread..."
 4. **If general succeeds**: Log "✅ General thread posted as fallback"
 5. **If both fail**: Log "❌ Failed to post comment: {error}" and continue with next item
 
