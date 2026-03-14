@@ -8,3 +8,14 @@ todos/
 statsig/
 file-history/
 history.jsonl
+cache/
+plans/
+plugins/
+sessions/
+tasks/
+telemetry/
+backups/
+paste-cache/
+mcp-needs-auth-cache.json
+settings.*
+*.json
