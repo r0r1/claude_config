@@ -272,6 +272,15 @@ Review the following code changes line by line. For each file, analyze:
 6. Logic errors or bugs
 7. Alignment with Linear issue requirements
 8. Consideration of discussion points from Linear comments
+9. **Observability & Troubleshooting** — review all logging, error reporting, and traceability practices:
+   - **Missing logs**: Are critical paths, state transitions, and business events logged? Entry/exit of important operations should be logged at appropriate levels (debug, info, warn, error).
+   - **Log quality**: Do log messages include enough context to diagnose issues without reading code? Check for: correlation/trace IDs, user/request identifiers, relevant payload fields (avoid logging sensitive data like passwords/tokens), and structured fields (prefer structured/JSON logging over string concatenation).
+   - **Log levels**: Are levels used correctly? (debug=dev detail, info=normal flow, warn=recoverable anomaly, error=requires attention, fatal=system cannot continue). Avoid logging errors for expected/business exceptions.
+   - **Traceability**: Is there a consistent trace/correlation ID propagated through async calls, background jobs, and service boundaries? Without this, distributed debugging is nearly impossible.
+   - **Error reporting to external tools (e.g. Sentry, Datadog, Rollbar)**: Are errors captured and sent to the error tracking tool? Check that: exceptions are not silently swallowed, `Sentry.capture_exception` (or equivalent) is called in rescue/catch blocks for unexpected errors, extra context (user, request, tags) is attached before capturing, and business/expected errors are NOT sent to Sentry (to reduce noise).
+   - **Avoid double logging**: Don't log AND capture to Sentry for the same error in multiple layers — pick one consistent place per layer.
+   - **Log rotation/volume**: Are there any log statements inside tight loops or high-frequency paths that could flood logs? Suggest rate-limiting or sampling if so.
+   - **Sensitive data in logs**: Flag any log statement that may accidentally log PII, credentials, tokens, or payment data.
 
 **Changed Files:**
 {Insert organized file changes from Step 4}
@@ -281,7 +290,7 @@ Review the following code changes line by line. For each file, analyze:
 - For EACH issue found, provide:
   - **File path** and **line numbers** affected
   - **Severity**: Critical (🔴), Warning (🟡), or Info (🟢)
-  - **Category**: Security, Performance, Best Practice, Testing, Bug, or Linear Alignment
+  - **Category**: Security, Performance, Best Practice, Testing, Bug, Linear Alignment, or Observability
   - **Description**: Clear explanation of the issue
   - **Recommendation**: Specific, actionable fix with code example if applicable
   - **Original code snippet**: Show the problematic code
@@ -311,7 +320,7 @@ Structure your response as a JSON object with two arrays:
       "file_path": "path/to/file.ts",
       "line_number": 42,
       "severity": "critical|warning|info",
-      "category": "Security|Performance|Best Practice|Testing|Bug|Linear Alignment",
+      "category": "Security|Performance|Best Practice|Testing|Bug|Linear Alignment|Observability",
       "title": "Brief issue title",
       "description": "Detailed explanation",
       "original_code": "problematic code snippet",
@@ -631,6 +640,7 @@ After all operations are complete, provide a comprehensive final summary:
 - Testing: {testing_count}
 - Bug: {bug_count}
 - Linear Alignment: {linear_alignment_count}
+- Observability: {observability_count}
 
 ### 🎯 Overall Summary
 

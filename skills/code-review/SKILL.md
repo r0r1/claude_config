@@ -275,10 +275,18 @@ Review the code changes and analyze:
 5. Changing patterns and standardization? service should extend from the specific parent already defined? e.g services / controller / models / views miss configuration and miss purpose?
 6. Clean Code standard violations
 7. Missing or inadequate tests
-
 8. Logic errors or bugs
 9. Alignment with issue requirements
 10. Discussion points from issue comments
+11. **Observability & Troubleshooting** — review all logging, error reporting, and traceability practices:
+    - **Missing logs**: Are critical paths, state transitions, and business events logged? Entry/exit of important operations should be logged at appropriate levels (debug, info, warn, error).
+    - **Log quality**: Do log messages include enough context to diagnose issues without reading code? Check for: correlation/trace IDs, user/request identifiers, relevant payload fields (avoid logging sensitive data like passwords/tokens), and structured fields (prefer structured/JSON logging over string concatenation).
+    - **Log levels**: Are levels used correctly? (debug=dev detail, info=normal flow, warn=recoverable anomaly, error=requires attention, fatal=system cannot continue). Avoid logging errors for expected/business exceptions.
+    - **Traceability**: Is there a consistent trace/correlation ID propagated through async calls, background jobs, and service boundaries? Without this, distributed debugging is nearly impossible.
+    - **Error reporting to external tools (e.g. Sentry, Datadog, Rollbar)**: Are errors captured and sent to the error tracking tool? Check that: exceptions are not silently swallowed, `Sentry.capture_exception` (or equivalent) is called in rescue/catch blocks for unexpected errors, extra context (user, request, tags) is attached before capturing, and business/expected errors are NOT sent to Sentry (to reduce noise).
+    - **Avoid double logging**: Don't log AND capture to Sentry for the same error in multiple layers — pick one consistent place per layer.
+    - **Log rotation/volume**: Are there any log statements inside tight loops or high-frequency paths that could flood logs? Suggest rate-limiting or sampling if so.
+    - **Sensitive data in logs**: Flag any log statement that may accidentally log PII, credentials, tokens, or payment data.
 
 **Changed Files:**
 {Insert file changes from git diff}
@@ -303,7 +311,7 @@ Return a JSON object:
       "file_path": "string",
       "line_number": 42,
       "severity": "critical|warning|info",
-      "category": "Security|Performance|Best Practice|Testing|Bug|Issue Alignment",
+      "category": "Security|Performance|Best Practice|Testing|Bug|Issue Alignment|Observability",
       "title": "brief issue title",
       "description": "detailed explanation",
       "original_code": "problematic code",
@@ -451,6 +459,15 @@ Provide comprehensive summary:
 - Critical Issues: {count}
 - Warnings: {count}
 - Suggestions: {count}
+
+### By Category
+- Security: {count}
+- Performance: {count}
+- Best Practice: {count}
+- Testing: {count}
+- Bug: {count}
+- Issue Alignment: {count}
+- Observability: {count}
 
 ### Comments Posted
 - Inline comments: {count}
