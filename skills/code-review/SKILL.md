@@ -271,11 +271,14 @@ Review the code changes and analyze:
 1. Security vulnerabilities
 2. Performance issues (N+1 queries, missing indexes)
 3. DRY principle violations
-4. Clean Code standard violations
-5. Missing or inadequate tests
-6. Logic errors or bugs
-7. Alignment with issue requirements
-8. Discussion points from issue comments
+4. Framework Best Practices, Refactor, and Simplify the flow / methods, check are there changes can be reusable instead of build method from scratch?
+5. Changing patterns and standardization? service should extend from the specific parent already defined? e.g services / controller / models / views miss configuration and miss purpose?
+6. Clean Code standard violations
+7. Missing or inadequate tests
+
+8. Logic errors or bugs
+9. Alignment with issue requirements
+10. Discussion points from issue comments
 
 **Changed Files:**
 {Insert file changes from git diff}
