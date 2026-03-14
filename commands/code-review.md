@@ -597,7 +597,112 @@ Track separately:
 - Warning (🟡): Use yellow circle emoji
 - Info (🟢): Use green circle emoji
 
-## Step 8: Comprehensive Summary Report
+## Step 8: Test Case Creation
+
+After posting review comments, launch the qa-test-engineer agent to generate test cases for the changed code.
+
+**Step 8a: Ask User for TC Creation**
+
+Ask the user:
+```
+Would you like me to generate test cases for this PR?
+1. Yes - Generate test cases (positive, negative, edge cases)
+2. No - Skip test case creation
+```
+
+**Step 8b: Launch QA Test Engineer Agent**
+
+If the user chooses Yes, use the Task tool to launch the qa-test-engineer agent with the following prompt:
+
+```
+You are creating comprehensive test cases for a Pull Request that has just been code-reviewed.
+
+**PR/Issue Context:**
+{Insert PR title, description, and Linear issue details from earlier steps}
+
+**Changed Files & Logic:**
+{Insert summary of what changed from the diff — focus on new behavior, modified logic, and business rules}
+
+**Code Review Findings:**
+{Insert the list of new_issues from the review — especially bugs and logic issues — so test cases can target those risk areas}
+
+**Your Task:**
+Generate comprehensive test cases covering ALL of the following categories:
+
+### ✅ Positive Test Cases
+- Happy path scenarios where inputs are valid and expected behavior occurs
+- Each key user flow or feature path introduced/modified in this PR
+- Verify expected outputs, state changes, UI feedback, and side effects
+
+### ❌ Negative Test Cases
+- Invalid inputs, missing required fields, malformed data
+- Unauthorized access attempts (wrong role, unauthenticated)
+- Business rule violations (e.g. duplicate entries, exceeded limits)
+- API error responses (400, 401, 403, 404, 422, 500)
+
+### ⚠️ Edge Cases
+- Boundary values (min/max, empty strings, zero, null)
+- Concurrent operations or race conditions if applicable
+- Large data sets or pagination edge cases
+- Locale/timezone edge cases if dates/times are involved
+- Network interruption or timeout scenarios
+
+### 🔍 Observability & Logging Test Cases
+- Verify that errors are reported to Sentry (or equivalent) when failures occur
+- Verify that trace/correlation IDs appear in logs for key operations
+- Verify that sensitive data (passwords, tokens) does NOT appear in logs
+- Verify correct log level is used (no errors logged for expected business exceptions)
+
+**Output Format:**
+For each test case provide:
+- **TC-ID**: Sequential ID (TC-001, TC-002, ...)
+- **Title**: Short descriptive name
+- **Category**: Positive / Negative / Edge Case / Observability
+- **Priority**: Critical / High / Medium / Low
+- **Preconditions**: What must be true before running
+- **Test Steps**: Numbered, executable steps
+- **Expected Result**: What should happen
+- **Test Data**: Any specific data required
+```
+
+**Step 8c: Display TC Summary**
+
+After the agent completes, display:
+```
+## Test Cases Generated
+
+| Category | Count |
+|---|---|
+| ✅ Positive | {count} |
+| ❌ Negative | {count} |
+| ⚠️ Edge Cases | {count} |
+| 🔍 Observability | {count} |
+| **Total** | **{total}** |
+
+**Priority Breakdown:**
+- Critical: {count}
+- High: {count}
+- Medium: {count}
+- Low: {count}
+```
+
+**Step 8d: Ask User for TC Destination**
+
+Ask the user:
+```
+Where would you like to save the test cases?
+1. Post as a PR comment on GitHub (summary + link to full list)
+2. Output here only (no posting)
+3. Create Jira/Linear subtasks for each TC (if issue tracker MCP available)
+```
+
+If option 1 is chosen, post the full TC list as a general PR comment using:
+```
+Use MCP tool: mcp__github__create_issue_comment
+Body: Formatted markdown with all test cases grouped by category
+```
+
+## Step 9: Comprehensive Summary Report
 
 After all operations are complete, provide a comprehensive final summary:
 

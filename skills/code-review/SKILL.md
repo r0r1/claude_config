@@ -424,7 +424,109 @@ Parameters:
 - Do NOT batch multiple issues into one comment
 - Each call creates a new top-level discussion/note in the general thread
 
-### Step 14: Cleanup
+### Step 14: Test Case Creation
+
+After posting review comments, launch the qa-test-engineer agent to generate test cases for the changed code.
+
+**Step 14a: Ask User for TC Creation**
+
+Ask the user:
+```
+Would you like me to generate test cases for this PR/MR?
+1. Yes - Generate test cases (positive, negative, edge cases)
+2. No - Skip test case creation
+```
+
+**Step 14b: Launch QA Test Engineer Agent**
+
+If the user chooses Yes, use the Task tool to launch the qa-test-engineer agent:
+
+```
+subagent_type: qa-test-engineer
+
+Prompt:
+You are creating comprehensive test cases for a Pull Request / Merge Request that has just been code-reviewed.
+
+**PR/MR & Issue Context:**
+{Insert PR/MR title, description, and issue details (Linear/Jira)}
+
+**Changed Files & Logic:**
+{Insert summary of what changed — focus on new behavior, modified logic, and business rules}
+
+**Code Review Findings:**
+{Insert the new_issues list from the review — especially bugs and logic issues — so TCs can target risk areas}
+
+**Your Task:**
+Generate comprehensive test cases covering ALL of the following categories:
+
+### ✅ Positive Test Cases
+- Happy path scenarios where inputs are valid and expected behavior occurs
+- Each key user flow or feature path introduced/modified in this PR/MR
+- Verify expected outputs, state changes, UI feedback, and side effects
+
+### ❌ Negative Test Cases
+- Invalid inputs, missing required fields, malformed data
+- Unauthorized access attempts (wrong role, unauthenticated)
+- Business rule violations (e.g. duplicate entries, exceeded limits)
+- API error responses (400, 401, 403, 404, 422, 500)
+
+### ⚠️ Edge Cases
+- Boundary values (min/max, empty strings, zero, null)
+- Concurrent operations or race conditions if applicable
+- Large data sets or pagination edge cases
+- Locale/timezone edge cases if dates/times are involved
+- Network interruption or timeout scenarios
+
+### 🔍 Observability & Logging Test Cases
+- Verify that errors are reported to Sentry (or equivalent) when failures occur
+- Verify that trace/correlation IDs appear in logs for key operations
+- Verify that sensitive data (passwords, tokens) does NOT appear in logs
+- Verify correct log level is used (no errors logged for expected business exceptions)
+
+**Output Format:**
+For each test case provide:
+- **TC-ID**: Sequential ID (TC-001, TC-002, ...)
+- **Title**: Short descriptive name
+- **Category**: Positive / Negative / Edge Case / Observability
+- **Priority**: Critical / High / Medium / Low
+- **Preconditions**: What must be true before running
+- **Test Steps**: Numbered, executable steps
+- **Expected Result**: What should happen
+- **Test Data**: Any specific data required
+```
+
+**Step 14c: Display TC Summary**
+
+After the agent completes, display:
+```
+## Test Cases Generated
+
+| Category | Count |
+|---|---|
+| ✅ Positive | {count} |
+| ❌ Negative | {count} |
+| ⚠️ Edge Cases | {count} |
+| 🔍 Observability | {count} |
+| **Total** | **{total}** |
+
+Priority Breakdown: Critical {n} / High {n} / Medium {n} / Low {n}
+```
+
+**Step 14d: Ask User for TC Destination**
+
+Ask the user:
+```
+Where would you like to save the test cases?
+1. Post as a PR/MR comment (full list in markdown)
+2. Output here only
+3. Create Jira/Linear subtasks for each TC (if issue tracker MCP is available)
+```
+
+If option 1 is chosen:
+- **GitHub**: Use `mcp__github__create_issue_comment` with the full TC list as markdown
+- **GitLab**: Use `mcp__gitlab__create_merge_request_note` with the full TC list as markdown
+
+### Step 15: Cleanup
 
 After review is complete:
 
@@ -474,11 +576,19 @@ Provide comprehensive summary:
 - General comments: {count}
 - Failed: {count}
 
+### Test Cases Generated
+- Total: {total_tc_count}
+- Positive: {positive_count}
+- Negative: {negative_count}
+- Edge Cases: {edge_count}
+- Observability: {observability_tc_count}
+
 ### Next Steps
 1. Address {critical_count} critical issues before merging
 2. Review {warning_count} warnings for code quality
 3. Consider {info_count} suggestions for improvements
-4. Update issue status if requirements are met
+4. Execute {total_tc_count} generated test cases before merging
+5. Update issue status if requirements are met
 
 ### Links
 - View PR/MR: {URL}
