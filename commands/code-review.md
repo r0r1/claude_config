@@ -1,214 +1,245 @@
 @"
 ---
-argument-hint: [PULL_REQUEST_URL_OR_NUMBER] [LINEAR_ISSUE_ID]
-description: Review GitHub PR with Linear issue specification and post threaded feedback to GitHub
+argument-hint: [PR_OR_MR_URL] [LINEAR_OR_JIRA_ISSUE_ID]
+description: Review GitHub PR or GitLab MR with Linear or Jira issue context, post threaded feedback, and generate test cases
 ---
 
-# Review GitHub PR with Linear Issue Specification
+# Code Review: GitHub PR / GitLab MR
 
-You will review a GitHub Pull Request in the context of a Linear issue, performing a comprehensive code review and posting findings as threaded discussions on GitHub.
+You will review a Pull Request (GitHub) or Merge Request (GitLab) in the context of a Linear or Jira issue, performing a comprehensive code review and posting findings as threaded discussions.
 
 ## Arguments Provided
-- **Pull Request**: $1 (URL or PR number)
-- **Linear Issue**: $2 (Issue ID, e.g., ENG-123)
+- **PR/MR**: $1 (URL — GitHub or GitLab)
+- **Issue**: $2 (Linear ID e.g. ENG-123, or Jira key e.g. PROJ-123)
+
+---
+
+## Step 0: Detect Platform
+
+Parse $1 to determine the platform:
+
+- If URL contains `github.com` → **Platform: GitHub**, use GitHub MCP tools
+- If URL contains `gitlab.com` or a self-hosted GitLab domain → **Platform: GitLab**, use GitLab MCP tools
+
+Parse $2 to determine the issue tracker:
+
+- If a Jira MCP server is connected AND $2 matches a Jira key pattern (e.g. `ABC-123`) → **Issue Tracker: Jira**
+- If a Linear MCP server is connected AND $2 matches a Linear ID pattern (e.g. `ENG-123`) → **Issue Tracker: Linear**
+- If both servers are connected, ask the user which tracker $2 belongs to
+- **Note:** Issue tracker is independent of the git platform — GitHub+Jira and GitLab+Linear are fully supported
+
+Store as variables for use in all subsequent steps:
+- `PLATFORM` = `github` or `gitlab`
+- `ISSUE_TRACKER` = `linear` or `jira`
 
 ## Prerequisites Check
 
-Before starting, verify that the required MCP servers are connected:
+Use the `/mcp list` command to verify required MCP servers are connected:
 
-Use the `/mcp list` command to check for:
-- **GitHub MCP Server** - For accessing GitHub API (pull requests, diffs, posting comments)
-- **Linear MCP Server** - For fetching Linear issue details
+**Git platform MCP** (one of):
+- GitHub MCP Server (`mcp__github__*`)
+- GitLab MCP Server (`mcp__gitlab__*`)
 
-If either MCP server is not connected, inform the user with instructions:
+**Issue tracker MCP** (one of):
+- Linear MCP Server (`mcp__linear__*` or similar)
+- Jira MCP Server (`mcp__jira__*` or `mcp__atlassian__*`)
+
+Any combination is valid: GitHub+Linear, GitHub+Jira, GitLab+Linear, GitLab+Jira.
+
+If a required MCP server is missing, inform the user:
 ```
-❌ Required MCP servers not found.
+❌ Required MCP servers not found for {PLATFORM} + {ISSUE_TRACKER}.
 
-Please ensure you have the following MCP servers configured in your Claude Code settings:
+Please ensure the following MCP servers are configured in your Claude Code settings:
+- {Git platform} MCP Server — for PR/MR operations
+- {Issue tracker} MCP Server — for issue details
 
-1. **GitHub MCP Server**
-   - Provides access to GitHub API for PR operations
-   - Configuration: Add to your MCP settings with your GitHub token
-
-2. **Linear MCP Server**
-   - Provides access to Linear API for issue details
-   - Configuration: Add to your MCP settings with your Linear API key
-
-To configure MCP servers, refer to: https://docs.claude.com/en/docs/claude-code/mcp
-```
-
-List available MCP tools with: `Use the Bash tool to run: /mcp inspect <server-name>` to see what tools are available from each server.
-
-## Step 1: Extract GitHub Repository and PR Information
-
-Parse the pull request argument to extract:
-- If URL provided: Extract owner, repo, and PR number from URL
-  - Format: `https://github.com/{owner}/{repo}/pull/{number}`
-- If numeric ID provided: Ask user for repository (e.g., "owner/repo")
-
-Use the Bash tool to extract this information:
-```bash
-# Extract owner, repo, and PR number from URL or use provided values
+Refer to: https://docs.claude.com/en/docs/claude-code/mcp
 ```
 
-## Step 2: Fetch Linear Issue Details
+---
 
-**IMPORTANT: You MUST use Linear MCP tools exclusively. DO NOT use WebFetch, Bash with curl, or access Linear URLs directly.**
+## Step 1: Extract PR/MR Information
 
-**Step 2a: Discover Available Linear MCP Tools**
+**If GitHub:**
+Parse `https://github.com/{owner}/{repo}/pull/{number}` to extract:
+- `OWNER` = repository owner
+- `REPO` = repository name
+- `PR_NUMBER` = pull request number
 
-First, run `/mcp list` to verify the Linear MCP server is connected and get its exact name/prefix.
+**If GitLab:**
+Parse `https://gitlab.com/{project_path}/-/merge_requests/{iid}` to extract:
+- `PROJECT_PATH` = full project path (e.g. `namespace/project`)
+- `MR_IID` = merge request internal ID
 
-Then run `/mcp inspect <linear-server-name>` to see all available Linear tools and their parameters.
+If a numeric ID is provided without a URL, ask the user for the repository/project path.
 
-**Step 2b: Fetch Issue Details via MCP**
+---
 
-Use the Linear MCP server tool to fetch the issue details:
+## Step 2: Fetch Issue Details
 
+**IMPORTANT: Use MCP tools exclusively. DO NOT use WebFetch, curl, or direct URL access.**
+
+**Step 2a: Discover Available MCP Tools**
+
+Run `/mcp list` to get the exact server name/prefix, then `/mcp inspect <server-name>` to see available tools.
+
+**Step 2b: Fetch Issue via MCP**
+
+*If Linear:*
 ```
-Use the MCP tool from Linear server (e.g., mcp__linear__get_issue or similar) with:
-- Issue ID: $2 (e.g., ENG-123)
-- Include all fields: title, description, state, priority, labels, assignee, project, etc.
+Use MCP tool: mcp__linear__get_issue (or check exact name with /mcp inspect)
+Parameters:
+- Issue ID: $2 (e.g. ENG-123)
+- Include: title, description, state, priority, labels, assignee, project, estimate
 ```
 
-Common Linear MCP tool patterns:
-- `mcp__linear__get_issue` - Get a single issue by ID
-- `mcp__linear__issue` - Some servers use this naming
-- Check the actual tool name with `/mcp list` and `/mcp inspect`
-
-**Step 2c: Fetch Linear Comments via MCP**
-
-After fetching the issue details, fetch all comments on the issue:
-
+*If Jira:*
 ```
-Use the MCP tool from Linear server (e.g., mcp__linear__get_comments or mcp__linear__list_comments) with:
-- Issue ID: $2 (e.g., ENG-123)
+Use MCP tool: mcp__jira__get_issue (or mcp__atlassian__get_issue — check /mcp inspect)
+Parameters:
+- Issue key: $2 (e.g. PROJ-123)
+- Fields: summary, description, issuetype, priority, status, acceptance criteria, all custom fields
 ```
 
-If there's no dedicated comments tool, comments may be included in the issue details response. Check the issue response for a `comments` field.
+**Step 2c: Fetch Comments via MCP**
+
+*If Linear:*
+```
+Use MCP tool: mcp__linear__list_comments (or check /mcp inspect)
+- Issue ID: $2
+```
+
+*If Jira:*
+```
+Use MCP tool: mcp__jira__get_comments (or check /mcp inspect)
+- Issue key: $2
+```
+
+Comments may be included in the issue response — check for a `comments` field if no dedicated tool exists.
 
 **Step 2d: Extract and Store Context**
 
-Extract and summarize from the Linear MCP responses:
-- Issue title
+Extract from the response:
+- Issue title/summary
 - Description
+- Acceptance criteria (Jira: custom field or description; Linear: description)
 - Status/State
 - Priority
-- Labels
-- Assignee
-- Project
-- Estimate (if set)
-- Any relevant custom fields
-- **All comments** with author and timestamp
+- Labels / Issue type
+- Assignee, Project
+- All comments with author and timestamp
 
-Store this context for the code review. This will be used to validate that the PR changes align with the Linear issue requirements and consider any discussion points from comments.
+Store this context for the review — used to validate alignment with requirements.
 
-**If Linear MCP tool call fails:**
-- Check the error message carefully
-- Verify the issue ID format is correct
-- Ensure you have permissions to access the issue
-- DO NOT fall back to API/URL methods - inform the user to check their MCP configuration
+**If MCP call fails:**
+- Verify the issue key format is correct
+- Check permissions
+- DO NOT fall back to direct API/URL — inform the user to fix MCP configuration
 
-## Step 3: Fetch GitHub PR Details
+---
 
-Use the GitHub MCP server tool to fetch the pull request details:
+## Step 3: Fetch PR/MR Details
 
+**If GitHub:**
 ```
-Use MCP tool: mcp__github__get_pull_request (or check with /mcp list for exact prefix)
+Use MCP tool: mcp__github__get_pull_request
 Parameters:
-- Owner: {repository owner}
-- Repo: {repository name}
-- Pull number: {PR number}
+- Owner: {OWNER}
+- Repo: {REPO}
+- Pull number: {PR_NUMBER}
 ```
 
-The exact parameter format may vary. If needed, check `/mcp inspect github` to see parameter requirements.
-
-Extract and display from the PR response:
-- PR title
-- Description/Body
-- Head branch (source)
-- Base branch (target/destination)
-- Author
-- State (open, closed, merged)
+Extract:
+- PR title, description/body
+- Head branch (source), base branch (target)
+- Author, state (open/closed/merged)
 - HTML URL
-- Base commit SHA and head commit SHA (needed for posting review comments on specific lines)
+- `base.sha` and `head.sha` (needed for inline comments)
 
-## Step 4: Fetch PR Changes (Diff)
-
-Use the GitHub MCP server tool to fetch the detailed changes:
-
+**If GitLab:**
 ```
-Use MCP tool: mcp__github__get_pull_request_files (or similar - check /mcp inspect)
+Use MCP tool: mcp__gitlab__get_merge_request
 Parameters:
-- Owner: {repository owner}
-- Repo: {repository name}
-- Pull number: {PR number}
+- Merge request identifier: {PROJECT_PATH}!{MR_IID} or as required by your MCP config
 ```
 
-This will return a list of files changed in the pull request.
+Extract:
+- MR title, description
+- Source branch, target branch
+- Author, status
+- Web URL
+- `diff_refs.base_sha`, `diff_refs.start_sha`, `diff_refs.head_sha` (needed for inline comments)
 
-Parse the response to extract:
-- All changed files (paths)
-- Line-by-line diffs for each file showing additions (+) and deletions (-)
-- Previous filename (for renamed/moved files)
-- Patch content showing the diff with line numbers
-- Status (added, modified, removed, renamed)
+---
 
-Organize the changes by file for systematic review. For each file, structure the diff in a readable format:
+## Step 4: Fetch Diff
+
+**If GitHub:**
 ```
-File: path/to/file.ts
-Previous filename: path/to/old_file.ts (if renamed)
-Status: modified
+Use MCP tool: mcp__github__get_pull_request_files (or list_pull_request_files)
+Parameters:
+- Owner: {OWNER}
+- Repo: {REPO}
+- Pull number: {PR_NUMBER}
+```
+
+**If GitLab:**
+```
+Use MCP tool: mcp__gitlab__list_merge_request_diffs
+Parameters:
+- Merge request identifier: same as Step 3
+```
+
+Parse and organize changes by file:
+```
+File: path/to/file.rb
+Status: modified (added/removed/renamed)
 Lines changed: 42-56, 89-102
 
 Diff:
 [Full diff content with line numbers and context]
 ```
 
-Make sure to preserve the exact line numbers from the diff, as these will be used in Step 7 to post inline comments.
+Preserve exact line numbers — used in Step 8 for inline comments.
 
-## Step 4b: Fetch Existing Review Comments
+---
 
-Before reviewing the code, fetch all existing review comments on the PR to:
-- Avoid duplicate comments on already-flagged issues
-- Check if previously flagged issues have been fixed
-- Resolve threads where issues are addressed
+## Step 4b: Fetch Existing Comments / Discussions
 
-**Step 4b.1: List All Review Comments**
+Fetch existing comments before reviewing to avoid duplicates and check if prior issues were fixed.
 
-Use the GitHub MCP server tool to fetch all review comments:
-
+**If GitHub:**
 ```
-Use MCP tool: mcp__github__list_review_comments (or similar - check /mcp inspect)
+Use MCP tool: mcp__github__list_review_comments
 Parameters:
-- Owner: {repository owner}
-- Repo: {repository name}
-- Pull number: {PR number}
+- Owner: {OWNER}
+- Repo: {REPO}
+- Pull number: {PR_NUMBER}
 ```
 
-**Step 4b.2: Parse and Categorize Review Comments**
+**If GitLab:**
+```
+Use MCP tool: mcp__gitlab__discussion_list
+Parameters:
+- Merge request identifier: same as Step 3
+```
 
-For each review comment returned:
-1. Extract the comment ID and any resolution/outdated status
-2. Check if it's a bot-generated comment (contains "🤖 Automated review by Claude Code")
-3. Parse the comment body to extract:
-   - File path (from comment metadata)
-   - Line number/position (from comment metadata)
-   - Severity (🔴/🟡/🟢)
-   - Category (Security, Performance, etc.)
-   - Issue description
-   - Original problematic code
-   - Suggested fix
+**Step 4b.2: Parse and Categorize**
 
-**Step 4b.3: Store Comment Context**
+For each comment/discussion:
+1. Extract ID and resolved status
+2. Check if bot-generated (contains "🤖 Automated review by Claude Code")
+3. Extract: file path, line number, severity, category, description
 
-Create a structured list of existing review comments:
+**Step 4b.3: Store Context**
+
 ```json
 [
   {
-    "comment_id": 123456,
+    "comment_id": "abc123",
     "resolved": false,
-    "file_path": "path/to/file.ts",
+    "file_path": "path/to/file.rb",
     "line_number": 42,
     "severity": "critical",
     "category": "Security",
@@ -218,109 +249,107 @@ Create a structured list of existing review comments:
 ]
 ```
 
-Display summary to user:
+Display summary:
 ```
-Found {count} existing review comments on this PR:
-- Resolved/Outdated: {resolved_count}
-- Active: {active_count}
-  - Inline comments: {inline_count}
-  - General comments: {general_count}
+Found {count} existing comments on this PR/MR:
+- Resolved: {resolved_count}
+- Open: {open_count}
+  - Inline: {inline_count}
+  - General: {general_count}
 ```
+
+---
 
 ## Step 5: Launch Code Review Agent
 
-Use the Task tool to launch the fullstack-code-reviewer agent with the following comprehensive prompt:
+Use the Task tool to launch the fullstack-code-reviewer agent with the following prompt.
+
+**Cache Control:** Structure the prompt with `cache_control: {"type": "ephemeral"}` breakpoints at the end of each large static block (issue context, PR/MR details, existing comments, diff). This enables prompt caching to reduce token costs on large PRs or re-reviews.
 
 ```
-You are reviewing a GitHub Pull Request in the context of a Linear issue.
+You are reviewing a {GitHub Pull Request / GitLab Merge Request} in the context of a {Linear / Jira} issue.
 
-**Linear Issue Context:**
-{Insert Linear issue details from Step 2, including:
-- Issue ID, title, description
-- Status/State, priority
-- Labels, assignee, project
-- Estimate (if set)
+**Issue Context ({Linear / Jira}):**        ← cache_control: {"type": "ephemeral"} after this block
+{Insert issue details from Step 2:
+- Issue ID/key, title/summary, description
+- Status, priority, issue type
+- Acceptance criteria
 - All custom fields
 - All comments with authors and timestamps}
 
-**Pull Request Details:**
-{Insert PR details from Step 3}
+**PR/MR Details:**                          ← cache_control: {"type": "ephemeral"} after this block
+{Insert details from Step 3}
 
-**Existing Review Comments (From Step 4b):**
-{Insert list of existing review comments with their details}
+**Existing Comments/Discussions (From Step 4b):**  ← cache_control: {"type": "ephemeral"} after this block
+{Insert structured list from Step 4b}
 
 **Your Task:**
 You have TWO primary objectives:
 
-**OBJECTIVE 1: Verify Existing Review Comments**
-For each existing review comment provided above, check if the issue is still present in the current code:
-1. Locate the file and line mentioned in the discussion
-2. Analyze if the issue described is still present
-3. Determine the verification status:
-   - "FIXED" - The issue has been resolved
-   - "STILL_PRESENT" - The issue remains in the code
+**OBJECTIVE 1: Verify Existing Comments**
+For each existing comment provided above, check if the issue is still present:
+1. Locate the file and line mentioned
+2. Analyze if the issue is still present
+3. Determine status:
+   - "FIXED" - Issue has been resolved
+   - "STILL_PRESENT" - Issue remains in the code
    - "CANNOT_VERIFY" - Cannot determine (file removed, line changed significantly, etc.)
-4. Provide evidence (code snippet showing it's fixed or still problematic)
+4. Provide evidence (code snippet)
 
 **OBJECTIVE 2: Find New Issues**
-Review the following code changes line by line. For each file, analyze:
+Review code changes line by line. For each file, analyze:
 1. Security vulnerabilities
-2. Performance issues (especially N+1 queries, missing indexes)
+2. Performance issues (N+1 queries, missing indexes)
 3. DRY principle violations
 4. Clean Code standard violations
 5. Missing or inadequate tests
 6. Logic errors or bugs
-7. Alignment with Linear issue requirements
-8. Consideration of discussion points from Linear comments
-9. **Observability & Troubleshooting** — review all logging, error reporting, and traceability practices:
-   - **Missing logs**: Are critical paths, state transitions, and business events logged? Entry/exit of important operations should be logged at appropriate levels (debug, info, warn, error).
-   - **Log quality**: Do log messages include enough context to diagnose issues without reading code? Check for: correlation/trace IDs, user/request identifiers, relevant payload fields (avoid logging sensitive data like passwords/tokens), and structured fields (prefer structured/JSON logging over string concatenation).
-   - **Log levels**: Are levels used correctly? (debug=dev detail, info=normal flow, warn=recoverable anomaly, error=requires attention, fatal=system cannot continue). Avoid logging errors for expected/business exceptions.
-   - **Traceability**: Is there a consistent trace/correlation ID propagated through async calls, background jobs, and service boundaries? Without this, distributed debugging is nearly impossible.
-   - **Error reporting to external tools (e.g. Sentry, Datadog, Rollbar)**: Are errors captured and sent to the error tracking tool? Check that: exceptions are not silently swallowed, `Sentry.capture_exception` (or equivalent) is called in rescue/catch blocks for unexpected errors, extra context (user, request, tags) is attached before capturing, and business/expected errors are NOT sent to Sentry (to reduce noise).
-   - **Avoid double logging**: Don't log AND capture to Sentry for the same error in multiple layers — pick one consistent place per layer.
-   - **Log rotation/volume**: Are there any log statements inside tight loops or high-frequency paths that could flood logs? Suggest rate-limiting or sampling if so.
-   - **Sensitive data in logs**: Flag any log statement that may accidentally log PII, credentials, tokens, or payment data.
+7. Alignment with issue requirements
+8. Consideration of discussion points from issue comments
+9. **Observability & Troubleshooting**:
+   - Missing logs on critical paths, state transitions, business events
+   - Log quality: correlation/trace IDs, user identifiers, structured fields, no sensitive data
+   - Log levels: debug/info/warn/error used correctly
+   - Traceability: consistent trace/correlation ID through async calls and service boundaries
+   - Error reporting (Sentry/Datadog/Rollbar): exceptions not swallowed, capture_exception called with context, business errors NOT sent
+   - Avoid double logging across layers
+   - No log statements in tight loops (flag for rate-limiting/sampling)
+   - No PII, credentials, tokens, or payment data in logs
 
-**Changed Files:**
+**Changed Files:**                          ← cache_control: {"type": "ephemeral"} after this block
 {Insert organized file changes from Step 4}
 
 **Important Instructions:**
 - Review EACH file separately
 - For EACH issue found, provide:
-  - **File path** and **line numbers** affected
-  - **Severity**: Critical (🔴), Warning (🟡), or Info (🟢)
-  - **Category**: Security, Performance, Best Practice, Testing, Bug, Linear Alignment, or Observability
-  - **Description**: Clear explanation of the issue
-  - **Recommendation**: Specific, actionable fix with code example if applicable
-  - **Original code snippet**: Show the problematic code
-  - **Suggested code snippet**: Show the improved version
+  - File path and line numbers affected
+  - Severity: Critical (🔴), Warning (🟡), or Info (🟢)
+  - Category: Security | Performance | Best Practice | Testing | Bug | Issue Alignment | Observability
+  - Description: Clear explanation
+  - Recommendation: Specific actionable fix with code example
+  - Original code snippet
+  - Suggested code snippet
+- Use exact file paths and line numbers from the diff
 
-- Format each issue as a separate item that can be posted as a GitHub review comment
-- Use the exact file path and line numbers from the diff
-- If code aligns well with Linear issue requirements, mention this positively
-
-**Output Format:**
-Structure your response as a JSON object with two arrays:
-
+**Output Format — valid JSON:**
 ```json
 {
   "existing_comments_verification": [
     {
-      "comment_id": 123456,
-      "file_path": "path/to/file.ts",
+      "comment_id": "abc123",
+      "file_path": "path/to/file.rb",
       "line_number": 42,
       "status": "FIXED|STILL_PRESENT|CANNOT_VERIFY",
-      "evidence": "Code snippet or explanation showing current state",
-      "notes": "Additional context about the verification"
+      "evidence": "Code snippet or explanation",
+      "notes": "Additional context"
     }
   ],
   "new_issues": [
     {
-      "file_path": "path/to/file.ts",
+      "file_path": "path/to/file.rb",
       "line_number": 42,
       "severity": "critical|warning|info",
-      "category": "Security|Performance|Best Practice|Testing|Bug|Linear Alignment|Observability",
+      "category": "Security|Performance|Best Practice|Testing|Bug|Issue Alignment|Observability",
       "title": "Brief issue title",
       "description": "Detailed explanation",
       "original_code": "problematic code snippet",
@@ -330,59 +359,36 @@ Structure your response as a JSON object with two arrays:
   ]
 }
 ```
-
-Ensure the JSON is valid and can be parsed programmatically.
 ```
+
+---
 
 ## Step 6: Process Review Results
 
-After the fullstack-code-reviewer agent completes:
+**Step 6a: Parse and Validate JSON**
+1. Parse the JSON response — both `existing_comments_verification` and `new_issues`
+2. Validate all required fields are present
 
-**Step 6a: Parse and Validate JSON Response**
-1. Parse the JSON response containing both `existing_comments_verification` and `new_issues` arrays
-2. Validate that all required fields are present
-
-**Step 6b: Process Existing Comments Verification**
-
-Count and categorize the verification results:
-- Fixed: {count}
-- Still Present: {count}
-- Cannot Verify: {count}
-
-Display summary:
+**Step 6b: Existing Comments Verification Summary**
 ```
-## Existing Review Comments Verification
+## Existing Comments Verification
 
 ✅ Fixed Issues: {fixed_count}
-   - These comments can be resolved
-
 ❌ Still Present: {still_present_count}
-   - These issues still need attention
-
 ⚠️ Cannot Verify: {cannot_verify_count}
-   - Manual verification needed
 ```
 
-**Step 6c: Process New Issues**
-
-Count new issues by severity:
-- Critical (🔴): {count}
-- Warnings (🟡): {count}
-- Info (🟢): {count}
-
-Display summary:
+**Step 6c: New Issues Summary**
 ```
 ## New Issues Found
 
 - Total files reviewed: {count}
-- Critical issues (🔴): {count}
+- Critical (🔴): {count}
 - Warnings (🟡): {count}
-- Info/suggestions (🟢): {count}
+- Info (🟢): {count}
 ```
 
 **Step 6d: Ask for User Confirmation**
-
-Ask the user with options:
 ```
 What would you like to do?
 1. Resolve fixed comments and post new comments (recommended)
@@ -393,490 +399,388 @@ What would you like to do?
 Enter your choice (1-4):
 ```
 
-## Step 6e: Resolve Fixed Review Comments
+---
 
-If user chooses option 1 or 2 (resolve fixed comments), proceed with resolving:
+## Step 6e: Resolve Fixed Comments
 
-**Step 6e.1: Identify Comments to Resolve**
+If user chooses option 1 or 2:
 
-Filter the `existing_comments_verification` array for items with status "FIXED".
+**Step 6e.1:** Filter `existing_comments_verification` for status `"FIXED"`.
 
 **Step 6e.2: Resolve Each Fixed Comment**
 
-For each fixed comment:
-
+*If GitHub:*
 ```
-Use MCP tool: mcp__github__resolve_review_thread (or similar - check /mcp inspect)
+Use MCP tool: mcp__github__resolve_review_thread (or similar — check /mcp inspect)
 Parameters:
-- Owner: {repository owner}
-- Repo: {repository name}
-- Pull number: {PR number}
+- Owner: {OWNER}, Repo: {REPO}, Pull number: {PR_NUMBER}
 - Comment ID: {from verification result}
 ```
 
-Note: GitHub's review comment resolution may work differently than GitLab. Check the available MCP tools - you may need to:
-- Reply to the comment thread indicating it's fixed
-- Use a conversation resolution API if available
-- Mark the thread as resolved (API support varies)
-
-Optionally, add a reply to the comment before resolving:
-
+Optionally reply before resolving:
 ```
-Use MCP tool: mcp__github__create_review_comment_reply (or similar)
-Parameters:
-- Owner: {repository owner}
-- Repo: {repository name}
-- Pull number: {PR number}
-- Comment ID: {from verification result}
-- Body:
+Use MCP tool: mcp__github__create_review_comment_reply
+Body:
   "✅ This issue has been verified as fixed.
 
-  **Evidence:**
-  {evidence from verification result}
-
-  {notes from verification result}
+  **Evidence:** {evidence}
+  {notes}
 
   ---
   🤖 Verified and resolved by Claude Code"
 ```
 
-**Step 6e.3: Track Resolution Progress**
-
-For each resolution attempt:
-- Show progress: "Resolving comment {n} of {total}..."
-- Handle errors gracefully:
-  - If resolution fails (permissions, comment already resolved, etc.), log error and continue
-  - If adding reply fails but resolution succeeds, that's acceptable
-- Track successful and failed resolutions
-
-Display progress:
+*If GitLab:*
 ```
-Resolving Fixed Review Comments:
-[✅] Comment #1 - Security issue in auth.ts:42
-[✅] Comment #2 - Performance issue in query.ts:89
-[❌] Comment #3 - Failed: Permission denied
-...
+Use MCP tool: mcp__gitlab__discussion_add_note
+Parameters:
+- Merge request identifier, Discussion ID: {from verification result}
+- Note: "✅ This issue has been verified as fixed.\n\n**Evidence:** {evidence}\n{notes}\n\n---\n🤖 Verified and resolved by Claude Code"
+
+Then: mcp__gitlab__discussion_resolve
+Parameters:
+- Merge request identifier, Discussion ID, Resolved: true
+```
+
+**Step 6e.3: Track Progress**
+```
+Resolving Fixed Comments:
+[✅] Comment #1 - Security issue in auth.rb:42
+[❌] Comment #2 - Failed: Permission denied
 
 Successfully resolved: {success_count} / {total_count}
 ```
 
-## Step 7: Post New Review Comments to GitHub
+---
 
-If user chooses option 1 or 3 (post new comments), proceed with posting.
+## Step 7: Test Case Generation
 
-**IMPORTANT:** Only post comments from the `new_issues` array. Do NOT re-post issues that are already in existing review comments (even if status is "STILL_PRESENT").
+Before posting comments, generate test cases based on the review findings and diff.
 
-**PRIORITY ORDER FOR POSTING COMMENTS:**
-1. **FIRST PRIORITY**: Post as inline review comment on specific line
-2. **SECOND PRIORITY**: Post as general PR comment (without position) only if inline fails
-
-**Step 7a: Attempt Inline Review Comment (First Priority)**
-
-For each review item in the `new_issues` JSON array, **ALWAYS ATTEMPT INLINE COMMENT FIRST**:
-
-**CRITICAL: Before attempting inline comments, verify you have the correct commit SHA values:**
-- From Step 3, you should have extracted: `base.sha` and `head.sha`
-- Display these values to confirm: "Using SHAs - base: {base_sha}, head: {head_sha}"
-- If these are missing or null, inline comments will fail
-
+**Step 7a: Ask User**
 ```
-Use MCP tool: mcp__github__create_review_comment (or similar - check /mcp inspect)
-Parameters:
-- Owner: {repository owner}
-- Repo: {repository name}
-- Pull number: {PR number}
-- Body (formatted as markdown):
-  "**{severity_emoji} {category}: {title}**
-
-  {description}
-
-  **Current Code:**
-  ```
-  {original_code}
-  ```
-
-  **Suggested Fix:**
-  ```
-  {suggested_code}
-  ```
-
-  **Recommendation:** {recommendation}
-
-  ---
-  🤖 Automated review by Claude Code"
-
-- Commit ID: {head commit SHA from Step 3 PR details}
-- Path: {file_path from review item - must match exact file path in diff}
-- Line: {line_number from review item - the line number in the diff}
-- Side: "RIGHT" (for new code) or "LEFT" (for old code, rare)
+Would you like me to generate test cases for this PR/MR?
+1. Yes - Generate test cases
+2. No - Skip and proceed to posting comments
 ```
 
-**IMPORTANT NOTES ABOUT LINE NUMBERS:**
-- Line number must correspond to the position in the diff, not the absolute file line
-- GitHub uses the diff position for review comments
-- The line must be visible in the PR diff
-- Use "RIGHT" side for commenting on new/modified code (most common)
-- Use "LEFT" side only for commenting on deleted code
+**Step 7b: Generate Test Cases Directly**
 
-**Why inline comments are preferred:**
-- They appear directly on the code line in the PR diff view
-- Easier for developers to see exactly what needs to be fixed
-- Better context and navigation in GitHub UI
-- More professional and precise code review experience
+Generate test cases yourself by combining ALL three sources:
 
-**Step 7b: Fallback to General PR Comment (Second Priority)**
-
-**ONLY if Step 7a fails** (position invalid, line doesn't exist, or API error), retry as a general PR comment:
-
-```
-Use MCP tool: mcp__github__create_issue_comment (or similar)
-Parameters:
-- Owner: {repository owner}
-- Repo: {repository name}
-- Issue number: {PR number} (PRs use the same API as issues for general comments)
-- Body (formatted as markdown):
-  "**{severity_emoji} {category}: {title}**
-
-  **📍 Location:** `{file_path}` at line **{line_number}**
-
-  {description}
-
-  **Current Code:**
-  ```
-  {original_code}
-  ```
-
-  **Suggested Fix:**
-  ```
-  {suggested_code}
-  ```
-
-  **Recommendation:** {recommendation}
-
-  ---
-  🤖 Automated review by Claude Code"
-```
-
-**Format Guidelines for General Threads:**
-- Use the 📍 emoji to clearly mark the location information
-- Make file path a code span (`file_path`) for readability
-- Bold the line number for emphasis
-- Include full context with current code and suggested fix
-- Add the bot signature for consistent tracking
-
-**Progress Tracking:**
-
-For each posting attempt:
-1. **Start with inline**: Log "Posting inline review comment {n} of {total} on {file_path}:{line_number}..."
-   - Log the position parameters being used: "Position: commit={commit_id}, path={path}, line={line}, side={side}"
-2. **If inline succeeds**: Log "✅ Inline review comment posted successfully" and move to next item
-3. **If inline fails**:
-   - Log the FULL error message: "⚠️ Inline posting failed with error: {full_error_message}"
-   - Include the error code if available
-   - Log "Retrying as general PR comment..."
-4. **If general succeeds**: Log "✅ General PR comment posted as fallback"
-5. **If both fail**: Log "❌ Failed to post comment: {error}" and continue with next item
-
-Track separately:
-- Successful inline review comments: {inline_count}
-- Successful general PR comments (fallbacks): {general_count}
-- Failed postings: {failed_count}
-
-**Error Handling:**
-- If inline position is invalid (line no longer exists), retry as general PR comment
-- If comment creation fails completely, log the error and continue with next item
-- Common errors:
-  - Position invalid: Retry as general comment
-  - Rate limiting: Wait briefly and retry
-  - Duplicate content: Skip and note as duplicate
-  - Permission errors: Log and inform user
-  - Network errors: Retry once, then skip
-
-**Severity Emoji Mapping:**
-- Critical (🔴): Use red circle emoji
-- Warning (🟡): Use yellow circle emoji
-- Info (🟢): Use green circle emoji
-
-## Step 8: Test Case Creation
-
-After posting review comments, launch the qa-test-engineer agent to generate test cases for the changed code.
-
-**Step 8a: Ask User for TC Creation**
-
-Ask the user:
-```
-Would you like me to generate test cases for this PR?
-1. Yes - Generate test cases (positive, negative, edge cases)
-2. No - Skip test case creation
-```
-
-**Step 8b: Launch QA Test Engineer Agent**
-
-If the user chooses Yes, use the Task tool to launch the qa-test-engineer agent with the following prompt:
-
-```
-You are creating comprehensive test cases for a Pull Request that has just been code-reviewed.
-
-**PR/Issue Context:**
-{Insert PR title, description, and Linear issue details from earlier steps}
-
-**Changed Files & Logic:**
-{Insert summary of what changed from the diff — focus on new behavior, modified logic, and business rules}
-
-**Code Review Findings:**
-{Insert the list of new_issues from the review — especially bugs and logic issues — so test cases can target those risk areas}
-
-**Your Task:**
-Generate comprehensive test cases covering ALL of the following categories:
-
-### ✅ Positive Test Cases
-- Happy path scenarios where inputs are valid and expected behavior occurs
-- Each key user flow or feature path introduced/modified in this PR
-- Verify expected outputs, state changes, UI feedback, and side effects
-
-### ❌ Negative Test Cases
-- Invalid inputs, missing required fields, malformed data
-- Unauthorized access attempts (wrong role, unauthenticated)
-- Business rule violations (e.g. duplicate entries, exceeded limits)
-- API error responses (400, 401, 403, 404, 422, 500)
-
-### ⚠️ Edge Cases
-- Boundary values (min/max, empty strings, zero, null)
-- Concurrent operations or race conditions if applicable
-- Large data sets or pagination edge cases
-- Locale/timezone edge cases if dates/times are involved
-- Network interruption or timeout scenarios
-
-### 🔍 Observability & Logging Test Cases
-- Verify that errors are reported to Sentry (or equivalent) when failures occur
-- Verify that trace/correlation IDs appear in logs for key operations
-- Verify that sensitive data (passwords, tokens) does NOT appear in logs
-- Verify correct log level is used (no errors logged for expected business exceptions)
+1. **Issue tracker requirements (Step 2)** — acceptance criteria, business rules, and edge cases defined in the Linear/Jira issue and its comments. Each acceptance criterion should map to at least one TC.
+2. **Code diff (Step 4)** — new or modified behavior, logic branches, and changed business flows.
+3. **Review findings (Step 6 `new_issues`)** — bugs and logic issues found during review are high-priority TC targets.
 
 **Output Format:**
-For each test case provide:
-- **TC-ID**: Sequential ID (TC-001, TC-002, ...)
-- **Title**: Short descriptive name
-- **Category**: Positive / Negative / Edge Case / Observability
-- **Priority**: Critical / High / Medium / Low
-- **Preconditions**: What must be true before running
-- **Test Steps**: Numbered, executable steps
-- **Expected Result**: What should happen
-- **Test Data**: Any specific data required
-```
+| TC-ID | Title | Type | Source | Steps | Expected Result |
+|---|---|---|---|---|---|
+| TC-001 | {short title} | Positive/Negative/Edge | AC/Diff/Review | {numbered steps} | {expected outcome} |
 
-**Step 8c: Display TC Summary**
+The `Source` column should reference:
+- `AC-{n}` — derived from acceptance criterion n in the issue
+- `Diff` — derived from code change behavior
+- `Review` — derived from a review finding
 
-After the agent completes, display:
-```
-## Test Cases Generated
+Keep test cases short and actionable. Cover:
+- ✅ Happy path for each acceptance criterion and new feature/behavior
+- ❌ Key invalid input, unauthorized access, or business rule violation
+- ⚠️ One or two boundary/edge cases if relevant
 
-| Category | Count |
-|---|---|
-| ✅ Positive | {count} |
-| ❌ Negative | {count} |
-| ⚠️ Edge Cases | {count} |
-| 🔍 Observability | {count} |
-| **Total** | **{total}** |
+Do NOT generate exhaustive or deeply nested test cases. Aim for 5–15 total TCs.
 
-**Priority Breakdown:**
-- Critical: {count}
-- High: {count}
-- Medium: {count}
-- Low: {count}
-```
-
-**Step 8d: Ask User for TC Destination**
-
-Ask the user:
+**Step 7c: Ask User for TC Destination**
 ```
 Where would you like to save the test cases?
-1. Post as a PR comment on GitHub (summary + link to full list)
+1. Post as a comment on the PR/MR
 2. Output here only (no posting)
-3. Create Jira/Linear subtasks for each TC (if issue tracker MCP available)
 ```
 
-If option 1 is chosen, post the full TC list as a general PR comment using:
+If option 1 is chosen:
+
+*If GitHub:*
 ```
 Use MCP tool: mcp__github__create_issue_comment
-Body: Formatted markdown with all test cases grouped by category
+Body: Formatted markdown table with all test cases
 ```
+
+*If GitLab:*
+```
+Use MCP tool: mcp__gitlab__discussion_new
+Body: Formatted markdown table with all test cases
+(No position — general thread)
+```
+
+---
+
+## Step 8: Post New Review Comments
+
+If user chooses option 1 or 3 (post new comments), proceed.
+
+**IMPORTANT:** Only post from `new_issues`. Do NOT re-post already-existing comments (even if `STILL_PRESENT`).
+
+**Priority:**
+1. **FIRST**: Inline comment on specific line
+2. **SECOND**: General comment/thread (fallback if inline fails)
+
+---
+
+### If GitHub
+
+**Step 8a: Inline Review Comment (First Priority)**
+
+```
+CRITICAL: Verify SHA values from Step 3 — base.sha and head.sha must not be null.
+```
+
+```
+Use MCP tool: mcp__github__create_review_comment
+Parameters:
+- Owner: {OWNER}, Repo: {REPO}, Pull number: {PR_NUMBER}
+- Commit ID: {head.sha}
+- Path: {file_path}
+- Line: {line_number}
+- Side: "RIGHT" (new code) or "LEFT" (deleted code, rare)
+- Body:
+  "**{severity_emoji} {category}: {title}**
+
+  {description}
+
+  **Current Code:**
+  ```
+  {original_code}
+  ```
+
+  **Suggested Fix:**
+  ```
+  {suggested_code}
+  ```
+
+  **Recommendation:** {recommendation}
+
+  ---
+  🤖 Automated review by Claude Code"
+```
+
+**Step 8b: Fallback — General PR Comment**
+
+Only if Step 8a fails:
+```
+Use MCP tool: mcp__github__create_issue_comment
+Parameters:
+- Owner: {OWNER}, Repo: {REPO}, Issue number: {PR_NUMBER}
+- Body: same as above but prepend "**📍 Location:** `{file_path}` line **{line_number}**"
+```
+
+---
+
+### If GitLab
+
+**Step 8a: Inline Discussion Thread (First Priority)**
+
+```
+CRITICAL: Verify from Step 3 — diff_refs.base_sha, diff_refs.start_sha, diff_refs.head_sha must not be null.
+Display: "Using SHAs — base: {base_sha}, start: {start_sha}, head: {head_sha}"
+```
+
+```
+Use MCP tool: mcp__gitlab__discussion_new
+Parameters:
+- Merge request identifier: same as Step 3
+- Body:
+  "**{severity_emoji} {category}: {title}**
+
+  {description}
+
+  **Current Code:**
+  ```
+  {original_code}
+  ```
+
+  **Suggested Fix:**
+  ```
+  {suggested_code}
+  ```
+
+  **Recommendation:** {recommendation}
+
+  ---
+  🤖 Automated review by Claude Code"
+
+- Position:
+  - base_sha: {diff_refs.base_sha}
+  - start_sha: {diff_refs.start_sha}
+  - head_sha: {diff_refs.head_sha}
+  - position_type: "text"
+  - new_path: {file_path}
+  - new_line: {line_number}  ← must be a line added (+) in the diff
+```
+
+**Step 8b: Fallback — General Discussion Thread**
+
+Only if Step 8a fails:
+```
+Use MCP tool: mcp__gitlab__discussion_new
+Same body but prepend "**📍 Location:** `{file_path}` line **{line_number}**"
+Omit position parameter entirely (creates a general thread)
+```
+
+---
+
+**Progress Tracking (both platforms):**
+
+For each comment:
+1. Log: "Posting inline comment {n}/{total} on {file_path}:{line_number}..."
+2. If inline succeeds: "✅ Inline comment posted"
+3. If inline fails: log full error → "⚠️ Inline failed: {error} — retrying as general..."
+4. If general succeeds: "✅ General comment posted as fallback"
+5. If both fail: "❌ Failed: {error}" — continue to next item
+
+Track: inline_count / general_count / failed_count
+
+**Severity Emoji Mapping:**
+- Critical (🔴): red circle
+- Warning (🟡): yellow circle
+- Info (🟢): green circle
+
+---
 
 ## Step 9: Comprehensive Summary Report
 
-After all operations are complete, provide a comprehensive final summary:
-
 ```
-## GitHub PR Review Complete ✅
+## {GitHub PR / GitLab MR} Review Complete ✅
 
-**Pull Request:** {PR URL}
-**Linear Issue:** {Linear Issue ID} - {Title}
+**PR/MR:** {URL}
+**Issue:** {Issue ID} - {Title}
+**Platform:** {GitHub/GitLab} + {Linear/Jira}
 
-### 📊 Existing Review Comments Status
+### 📊 Existing Comments Status
 
-**Total Existing Review Comments:** {total_existing_comments}
-- ✅ Fixed & Resolved: {fixed_and_resolved_count}
-- ❌ Still Present (needs attention): {still_present_count}
-- ⚠️ Cannot Verify (manual check needed): {cannot_verify_count}
-- 📌 Already Resolved (unchanged): {already_resolved_count}
+Total: {total_existing}
+- ✅ Fixed & Resolved: {fixed_count}
+- ❌ Still Present: {still_present_count}
+- ⚠️ Cannot Verify: {cannot_verify_count}
+- 📌 Already Resolved: {already_resolved_count}
 
-**Resolution Actions:**
-- Successfully resolved: {successful_resolutions} / {attempted_resolutions}
-- Failed to resolve: {failed_resolutions}
+Resolution: {successful_resolutions} / {attempted_resolutions} succeeded
 
 ### 🆕 New Issues Identified
 
-**Total Files Reviewed:** {files_count}
+Files reviewed: {files_count}
+Comments posted: {new_comments_posted} / {new_issues_found}
+- Inline: {inline_count}
+- General: {general_count}
+- Failed: {failed_count}
 
-**New Comments Posted:** {new_comments_posted} / {new_issues_found}
-- Inline review comments: {inline_count}
-- General PR comments: {general_count}
-- Failed to post: {failed_count}
-
-**By Severity:**
-- Critical Issues (🔴): {critical_count}
+By Severity:
+- Critical (🔴): {critical_count}
 - Warnings (🟡): {warning_count}
 - Suggestions (🟢): {info_count}
 
-**By Category:**
-- Security: {security_count}
-- Performance: {performance_count}
-- Best Practice: {best_practice_count}
-- Testing: {testing_count}
-- Bug: {bug_count}
-- Linear Alignment: {linear_alignment_count}
-- Observability: {observability_count}
-
-### 🎯 Overall Summary
-
-**Total Active Review Threads:** {total_active_threads}
-- Open threads requiring attention: {open_threads_count}
-- Resolved threads: {total_resolved_count}
-
-**Code Quality Assessment:**
-- ✅ Issues resolved this review: {fixed_count}
-- 🆕 New issues identified: {new_issues_found}
-- ⚠️ Remaining open issues: {remaining_open_issues}
+By Category:
+- Security: {n}
+- Performance: {n}
+- Best Practice: {n}
+- Testing: {n}
+- Bug: {n}
+- Issue Alignment: {n}
+- Observability: {n}
 
 ### 📋 Next Steps
 
-1. **Immediate Actions** (if critical issues exist):
-   - Address {critical_count} critical issue(s) before merging
-   - Review security vulnerabilities
+1. Address {critical_count} critical issue(s) before merging
+2. Review {warning_count} warning(s) for code quality
+3. Consider {info_count} suggestion(s)
+4. Update {Linear/Jira} issue status if all acceptance criteria are met
+5. Manually verify {cannot_verify_count} comment(s) that couldn't be auto-verified
 
-2. **Before Merge** (if warnings exist):
-   - Consider {warning_count} warning(s) for code quality
-   - Review performance implications
+### 💰 Cost Estimation
 
-3. **Code Quality** (if suggestions exist):
-   - Review {info_count} suggestion(s) for improvements
-   - Consider best practice recommendations
-
-4. **Linear Integration:**
-   - Update Linear issue status if all requirements are met
-   - Link resolved threads to Linear comments if needed
-
-5. **Follow-up:**
-   - Manually verify {cannot_verify_count} comment(s) that couldn't be auto-verified
-   - Review inline comments on specific lines: {PR URL}/files
-
-### Cost Consumption
-
-
-After all operations are complete, calculate token usage and provide a comprehensive final summary:
-
-**Calculate Token Usage and Cost**
-
-Calculate the total tokens used and estimated cost:
-
-```
-Total Tokens Used = Current Token Count - Starting Token Count (from Token Usage Tracking section)
-
-Cost Estimation (based on Claude Sonnet 4.5 pricing):
-- Input tokens: $3.00 per million tokens
-- Output tokens: $15.00 per million tokens
-
-Estimated Cost Calculation:
-- Input cost = (Input tokens / 1,000,000) × $3.00
-- Output cost = (Output tokens / 1,000,000) × $15.00
-- Total estimated cost = Input cost + Output cost
-```
-
-**Note:** Token count breakdown (input vs output) may not be directly visible. Provide total token usage and a conservative cost estimate assuming a typical input:output ratio for code review tasks (approximately 70:30 ratio).
-
-**Display Comprehensive Summary**
-
-Provide a comprehensive final summary:
+Cost Estimation (Claude Sonnet 4.6 pricing):
+- Input: $3.00 / 1M tokens
+- Output: $15.00 / 1M tokens
+- Estimated cost = (input_tokens / 1M × $3) + (output_tokens / 1M × $15)
+(Assume ~70:30 input:output ratio if breakdown unavailable)
 
 ### 🔗 Links
 
-- **View PR Review Comments:** {PR URL}/files
-- **View Linear Issue:** https://linear.app/issue/{LINEAR_ISSUE_ID}
-- **PR Overview:** {PR URL}
+- PR/MR: {URL}
+- PR/MR Comments: {URL}/files (GitHub) or {URL}#notes (GitLab)
+- Issue: {Linear or Jira issue URL}
 
 ---
 🤖 Automated review completed by Claude Code
 ```
 
+---
+
 ## Error Handling
 
-Throughout the process, handle these potential errors:
+**Setup Errors:**
+- MCP server not connected → inform user, stop
+- Invalid PR/MR URL → validate format before proceeding
+- Issue not found → verify key format and permissions
+- Permission errors → log and inform user
 
-**Initial Setup Errors:**
-- **MCP Server Not Connected**: If GitHub or Linear MCP server is not available, inform the user and stop
-- **Invalid PR URL or number**: Validate the format before attempting API calls
-- **Linear issue not found**: Check if the issue ID is valid and accessible
-- **Permission Errors**: User may not have access to the PR or Linear issue
+**Step 4b Errors:**
+- Failed to fetch comments → log and continue (skip existing comment checks)
+- Malformed comment data → skip that comment, continue
+- No comments → normal for new PRs/MRs
 
-**Review Comment Fetching Errors (Step 4b):**
-- **Failed to fetch review comments**: If comment listing fails, log error but continue with review (just won't be able to check existing comments)
-- **Malformed comment data**: If comment parsing fails, skip that comment and continue with others
-- **No review comments found**: This is normal for new PRs, proceed with normal review
+**Step 5 Errors:**
+- MCP tool failure → check error, suggest fix
+- Invalid diff format → handle gracefully
+- Agent returns invalid JSON → ask agent to retry
 
-**Code Review Errors (Step 5):**
-- **MCP Tool Errors**: If an MCP tool call fails, check the error message and suggest solutions
-- **Invalid diff format**: Handle cases where diff data is malformed or incomplete
-- **Agent fails to return valid JSON**: Ask agent to retry or manually parse the response
+**Step 6e Errors:**
+- Failed to resolve → log with ID, continue with others
+- Failed to add note → non-critical, attempt resolution anyway
 
-**Comment Resolution Errors (Step 6e):**
-- **Failed to resolve comment**: Log error with comment ID and continue with others
-  - Common causes: Already resolved, insufficient permissions, comment deleted
-- **Failed to add reply before resolving**: This is non-critical, attempt resolution anyway
-- **Comment not found**: Skip and log (may have been deleted)
+**Step 8 Errors:**
+- Inline position invalid → retry as general comment
+- Invalid line number → fallback to general with file/line in body
+- Rate limiting → wait briefly and retry
+- Duplicate comment → skip
 
-**Comment Posting Errors (Step 7):**
-- **Failed to post comments**: If position is outdated, retry as general PR comment
-- **Invalid line number**: The line may have changed; post as general comment with file/line reference
-- **Rate limiting**: If API rate limit is hit, wait and retry
-- **Duplicate comment**: If a review comment already exists at the same line, skip posting
+**General Strategy:**
+1. Log error with context (step, platform, ID)
+2. Guide user on resolution
+3. Continue remaining operations when possible
+4. Include error summary in final report
 
-**General Error Handling Strategy:**
-For each error:
-1. Log the error with context (step, PR number, comment ID, etc.)
-2. Provide clear guidance to the user on how to resolve it
-3. Continue with remaining operations when possible
-4. Include error summary in the final report
+---
 
-## Notes About MCP Integration
+## MCP Tool Reference
 
-**GitHub MCP Server** (check available implementations):
-- Tool: `get_pull_request` - Fetch PR details
-- Tool: `get_pull_request_files` or `list_pull_request_files` - Get changed files and diffs
-- Tool: `list_review_comments` - List all review comments on a PR (used in Step 4b)
-- Tool: `create_review_comment` - Create inline review comments on specific lines
-- Tool: `create_issue_comment` - Create general comments on the PR (fallback)
-- Tool: `create_review_comment_reply` - Reply to existing review comments (used in Step 6e)
-- Tool: `resolve_review_thread` - Resolve a review comment thread (if available, used in Step 6e)
+**GitHub MCP:**
+- `get_pull_request` — fetch PR details
+- `get_pull_request_files` / `list_pull_request_files` — get diff
+- `list_review_comments` — list review comments (Step 4b)
+- `create_review_comment` — inline comment (Step 8a)
+- `create_issue_comment` — general comment (Step 8b / TC posting)
+- `create_review_comment_reply` — reply to thread (Step 6e)
+- `resolve_review_thread` — resolve thread (Step 6e)
 
-**Linear MCP Server** (various implementations available):
-- Common tools: Get issue, search issues, create/update issues, list comments
-- Check your specific Linear MCP implementation with `/mcp inspect linear`
-- Community servers available (check Linear MCP server implementations)
+**GitLab MCP:**
+- `get_merge_request` — fetch MR details
+- `list_merge_request_diffs` — get diff
+- `discussion_list` — list discussions (Step 4b)
+- `discussion_new` — create inline or general discussion (Steps 8a/8b, TC posting)
+- `discussion_add_note` — reply to discussion (Step 6e)
+- `discussion_resolve` — resolve discussion (Step 6e)
+
+**Linear MCP:**
+- `get_issue` / `issue` — fetch issue details
+- `list_comments` — fetch comments
+- Check exact tool names with `/mcp inspect <linear-server-name>`
+
+**Jira MCP (JIRA Base URL: https://ioh-smb.atlassian.net/):**
+- `get_issue` / `search_issues` — fetch issue details
+- `get_comments` / `list_comments` — fetch comments
+- Check exact tool names with `/mcp inspect <jira-server-name>`
 
 **General Notes:**
 - The fullstack-code-reviewer agent has access to: Glob, Grep, LS, Read, WebFetch, TodoWrite, WebSearch, BashOutput, KillBash
-- Use TodoWrite to track review progress for transparency
-- MCP tools handle authentication automatically (configured in MCP settings)
-- The exact MCP tool prefix (e.g., `mcp__github__` or `mcp__linear__`) depends on how the server is named in your config
-- Use `/mcp list` to see all connected servers and their tool prefixes
+- MCP tools handle auth automatically (configured in MCP settings)
+- Use `/mcp list` to see connected servers and prefixes
 - Use `/mcp inspect <server-name>` to see available tools and parameters
