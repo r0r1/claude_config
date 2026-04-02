@@ -19,3 +19,4 @@ paste-cache/
 mcp-needs-auth-cache.json
 settings.*
 *.json
+!ci/mcp.json
