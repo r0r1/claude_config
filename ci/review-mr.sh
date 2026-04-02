@@ -24,8 +24,16 @@ done
 MR_URL="${CI_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"
 echo "Running Claude Code review on MR !${CI_MERGE_REQUEST_IID}..."
 
+# Build MCP config flag if ci-mcp.json exists
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MCP_FLAGS=""
+if [ -f "${SCRIPT_DIR}/mcp.json" ]; then
+  MCP_FLAGS="--mcp-config ${SCRIPT_DIR}/mcp.json"
+  echo "MCP config found, loading integrations..."
+fi
+
 # Let Claude handle everything: diff analysis, project detection, review
-REVIEW_OUTPUT=$(claude -p "Review this GitLab MR: ${MR_URL}
+REVIEW_OUTPUT=$(claude --bare $MCP_FLAGS -p "Review this GitLab MR: ${MR_URL}
 
 Use /code-review to perform a comprehensive code review. Output as markdown." 2>&1 || true)
 
