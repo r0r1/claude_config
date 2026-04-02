@@ -8,7 +8,7 @@ set -euo pipefail
 # Required CI variables (auto-set by GitLab): CI_MERGE_REQUEST_IID,
 #   CI_PROJECT_URL, CI_API_V4_URL, CI_PROJECT_ID
 
-export PATH="$HOME/.claude/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.claude/bin:$PATH"
 
 # Verify Claude Code is installed and working
 claude --version || { echo "ERROR: Claude Code is not installed or not in PATH."; exit 1; }
