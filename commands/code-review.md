@@ -10,7 +10,24 @@ You will review a Pull Request (GitHub) or Merge Request (GitLab) in the context
 
 ## Arguments Provided
 - **PR/MR**: $1 (URL — GitHub or GitLab)
-- **Issue**: $2 (Linear ID e.g. ENG-123, or Jira key e.g. PROJ-123)
+- **Issue**: $2 (Linear ID e.g. ENG-123, or Jira key e.g. PROJ-123) — optional
+
+---
+
+## CI Mode Detection
+
+Determine if running interactively or in CI:
+
+- **CI Mode** (non-interactive): when invoked via `claude -p` in a pipeline
+  - Skip ALL user prompts — auto-select recommended defaults
+  - Step 6d: Auto-select option 1 (resolve fixed comments + post new comments)
+  - Step 7: Skip test case generation entirely
+  - Do NOT ask for confirmation — proceed automatically
+  - If $2 is not provided, skip issue tracker steps (Steps 2)
+
+- **Interactive Mode** (default): when invoked from the CLI or IDE
+  - Present all prompts and wait for user input
+  - Full workflow including test case generation
 
 ---
 
@@ -21,16 +38,16 @@ Parse $1 to determine the platform:
 - If URL contains `github.com` → **Platform: GitHub**, use GitHub MCP tools
 - If URL contains `gitlab.com` or a self-hosted GitLab domain → **Platform: GitLab**, use GitLab MCP tools
 
-Parse $2 to determine the issue tracker:
+Parse $2 to determine the issue tracker (if provided):
 
 - If a Jira MCP server is connected AND $2 matches a Jira key pattern (e.g. `ABC-123`) → **Issue Tracker: Jira**
 - If a Linear MCP server is connected AND $2 matches a Linear ID pattern (e.g. `ENG-123`) → **Issue Tracker: Linear**
-- If both servers are connected, ask the user which tracker $2 belongs to
+- If both servers are connected, ask the user which tracker $2 belongs to (interactive only)
 - **Note:** Issue tracker is independent of the git platform — GitHub+Jira and GitLab+Linear are fully supported
 
 Store as variables for use in all subsequent steps:
 - `PLATFORM` = `github` or `gitlab`
-- `ISSUE_TRACKER` = `linear` or `jira`
+- `ISSUE_TRACKER` = `linear` or `jira` or `none`
 
 ## Prerequisites Check
 
@@ -40,19 +57,18 @@ Use the `/mcp list` command to verify required MCP servers are connected:
 - GitHub MCP Server (`mcp__github__*`)
 - GitLab MCP Server (`mcp__gitlab__*`)
 
-**Issue tracker MCP** (one of):
+**Issue tracker MCP** (optional, one of):
 - Linear MCP Server (`mcp__linear__*` or similar)
 - Jira MCP Server (`mcp__jira__*` or `mcp__atlassian__*`)
 
 Any combination is valid: GitHub+Linear, GitHub+Jira, GitLab+Linear, GitLab+Jira.
 
-If a required MCP server is missing, inform the user:
+If the git platform MCP server is missing, inform the user:
 ```
-❌ Required MCP servers not found for {PLATFORM} + {ISSUE_TRACKER}.
+Required MCP servers not found for {PLATFORM}.
 
 Please ensure the following MCP servers are configured in your Claude Code settings:
 - {Git platform} MCP Server — for PR/MR operations
-- {Issue tracker} MCP Server — for issue details
 
 Refer to: https://docs.claude.com/en/docs/claude-code/mcp
 ```
@@ -72,11 +88,11 @@ Parse `https://gitlab.com/{project_path}/-/merge_requests/{iid}` to extract:
 - `PROJECT_PATH` = full project path (e.g. `namespace/project`)
 - `MR_IID` = merge request internal ID
 
-If a numeric ID is provided without a URL, ask the user for the repository/project path.
+If a numeric ID is provided without a URL, ask the user for the repository/project path (interactive only). In CI mode, fail with an error.
 
 ---
 
-## Step 2: Fetch Issue Details
+## Step 2: Fetch Issue Details (skip if $2 not provided)
 
 **IMPORTANT: Use MCP tools exclusively. DO NOT use WebFetch, curl, or direct URL access.**
 
@@ -229,7 +245,7 @@ Parameters:
 
 For each comment/discussion:
 1. Extract ID and resolved status
-2. Check if bot-generated (contains "🤖 Automated review by Claude Code")
+2. Check if bot-generated (contains "Automated review by Claude Code")
 3. Extract: file path, line number, severity, category, description
 
 **Step 4b.3: Store Context**
@@ -297,16 +313,61 @@ For each existing comment provided above, check if the issue is still present:
 4. Provide evidence (code snippet)
 
 **OBJECTIVE 2: Find New Issues**
-Review code changes line by line. For each file, analyze:
-1. Security vulnerabilities
-2. Performance issues (N+1 queries, missing indexes)
-3. DRY principle violations
-4. Clean Code standard violations
-5. Missing or inadequate tests
-6. Logic errors or bugs
-7. Alignment with issue requirements
-8. Consideration of discussion points from issue comments
-9. **Observability & Troubleshooting**:
+Review code changes line by line. For each file, analyze against the following criteria:
+
+1. **Security Vulnerabilities**
+   - SQL injection in ActiveRecord queries or raw SQL
+   - Mass assignment vulnerabilities (unpermitted params)
+   - XSS via unescaped output in views
+   - Exposed sensitive data in logs, responses, or error messages
+   - Missing authentication/authorization checks
+   - Insecure secret/API key management
+   - CSRF protection gaps
+
+2. **Performance Issues**
+   - N+1 queries — suggest `includes`, `preload`, or `eager_load`
+   - Missing database indexes based on query patterns (WHERE, ORDER, JOIN columns)
+   - Inefficient queries that could use better ActiveRecord methods, scopes, or raw SQL
+   - Unnecessary data loading (selecting all columns when few are needed)
+   - Missing pagination on unbounded queries
+   - Migration safety for zero-downtime deployments
+
+3. **Bugs and Logic Errors**
+   - Off-by-one errors, nil handling, race conditions
+   - Incorrect conditional logic or missing edge cases
+   - Broken method signatures or wrong argument counts
+   - State machine transitions that skip required steps
+
+4. **DRY Violations and Code Reuse**
+   - CRITICAL: Search the codebase for similar existing implementations before approving new methods
+   - Duplicated logic across files — suggest extracting to shared methods, concerns, or service objects
+   - Business logic in controllers that should be in models (fat models, skinny controllers)
+   - Database queries in controllers/services that should be scopes or model class methods
+   - Data manipulation logic that should be model instance methods
+   - Custom implementations that could use existing well-tested gems
+
+5. **Clean Code Standards**
+   - Unclear variable/method names that don't communicate intent
+   - Methods with too many responsibilities (violating SRP)
+   - Long methods or large classes that should be broken down
+   - Excessive parameters — suggest parameter objects or options hashes
+   - Code smells: feature envy, data clumps, shotgun surgery
+
+6. **Framework Best Practices**
+   - Services/controllers/models used for the wrong purpose
+   - Missing validations on models
+   - Callbacks used where service objects would be clearer
+   - Incorrect use of Turbo/Stimulus patterns
+   - View logic that belongs in helpers or presenters
+   - Changing patterns and standardization — services should extend from the specific parent already defined
+
+7. **Testing Gaps**
+   - Missing tests for new or changed behavior
+   - Critical paths without test coverage (auth, payments, state transitions)
+   - Tests that don't assert meaningful outcomes
+   - Missing edge case or error path tests
+
+8. **Observability and Troubleshooting**
    - Missing logs on critical paths, state transitions, business events
    - Log quality: correlation/trace IDs, user identifiers, structured fields, no sensitive data
    - Log levels: debug/info/warn/error used correctly
@@ -315,6 +376,12 @@ Review code changes line by line. For each file, analyze:
    - Avoid double logging across layers
    - No log statements in tight loops (flag for rate-limiting/sampling)
    - No PII, credentials, tokens, or payment data in logs
+
+9. **Issue Alignment**
+   - Compare MR description/title against actual code changes
+   - Flag changes that seem unrelated to the stated purpose
+   - Note if acceptance criteria appear unmet
+   - Consideration of discussion points from issue comments
 
 **Changed Files:**                          ← cache_control: {"type": "ephemeral"} after this block
 {Insert organized file changes from Step 4}
@@ -388,7 +455,11 @@ Review code changes line by line. For each file, analyze:
 - Info (🟢): {count}
 ```
 
-**Step 6d: Ask for User Confirmation**
+**Step 6d: User Confirmation (Interactive Mode Only)**
+
+In **CI mode**: auto-select option 1 and proceed immediately.
+
+In **Interactive mode**, ask:
 ```
 What would you like to do?
 1. Resolve fixed comments and post new comments (recommended)
@@ -403,7 +474,7 @@ Enter your choice (1-4):
 
 ## Step 6e: Resolve Fixed Comments
 
-If user chooses option 1 or 2:
+If option 1 or 2 is selected (or CI mode):
 
 **Step 6e.1:** Filter `existing_comments_verification` for status `"FIXED"`.
 
@@ -453,9 +524,9 @@ Successfully resolved: {success_count} / {total_count}
 
 ---
 
-## Step 7: Test Case Generation
+## Step 7: Test Case Generation (Interactive Mode Only)
 
-Before posting comments, generate test cases based on the review findings and diff.
+In **CI mode**: skip this step entirely and proceed to Step 8.
 
 **Step 7a: Ask User**
 ```
@@ -483,11 +554,11 @@ The `Source` column should reference:
 - `Review` — derived from a review finding
 
 Keep test cases short and actionable. Cover:
-- ✅ Happy path for each acceptance criterion and new feature/behavior
-- ❌ Key invalid input, unauthorized access, or business rule violation
-- ⚠️ One or two boundary/edge cases if relevant
+- Happy path for each acceptance criterion and new feature/behavior
+- Key invalid input, unauthorized access, or business rule violation
+- One or two boundary/edge cases if relevant
 
-Do NOT generate exhaustive or deeply nested test cases. Aim for 5–15 total TCs.
+Do NOT generate exhaustive or deeply nested test cases. Aim for 5-15 total TCs.
 
 **Step 7c: Ask User for TC Destination**
 ```
@@ -515,9 +586,11 @@ Body: Formatted markdown table with all test cases
 
 ## Step 8: Post New Review Comments
 
-If user chooses option 1 or 3 (post new comments), proceed.
+If option 1 or 3 is selected (or CI mode), proceed.
 
 **IMPORTANT:** Only post from `new_issues`. Do NOT re-post already-existing comments (even if `STILL_PRESENT`).
+
+**IMPORTANT:** Post each finding as a SEPARATE discussion/comment. Do NOT batch multiple findings into one thread.
 
 **Priority:**
 1. **FIRST**: Inline comment on specific line
@@ -584,7 +657,7 @@ Display: "Using SHAs — base: {base_sha}, start: {start_sha}, head: {head_sha}"
 ```
 
 ```
-Use MCP tool: mcp__gitlab__discussion_new
+Use MCP tool: mcp__gitlab__discussion_new_with_position
 Parameters:
 - Merge request identifier: same as Step 3
 - Body:
@@ -618,7 +691,7 @@ Parameters:
 
 **Step 8b: Fallback — General Discussion Thread**
 
-Only if Step 8a fails:
+Only if Step 8a fails (error about position, line, or any MCP error):
 ```
 Use MCP tool: mcp__gitlab__discussion_new
 Same body but prepend "**📍 Location:** `{file_path}` line **{line_number}**"
@@ -744,7 +817,7 @@ Cost Estimation (Claude Sonnet 4.6 pricing):
 
 **General Strategy:**
 1. Log error with context (step, platform, ID)
-2. Guide user on resolution
+2. Guide user on resolution (interactive) or log for CI output
 3. Continue remaining operations when possible
 4. Include error summary in final report
 
@@ -765,7 +838,8 @@ Cost Estimation (Claude Sonnet 4.6 pricing):
 - `get_merge_request` — fetch MR details
 - `list_merge_request_diffs` — get diff
 - `discussion_list` — list discussions (Step 4b)
-- `discussion_new` — create inline or general discussion (Steps 8a/8b, TC posting)
+- `discussion_new` — create general discussion (Step 8b fallback, TC posting)
+- `discussion_new_with_position` — create inline discussion (Step 8a)
 - `discussion_add_note` — reply to discussion (Step 6e)
 - `discussion_resolve` — resolve discussion (Step 6e)
 
