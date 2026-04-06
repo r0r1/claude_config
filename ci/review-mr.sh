@@ -2,7 +2,13 @@
 set -euo pipefail
 
 # Claude Code CI Review Script
-# Runs AI code review on GitLab Merge Requests and posts results as MR notes.
+# Invokes the code-review skill via claude -p for comprehensive MR reviews.
+# Claude reads CLAUDE.md conventions, changed files, and related files automatically.
+#
+# Cost optimization:
+#   - Sonnet model (~10x cheaper than Opus)
+#   - Max 5 turns (enough to read files + review, prevents runaway)
+#   - Estimated cost: ~$0.02-0.08 per review
 #
 # Required CI/CD variables: ANTHROPIC_API_KEY, GITLAB_BOT_TOKEN
 # Required CI variables (auto-set by GitLab): CI_MERGE_REQUEST_IID,
@@ -22,9 +28,10 @@ for var in CI_MERGE_REQUEST_IID CI_PROJECT_URL CI_API_V4_URL CI_PROJECT_ID GITLA
 done
 
 MR_URL="${CI_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"
+TARGET_BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-main}"
 echo "Running Claude Code review on MR !${CI_MERGE_REQUEST_IID}..."
 
-# Build MCP config flag if ci-mcp.json exists
+# Build MCP config flag if mcp.json exists
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MCP_FLAGS=""
 if [ -f "${SCRIPT_DIR}/mcp.json" ]; then
@@ -32,10 +39,11 @@ if [ -f "${SCRIPT_DIR}/mcp.json" ]; then
   echo "MCP config found, loading integrations..."
 fi
 
-# Let Claude handle everything: diff analysis, project detection, review
-REVIEW_OUTPUT=$(claude --bare $MCP_FLAGS -p "Review this GitLab MR: ${MR_URL}
-
-Use /code-review to perform a comprehensive code review. Output as markdown." 2>&1 || true)
+# Invoke code-review skill with Sonnet model.
+# Claude will read CLAUDE.md for conventions, inspect changed & related files.
+REVIEW_OUTPUT=$(claude --model sonnet --max-turns 5 \
+  $MCP_FLAGS \
+  -p "Review the changes on the current branch compared to ${TARGET_BRANCH}. Use the code-review skill. Output as markdown." 2>&1 || true)
 
 if [ -z "$REVIEW_OUTPUT" ]; then
   echo "WARNING: Claude returned empty output."
