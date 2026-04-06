@@ -7,6 +7,8 @@ description: Review GitHub PR or GitLab MR with Linear or Jira issue context, po
 
 You will review a Pull Request (GitHub) or Merge Request (GitLab), performing a comprehensive code review and posting findings as threaded discussions.
 
+**CRITICAL: You MUST use MCP tools for ALL GitLab/GitHub/Jira operations. NEVER use curl, Bash, git commands, or direct API calls. MCP servers are already configured and connected. Use `mcp__gitlab__*` tools for GitLab, `mcp__github__*` for GitHub, `mcp__atlassian__*` for Jira.**
+
 ## Arguments Provided
 - **PR/MR**: $ARGUMENTS (URL — GitHub or GitLab, optionally followed by issue ID)
 
