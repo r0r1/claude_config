@@ -12,7 +12,7 @@
     "atlassian": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@anthropic/mcp-atlassian"],
+      "args": ["-y", "mcp-atlassian"],
       "env": {
         "ATLASSIAN_API_TOKEN": "$ATLASSIAN_API_TOKEN",
         "ATLASSIAN_URL": "$ATLASSIAN_URL",
